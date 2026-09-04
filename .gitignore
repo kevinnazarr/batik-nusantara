@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+apps/api/.env
+apps/web/.env.local
+
+# Build output
+.next/
+out/
+build/
+dist/
+apps/api/storage/*.key
+
+# Cache
+.cache/
+*.log
+npm-debug.log*
+.phpunit.result.cache
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Laravel
+apps/api/storage/logs/*
+apps/api/storage/framework/cache/data/*
+!apps/api/storage/logs/.gitignore
+
+# Misc
+*.pid
+*.seed
+.omo
