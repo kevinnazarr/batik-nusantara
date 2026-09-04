@@ -1,468 +1,141 @@
-# Batik-Nusantara
+<h1 align="center">Batik Nusantara</h1>
 
 <p align="center">
-  <em>Platform ecommerce single-store untuk toko batik Indonesia.</em>
+  Platform e-commerce <strong>single-store</strong> untuk toko batik Indonesia.
+  Dibangun dengan fokus pada performa, SEO, dan pengalaman pengguna.
 </p>
 
 <p align="center">
-  [![Status](https://img.shields.io/badge/status-in%20development-orange)]()
-  [![Author](https://img.shields.io/badge/GitHub-kevinnazarr-181717?style=flat&logo=github&logoColor=white)](https://github.com/kevinnazarr)
+  <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js"></a>
+  <a href="https://react.dev"><img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"></a>
+  <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"></a>
+  <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"></a>
+  <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel"></a>
+  <a href="https://www.postgresql.org"><img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"></a>
+  <a href="https://redis.io"><img src="https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=redis&logoColor=white" alt="Redis"></a>
+  <a href="https://www.docker.com"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"></a>
+  <img src="https://img.shields.io/badge/Status-In%20Development-orange?style=for-the-badge" alt="Status In Development">
 </p>
-
-<p align="center">
-  **Status:** In Development (scaffolding) &nbsp;·&nbsp; **Demo:** Belum tersedia &nbsp;·&nbsp; **Dokumentasi:** [docs/](docs/)
-</p>
-
-Batik-Nusantara adalah project ecommerce fullstack yang menjual produk olahan batik — kemeja, dress, blouse, outer, kain batik, sarung, tas, dompet, scarf, dan produk batik lainnya. Dibangun dengan dua tujuan: menjadi aplikasi ecommerce yang realistis dan siap dikembangkan menuju production, sekaligus menjadi project portfolio fullstack.
-
-| | |
-| --- | --- |
-| **Jenis** | Ecommerce single-store |
-| **Status** | In Development (scaffolding) |
-| **Demo** | Belum tersedia |
-| **Lisensi** | Belum ditentukan |
-| **Author** | [kevinnazarr](https://github.com/kevinnazarr) |
-
-## Daftar Isi
-
-| | |
-| --- | --- |
-| [Tentang Project](#tentang-project) | [Fitur Utama](#fitur-utama) |
-| [Tech Stack](#tech-stack) | [Arsitektur](#arsitektur) |
-| [Struktur Project](#struktur-project) | [Persyaratan](#persyaratan) |
-| [Clone Repository](#clone-repository) | [Mulai Cepat](#mulai-cepat) |
-| [Menjalankan Frontend](#menjalankan-frontend) | [Menjalankan Backend](#menjalankan-backend) |
-| [Environment Variables](#environment-variables) | [Database](#database) |
-| [Docker](#docker) | [Testing](#testing) |
-| [Development Workflow](#development-workflow) | [API](#api) |
-| [Authentication](#authentication) | [Pembayaran](#pembayaran) |
-| [Pengiriman](#pengiriman) | [Object Storage](#object-storage) |
-| [Dokumentasi](#dokumentasi) | [Roadmap](#roadmap) |
-| [Preview](#preview) | [Security](#security) |
-| [Contributing](#contributing) | [License](#license) |
-| [Author](#author) | |
 
 ---
 
-## Tentang Project
+## 📖 Overview
 
-Batik-Nusantara dirancang sebagai ecommerce **single-store** untuk toko batik. Target utama adalah UMKM/toko batik Indonesia yang ingin memiliki toko online modern tanpa meninggalkan identitas produk lokalnya.
+**Batik Nusantara** adalah platform e-commerce **single-store** untuk toko batik Indonesia — menjual kemeja, dress, blouse, kain batik, sarung, tas, dompet, dan produk batik lainnya.
 
-Project ini bernilai dari dua sisi:
+Proyek dibangun sebagai aplikasi fullstack yang realistis dan siap dikembangkan menuju production, sekaligus menjadi project portfolio. Frontend **Next.js** di `apps/web`, backend **Laravel** di `apps/api`, dan dikembangkan secara *docs-driven* dengan dokumentasi lengkap di `batik-nusantara-docs/`.
 
-1. **Sebagai aplikasi** — mendemonstrasikan bagaimana ecommerce modern dibangun secara end-to-end: katalog produk, transaksi, pembayaran, pengiriman multi-courier, hingga panel admin.
-2. **Sebagai portfolio fullstack** — memperlihatkan disiplin engineering: arsitektur monorepo, API yang terstruktur, dokumentasi, dan praktik pengembangan yang rapi.
+## ✨ Features
 
-> **Catatan status:** repository saat ini baru berisi scaffolding — struktur direktori, konfigurasi Docker untuk database, dan kerangka dokumentasi. Aplikasi (`apps/web` dan `apps/api`) belum diinisialisasi.
+- [ ] Katalog produk batik — pencarian, filter, dan halaman detail
+- [ ] Varian & SKU produk (ukuran, warna, motif)
+- [ ] Keranjang belanja & guest checkout
+- [ ] Autentikasi (email/password & Google OAuth)
+- [ ] Pembayaran melalui Midtrans
+- [ ] Pengiriman multi-courier melalui Biteship
+- [ ] Panel admin — manajemen produk, pesanan, dan pelanggan
+- [ ] **Responsive** — mobile-first, nyaman di semua perangkat
+- [ ] **Docs-driven** — seluruh requirement terdokumentasi di `batik-nusantara-docs/`
 
-## Fitur Utama
-
-Seluruh fitur di bawah adalah **target scope** project. Karena aplikasi belum diimplementasikan, semua fitur berstatus **Direncanakan**.
-
-### Customer (Direncanakan)
-
-- Katalog produk batik
-- Pencarian produk
-- Filter dan sortir produk
-- Halaman detail produk
-- Varian produk (ukuran, warna, motif)
-- Keranjang belanja
-- Guest checkout
-- Autentikasi pelanggan (email/password, Google OAuth)
-- Manajemen alamat
-- Wishlist
-- Riwayat pesanan
-- Tracking pesanan
-
-### Commerce (Direncanakan)
-
-- Pembayaran melalui Midtrans (snap, virtual account, dan metode lain yang tersedia)
-- Pengiriman multi-courier melalui Biteship
-- Manajemen inventori/stok
-- Promosi dan kupon
-
-### Admin (Direncanakan)
-
-- Dashboard admin
-- Manajemen produk
-- Manajemen kategori
-- Manajemen varian/SKU
-- Manajemen inventori
-- Manajemen pesanan
-- Manajemen pelanggan
-- Manajemen banner
-- Manajemen konten/story
-- Manajemen promosi
-
-## Tech Stack
-
-Daftar berikut adalah target teknologi project. Stack akan terpasang saat `apps/web` dan `apps/api` diinisialisasi.
+## 🛠 Tech Stack
 
 ### Frontend
 
-[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)](https://nextjs.org)
-[![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat&logo=gsap&logoColor=black)](https://gsap.com)
-[![Motion](https://img.shields.io/badge/Motion-000000?style=flat)](https://motion.dev)
-[![Lenis](https://img.shields.io/badge/Lenis-000000?style=flat)](https://lenis.darkroom.engineering)
+| Technology | Deskripsi |
+| ---------- | --------- |
+| [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org) | React framework — App Router & Server Components. |
+| [![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev) | Library untuk membangun user interface. |
+| [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org) | Type-safe JavaScript untuk kode yang lebih aman. |
+| [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com) | Utility-first CSS framework. |
+| [![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=gsap&logoColor=black)](https://gsap.com) | Library animasi untuk pengalaman interaktif. |
+| [![Motion](https://img.shields.io/badge/Motion-7C3AED?style=for-the-badge)](https://motion.dev) | Library animasi modern. |
+| [![Lenis](https://img.shields.io/badge/Lenis-000000?style=for-the-badge)](https://lenis.darkroom.engineering) | Smooth scrolling yang natural. |
 
 ### Backend
 
-[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white)](https://laravel.com)
-[![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white)](https://www.php.net)
-[![Laravel Sanctum](https://img.shields.io/badge/Laravel%20Sanctum-FF2D20?style=flat)](https://laravel.com/docs/sanctum)
+| Technology | Deskripsi |
+| ---------- | --------- |
+| [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com) | REST API utama — produk, pesanan, pembayaran, dan admin. |
+| [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net) | Bahasa pemrograman backend. |
+| [![Laravel Sanctum](https://img.shields.io/badge/Laravel_Sanctum-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/docs/sanctum) | Authentication untuk SPA & token. |
 
 ### Database & Cache
 
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org)
-[![Redis](https://img.shields.io/badge/Redis-FF4438?style=flat&logo=redis&logoColor=white)](https://redis.io)
+| Technology | Deskripsi |
+| ---------- | --------- |
+| [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org) | Database utama untuk data transaksional. |
+| [![Redis](https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io) | Cache dan queue (antrian job). |
 
 ### Infrastructure
 
-[![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com)
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat&logo=cloudflare&logoColor=white)](https://www.cloudflare.com)
-VPS
+| Technology | Deskripsi |
+| ---------- | --------- |
+| [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com) | Containerization — PostgreSQL & Redis untuk development. |
+| [![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://www.cloudflare.com) | CDN & DNS. |
+| [![VPS](https://img.shields.io/badge/VPS-57606A?style=for-the-badge)](#) | Server deployment. |
 
 ### Payment, Shipping & Storage
 
-[![Midtrans](https://img.shields.io/badge/Midtrans-008DFF?style=flat)](https://midtrans.com)
-[![Biteship](https://img.shields.io/badge/Biteship-1B2430?style=flat)](https://biteship.com)
-[![Cloudflare R2](https://img.shields.io/badge/Cloudflare%20R2-F38020?style=flat)](https://developers.cloudflare.com/r2/)
+| Technology | Deskripsi |
+| ---------- | --------- |
+| [![Midtrans](https://img.shields.io/badge/Midtrans-008DFF?style=for-the-badge)](https://midtrans.com) | Payment gateway untuk memproses pembayaran. |
+| [![Biteship](https://img.shields.io/badge/Biteship-1B2430?style=for-the-badge)](https://biteship.com) | Shipping aggregator multi-courier. |
+| [![Cloudflare R2](https://img.shields.io/badge/Cloudflare_R2-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/r2/) | Object storage S3-compatible. |
 
-## Arsitektur
+## 📁 Project Structure
 
-> Diagram berikut adalah **target arsitektur**. Komponen aplikasi belum diimplementasikan dan akan diaktualkan seiring perkembangan project.
-
-```mermaid
-flowchart LR
-    Customer[Customer / Browser] --> Web[Next.js - apps/web]
-    Web -->|REST API| API[Laravel API - apps/api]
-    API --> DB[(PostgreSQL)]
-    API --> Cache[(Redis)]
-    API --> Storage[(Cloudflare R2)]
-    API --> Payment[Midtrans]
-    API --> Shipping[Biteship]
 ```
-
-Penjelasan komponen:
-
-- **Next.js (`apps/web`)** — frontend ecommerce: katalog, keranjang, checkout, dan halaman admin. Berkomunikasi dengan backend melalui REST API.
-- **Laravel API (`apps/api`)** — REST API utama: autentikasi (Sanctum), produk, pesanan, pembayaran, pengiriman, dan admin.
-- **PostgreSQL** — database utama untuk data transaksional.
-- **Redis** — cache dan antrian (queue) untuk job seperti notifikasi dan webhook.
-- **Cloudflare R2** — object storage S3-compatible untuk gambar produk, banner, dan media lain.
-- **Midtrans** — payment gateway untuk memproses pembayaran.
-- **Biteship** — shipping aggregator untuk tarif, label, dan tracking multi-courier.
-
-## Struktur Project
-
-Kondisi repository saat ini:
-
-```text
 batik-nusantara/
-├── .github/
-│   └── workflows/     # placeholder untuk CI/CD
-├── docs/
-│   ├── api/           # rencana: spesifikasi API
-│   ├── architecture/  # rencana: dokumentasi arsitektur
-│   ├── frontend/      # rencana: dokumentasi frontend
-│   └── guides/        # rencana: panduan development
-├── infra/             # rencana: konfigurasi infrastruktur & deployment
-├── scripts/           # rencana: script otomasi development
-├── compose.yaml       # PostgreSQL 16 + Redis 7 untuk development
-├── .editorconfig
-├── .gitignore
-└── README.md
+├── apps/
+│   ├── web/              # Frontend Next.js (App Router)
+│   └── api/              # Backend Laravel REST API
+├── batik-nusantara-docs/ # Dokumentasi lengkap project
+├── docs/                 # Dokumentasi pendukung
+├── infra/                # Konfigurasi infrastruktur & deployment
+├── scripts/              # Script otomasi development
+├── .github/              # Workflow CI/CD
+└── compose.yaml          # PostgreSQL 16 + Redis 7 (development)
 ```
 
-Fungsi masing-masing directory:
+## 🚀 Getting Started
 
-| Path | Fungsi |
-| --- | --- |
-| `apps/web` | Frontend Next.js (belum dibuat, akan diinisialisasi) |
-| `apps/api` | Backend Laravel REST API (belum dibuat, akan diinisialisasi) |
-| `docs/` | Dokumentasi project: API, arsitektur, frontend, dan panduan |
-| `infra/` | Konfigurasi infrastruktur dan deployment |
-| `scripts/` | Script otomasi untuk development |
-| `.github/workflows/` | Workflow CI/CD (placeholder, belum diisi) |
-| `compose.yaml` | Service PostgreSQL dan Redis untuk development |
-
-## Persyaratan
-
-Yang dibutuhkan saat ini:
-
-- **Docker** dengan plugin **Docker Compose** — untuk menjalankan PostgreSQL dan Redis.
-
-Versi Node.js, npm, PHP, dan Composer belum dapat ditentukan karena `apps/web` dan `apps/api` belum diinisialisasi. Bagian ini akan diperbarui setelah scaffolding aplikasi dimulai.
-
-## Clone Repository
-
-### SSH
+Clone repository:
 
 ```bash
 git clone git@github.com:kevinnazarr/batik-nusantara.git
 cd batik-nusantara
 ```
 
-### HTTPS
-
-```bash
-git clone https://github.com/kevinnazarr/batik-nusantara.git
-cd batik-nusantara
-```
-
-## Mulai Cepat
-
-Yang dapat langsung dijalankan saat ini adalah service database dan cache:
+Jalankan database & cache (Docker):
 
 ```bash
 docker compose up -d
 ```
 
-Aplikasi frontend dan backend belum tersedia — lihat [Roadmap](#roadmap) untuk tahapan selanjutnya.
+## 📚 Documentation
 
-## Menjalankan Frontend
+Dokumentasi lengkap project tersedia di [`batik-nusantara-docs/`](batik-nusantara-docs/docs/README.md) — berisi PRD, arsitektur, API spec, ERD, state machine, dan panduan pengembangan.
 
-Frontend (`apps/web`) belum diinisialisasi. Panduan ini akan diisi setelah aplikasi Next.js di-scaffold — mencakup `npm install`, `npm run dev`, `npm run build`, dan `npm run lint`.
+`README.md` ini hanyalah *entry point*. Seluruh keputusan arsitektur, requirement, dan standar pengembangan dijelaskan di dalam dokumentasi.
 
-## Menjalankan Backend
+## 👤 Author
 
-Backend (`apps/api`) belum diinisialisasi. Panduan ini akan diisi setelah aplikasi Laravel di-scaffold — mencakup `composer install`, konfigurasi `.env`, migrasi database, dan menjalankan server.
+<div align="center">
+  <a href="https://github.com/kevinnazarr">
+    <img src="https://img.shields.io/badge/GitHub-kevinnazarr-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub kevinnazarr">
+  </a>
+  <br><br>
+  <a href="https://github.com/kevinnazarr">
+    <img src="https://github-readme-stats.vercel.app/api?username=kevinnazarr&show_icons=true&theme=default" alt="Profil GitHub kevinnazarr">
+  </a>
+</div>
 
-## Environment Variables
+## 📄 License
 
-File `.env.example` belum tersedia; daftar di bawah adalah **rencana** dan akan diaktualkan bersamaan dengan scaffolding aplikasi. Jangan pernah meng-commit nilai asli.
-
-| Variable | App | Fungsi |
-| --- | --- | --- |
-| `NEXT_PUBLIC_API_URL` | web | Base URL API Laravel |
-| `DB_CONNECTION`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` | api | Koneksi PostgreSQL |
-| `REDIS_HOST`, `REDIS_PORT` | api | Koneksi Redis |
-| `SANCTUM_STATEFUL_DOMAINS` | api | Domain yang diizinkan untuk autentikasi Sanctum |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | api | Google OAuth |
-| `MIDTRANS_SERVER_KEY`, `MIDTRANS_CLIENT_KEY` | api | Payment gateway Midtrans |
-| `BITESHIP_API_KEY` | api | Shipping aggregator Biteship |
-| `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` | api | Object storage Cloudflare R2 |
-
-## Database
-
-Database utama adalah **PostgreSQL 16**, dijalankan via Docker Compose. Nama database development: `batik_nusantara` (lihat `compose.yaml`).
-
-- Migrasi dan seeder **belum tersedia** — akan dibuat bersama scaffolding `apps/api` (Laravel).
-- Rencana: migration untuk produk, kategori, varian/SKU, stok, pesanan, pelanggan, promosi, dan konten.
-
-## Docker
-
-Docker Compose digunakan untuk menjalankan service pendukung development. Saat ini hanya database dan cache yang berjalan via Docker — aplikasi web dan API belum di-containerize.
-
-Mulai service:
-
-```bash
-docker compose up -d
-```
-
-Periksa status:
-
-```bash
-docker compose ps
-```
-
-Lihat log:
-
-```bash
-docker compose logs -f
-```
-
-Hentikan service:
-
-```bash
-docker compose down
-```
-
-| Service | Image | Port host | Fungsi |
-| --- | --- | --- | --- |
-| `postgres` | `postgres:16-alpine` | `5432` | Database utama |
-| `redis` | `redis:7-alpine` | `6380` | Cache dan queue |
-
-Catatan: Redis diekspos di port host `6380` (bukan `6379`) untuk menghindari konflik dengan Redis lokal bila ada.
-
-## Testing
-
-Belum ada test — aplikasi belum di-scaffold. Rencana:
-
-- **Frontend:** lint, typecheck, dan unit test.
-- **Backend:** PHPUnit/Pest untuk unit test dan feature test.
-
-Panduan perintah aktual akan ditambahkan setelah scaffolding selesai.
-
-## Development Workflow
-
-Alur kerja yang disarankan untuk project ini:
-
-```text
-Issue
- ↓
-Branch
- ↓
-Development
- ↓
-Test
- ↓
-Pull Request
- ↓
-Review
- ↓
-Merge
-```
-
-Penamaan branch:
-
-```text
-feat/...
-fix/...
-refactor/...
-docs/...
-chore/...
-```
-
-Gunakan Conventional Commits:
-
-```text
-feat: add product catalog
-fix: handle expired payment
-docs: update installation guide
-```
-
-## API
-
-Rencana:
-
-- REST API Laravel di `apps/api` dengan autentikasi Sanctum.
-- Versioning API (`/api/v1/...`).
-- Dokumentasi OpenAPI akan diletakkan di `docs/api/`.
-
-Belum ada endpoint yang tersedia saat ini.
-
-## Authentication
-
-Rencana autentikasi:
-
-- Email/password
-- Google OAuth
-- Laravel Sanctum (token untuk SPA)
-- Guest checkout (tanpa akun)
-
-| Peran | Deskripsi |
-| --- | --- |
-| Guest | Pengunjung tanpa akun — browsing katalog dan guest checkout |
-| Registered Customer | Pelanggan terdaftar — akun, alamat, wishlist, riwayat dan tracking pesanan |
-| Admin | Pengelola toko — dashboard dan manajemen produk, pesanan, dan konten |
-
-## Pembayaran
-
-Rencana integrasi Midtrans sebagai payment gateway. Alur umum:
-
-```text
-Frontend → Laravel API → Midtrans → Webhook → Update status order
-```
-
-- Selama pengembangan, Midtrans dijalankan dalam mode **sandbox**.
-- Webhook harus divalidasi untuk memastikan update status order hanya berasal dari Midtrans.
-- Secret key tidak akan pernah dicantumkan di repository.
-
-## Pengiriman
-
-Rencana penggunaan **Biteship** sebagai shipping aggregator. Alur umum:
-
-```text
-Origin → Destination → Shipping rates → Courier service → Shipment → Tracking
-```
-
-Courier yang tersedia (misalnya J&T, JNE, SiCepat, dan lainnya) mengikuti konfigurasi akun Biteship — daftar aktual tidak diklaim sebelum dikonfigurasi.
-
-## Object Storage
-
-Rencana penggunaan **Cloudflare R2** sebagai object storage S3-compatible untuk:
-
-- Gambar produk
-- Banner
-- Cover story/konten
-- Media lainnya
-
-Penggunaan R2 (S3-compatible) memudahkan migrasi antar provider object storage bila diperlukan.
-
-## Dokumentasi
-
-Dokumentasi project tersedia di folder `docs/`:
-
-- [Arsitektur](docs/architecture/)
-- [API](docs/api/)
-- [Frontend](docs/frontend/)
-- [Panduan](docs/guides/)
-
-Folder-folder tersebut masih berisi placeholder dan akan diisi seiring perkembangan project.
-
-## Roadmap
-
-**Selesai**
-
-- Scaffolding struktur repository (docs, infra, scripts, .github)
-- Docker Compose untuk PostgreSQL 16 dan Redis 7
-
-**Direncanakan**
-
-- Inisialisasi `apps/web` (Next.js)
-- Inisialisasi `apps/api` (Laravel + Sanctum)
-- Katalog produk dan kategori
-- Autentikasi (email/password, Google OAuth)
-- Keranjang dan checkout
-- Integrasi Midtrans
-- Integrasi Biteship
-- Object storage Cloudflare R2
-- Panel admin
-- Testing (unit dan feature)
-- CI/CD via GitHub Actions
-- Deployment ke VPS dengan Cloudflare
-
-## Preview
-
-Preview akan ditambahkan setelah UI utama selesai.
-
-## Security
-
-- Jangan pernah meng-commit `.env` atau file yang berisi secret.
-- Gunakan HTTPS pada production.
-- Validasi signature webhook (Midtrans, Biteship) sebelum memproses data.
-- Terapkan authorization pada seluruh endpoint admin.
-- Jangan mengekspos production credentials ke publik.
-
-Jika menemukan security issue, silakan gunakan jalur pelaporan yang ditentukan oleh repository. Saat ini belum ada `SECURITY.md`; jalur pelaporan akan ditentukan kemudian.
-
-## Contributing
-
-Alur kontribusi sederhana:
-
-```text
-Fork / branch → perubahan → test → pull request
-```
-
-- Ikuti penamaan branch dan Conventional Commits (lihat [Development Workflow](#development-workflow)).
-- Pastikan perubahan tidak melanggar konvensi yang ada di repository.
-
-## License
-
-> Lisensi belum ditentukan.
-
-## Author
-
-Project ini dikelola oleh [kevinnazarr](https://github.com/kevinnazarr).
-
-[![Author](https://img.shields.io/badge/GitHub-kevinnazarr-181717?style=flat&logo=github&logoColor=white)](https://github.com/kevinnazarr)
+> Belum ditentukan — lisensi resmi belum ditetapkan.
 
 ---
 
 <p align="center">
-  Dibangun untuk Batik-Nusantara sebagai project ecommerce fullstack modern.
+  Dibuat oleh <strong><a href="https://github.com/kevinnazarr">kevinnazarr</a></strong>
 </p>
