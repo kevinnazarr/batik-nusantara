@@ -1,14 +1,48 @@
 # Batik-Nusantara
 
-> Platform ecommerce single-store untuk toko batik Indonesia.
+<p align="center">
+  <em>Platform ecommerce single-store untuk toko batik Indonesia.</em>
+</p>
+
+<p align="center">
+  [![Status](https://img.shields.io/badge/status-in%20development-orange)]()
+  [![Author](https://img.shields.io/badge/GitHub-kevinnazarr-181717?style=flat&logo=github&logoColor=white)](https://github.com/kevinnazarr)
+</p>
+
+<p align="center">
+  **Status:** In Development (scaffolding) &nbsp;·&nbsp; **Demo:** Belum tersedia &nbsp;·&nbsp; **Dokumentasi:** [docs/](docs/)
+</p>
 
 Batik-Nusantara adalah project ecommerce fullstack yang menjual produk olahan batik — kemeja, dress, blouse, outer, kain batik, sarung, tas, dompet, scarf, dan produk batik lainnya. Dibangun dengan dua tujuan: menjadi aplikasi ecommerce yang realistis dan siap dikembangkan menuju production, sekaligus menjadi project portfolio fullstack.
 
-- **Status:** In Development — repository masih dalam tahap scaffolding
-- **Demo:** Belum tersedia
-- **Dokumentasi:** [docs/](docs/)
+| | |
+| --- | --- |
+| **Jenis** | Ecommerce single-store |
+| **Status** | In Development (scaffolding) |
+| **Demo** | Belum tersedia |
+| **Lisensi** | Belum ditentukan |
+| **Author** | [kevinnazarr](https://github.com/kevinnazarr) |
 
-[![Status](https://img.shields.io/badge/status-in%20development-orange)]()
+## Daftar Isi
+
+| | |
+| --- | --- |
+| [Tentang Project](#tentang-project) | [Fitur Utama](#fitur-utama) |
+| [Tech Stack](#tech-stack) | [Arsitektur](#arsitektur) |
+| [Struktur Project](#struktur-project) | [Persyaratan](#persyaratan) |
+| [Clone Repository](#clone-repository) | [Mulai Cepat](#mulai-cepat) |
+| [Menjalankan Frontend](#menjalankan-frontend) | [Menjalankan Backend](#menjalankan-backend) |
+| [Environment Variables](#environment-variables) | [Database](#database) |
+| [Docker](#docker) | [Testing](#testing) |
+| [Development Workflow](#development-workflow) | [API](#api) |
+| [Authentication](#authentication) | [Pembayaran](#pembayaran) |
+| [Pengiriman](#pengiriman) | [Object Storage](#object-storage) |
+| [Dokumentasi](#dokumentasi) | [Roadmap](#roadmap) |
+| [Preview](#preview) | [Security](#security) |
+| [Contributing](#contributing) | [License](#license) |
+| [Author](#author) | |
+
+---
 
 ## Tentang Project
 
@@ -19,7 +53,7 @@ Project ini bernilai dari dua sisi:
 1. **Sebagai aplikasi** — mendemonstrasikan bagaimana ecommerce modern dibangun secara end-to-end: katalog produk, transaksi, pembayaran, pengiriman multi-courier, hingga panel admin.
 2. **Sebagai portfolio fullstack** — memperlihatkan disiplin engineering: arsitektur monorepo, API yang terstruktur, dokumentasi, dan praktik pengembangan yang rapi.
 
-Catatan status: repository saat ini baru berisi scaffolding — struktur direktori, konfigurasi Docker untuk database, dan kerangka dokumentasi. Aplikasi (`apps/web` dan `apps/api`) belum diinisialisasi.
+> **Catatan status:** repository saat ini baru berisi scaffolding — struktur direktori, konfigurasi Docker untuk database, dan kerangka dokumentasi. Aplikasi (`apps/web` dan `apps/api`) belum diinisialisasi.
 
 ## Fitur Utama
 
@@ -165,21 +199,29 @@ Versi Node.js, npm, PHP, dan Composer belum dapat ditentukan karena `apps/web` d
 
 ## Clone Repository
 
-Ganti `<USERNAME>` dengan username GitHub pemilik repository.
-
 ### SSH
 
 ```bash
-git clone git@github.com:<USERNAME>/batik-nusantara.git
+git clone git@github.com:kevinnazarr/batik-nusantara.git
 cd batik-nusantara
 ```
 
 ### HTTPS
 
 ```bash
-git clone https://github.com/<USERNAME>/batik-nusantara.git
+git clone https://github.com/kevinnazarr/batik-nusantara.git
 cd batik-nusantara
 ```
+
+## Mulai Cepat
+
+Yang dapat langsung dijalankan saat ini adalah service database dan cache:
+
+```bash
+docker compose up -d
+```
+
+Aplikasi frontend dan backend belum tersedia — lihat [Roadmap](#roadmap) untuk tahapan selanjutnya.
 
 ## Menjalankan Frontend
 
@@ -398,13 +440,26 @@ Preview akan ditambahkan setelah UI utama selesai.
 
 Jika menemukan security issue, silakan gunakan jalur pelaporan yang ditentukan oleh repository. Saat ini belum ada `SECURITY.md`; jalur pelaporan akan ditentukan kemudian.
 
+## Contributing
+
+Alur kontribusi sederhana:
+
+```text
+Fork / branch → perubahan → test → pull request
+```
+
+- Ikuti penamaan branch dan Conventional Commits (lihat [Development Workflow](#development-workflow)).
+- Pastikan perubahan tidak melanggar konvensi yang ada di repository.
+
 ## License
 
 > Lisensi belum ditentukan.
 
 ## Author
 
-kevinnazar
+Project ini dikelola oleh [kevinnazarr](https://github.com/kevinnazarr).
+
+[![Author](https://img.shields.io/badge/GitHub-kevinnazarr-181717?style=flat&logo=github&logoColor=white)](https://github.com/kevinnazarr)
 
 ---
 
