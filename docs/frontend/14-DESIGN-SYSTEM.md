@@ -1,16 +1,19 @@
 # 14 — Design System Brief
 
+> Sumber kebenaran: `DESIGN.md` (DNA Airtable editorial) — diadopsi penuh via ADR-001. Brief ini merangkum penerapannya untuk Batik-Nusantara.
+
 ## Brand direction
 
 Batik-Nusantara sebaiknya terasa:
 
 - refined;
-- authentic;
-- warm;
+- editorial;
 - contemporary;
 - premium tetapi tidak eksklusif secara berlebihan.
 
-Hindari tampilan "template toko online" dan juga hindari museum-like yang terlalu formal.
+Look: white canvas + dark ink type + whitespace generus, rasa magazine editorial. Tanpa gradient/mesh/atmosphere pada hero. Brand voltage datang dari signature cards full-bleed yang memecah scroll panjang.
+
+Hindari tampilan "template toko online" dan juga museum-like yang terlalu formal.
 
 ## Visual hierarchy
 
@@ -24,20 +27,25 @@ Prioritas:
 
 ## Typography
 
-Gunakan pairing maksimal dua family:
-
-- display serif untuk heading/story;
-- sans-serif untuk UI/body.
-
-Jaga readability untuk customer mobile.
+- Family: Haas Grotesk / Haas Grotesk Display (berlisensi). Substitusi open-source: **Inter Display variable** (line-height −5%).
+- Display weights **400–500 saja — jangan bold** (600/700 hanya untuk legal 13.12px).
+- Satu family saja — bukan pairing serif+sans.
+- Product pricing: weight 475, tabular numerals.
+- Jaga readability untuk customer mobile.
 
 ## Color strategy
 
-Gunakan neutral warm base + one strong brand accent yang terinspirasi material/dye, bukan banyak warna dekoratif.
+- Primary = ink near-black `#181d26`. Near-black adalah primary, bukan warna aksen.
+- Canvas putih `#ffffff`, surface lembut `#f8fafc` / `#e0e2e6`.
+- Link blue `#1b61c9` khusus text link — **BUKAN warna tombol primary** (kesalahan umum).
+- Signature cards (brand voltage, full-bleed saja): coral `#aa2d00`, forest `#0a2e0e`, cream `#f5e9d4` (+ peach/mint/yellow/mustard pastel).
+- Section rhythm: putih → signature card → putih → cream → dark → putih. Jangan dua surface sama berturut-turut.
 
 ## Spacing
 
-Gunakan token konsisten berbasis 4/8 px rhythm.
+- Base 4px; scale 4/8/12/16/24/32/48.
+- Section band rhythm **96px**.
+- Max width ~1280px centered, breathing 48px horizontal.
 
 ## Components
 
@@ -65,6 +73,8 @@ Core components:
 - EmptyState.
 - ErrorState.
 - Skeleton.
+
+Konvensi tombol: satu primary (near-black) per viewport; secondary = white outline hairline; pill radius **khusus pricing**; tombol pricing = white pill. Radius: xs 2px (legal), sm 6px (input), md 10px (content cards), lg 12px (CTA/signature cards).
 
 ## Motion system
 
@@ -98,7 +108,7 @@ Core components:
 
 ## Responsive breakpoints
 
-Gunakan Tailwind defaults/semantic aliases yang konsisten. Mobile checkout menjadi baseline.
+Gunakan Tailwind defaults/semantic aliases yang konsisten. Mobile checkout menjadi baseline. Touch target: tombol min 48x48, input 44px.
 
 ## Accessibility checklist
 
