@@ -1,0 +1,15 @@
+flowchart TD
+  A[Product] --> B[Cart]
+  B --> C{Customer mode}
+  C -->|Guest| D[Customer + Address]
+  C -->|Authenticated| E[Saved Address]
+  D --> F[Shipping Rates]
+  E --> F
+  F --> G[Create Order]
+  G --> H[Create Midtrans Payment]
+  H --> I[Pay]
+  I --> J[Midtrans Webhook]
+  J --> K[Mark Payment Paid]
+  K --> L[Process / Ship]
+  L --> M[Biteship Webhook]
+  M --> N[Tracking Updated]

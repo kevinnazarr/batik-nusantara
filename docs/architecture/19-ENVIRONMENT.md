@@ -1,0 +1,69 @@
+# 19 — Environment Variables
+
+Never commit real secrets.
+
+## Next.js
+
+```env
+NEXT_PUBLIC_APP_URL=
+NEXT_PUBLIC_API_URL=
+NEXT_PUBLIC_MIDTRANS_CLIENT_KEY=
+NEXT_PUBLIC_R2_PUBLIC_BASE_URL=
+```
+
+## Laravel
+
+```env
+APP_ENV=production
+APP_URL=
+
+DB_CONNECTION=pgsql
+DB_HOST=
+DB_PORT=5432
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+
+CACHE_STORE=redis
+QUEUE_CONNECTION=redis
+REDIS_HOST=
+REDIS_PORT=6380
+
+SANCTUM_STATEFUL_DOMAINS=
+SESSION_DOMAIN=
+FRONTEND_URL=
+CORS_ALLOWED_ORIGINS=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT_URI=
+
+MIDTRANS_SERVER_KEY=
+MIDTRANS_CLIENT_KEY=
+MIDTRANS_IS_PRODUCTION=false
+
+BITESHIP_API_KEY=
+BITESHIP_WEBHOOK_SECRET=
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=auto
+AWS_BUCKET=
+AWS_ENDPOINT=
+AWS_URL=
+
+MAIL_MAILER=
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_FROM_ADDRESS=
+MAIL_FROM_NAME=
+```
+
+## Secret management rules
+
+- `.env` local only.
+- Production secrets di VPS secret management / protected environment.
+- Rotate integration keys after exposure.
+- Separate sandbox and production credentials.

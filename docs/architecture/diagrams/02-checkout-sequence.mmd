@@ -1,0 +1,20 @@
+sequenceDiagram
+  participant C as Customer
+  participant FE as Next.js
+  participant API as Laravel
+  participant DB as PostgreSQL
+  participant M as Midtrans
+  C->>FE: Checkout
+  FE->>API: Validate cart
+  API->>DB: Validate stock/pricing
+  DB-->>API: OK
+  API-->>FE: Shipping/order data
+  FE->>API: Create order
+  API->>DB: Transactional order creation
+  API->>M: Create payment
+  M-->>API: Snap token
+  API-->>FE: Payment token
+  FE->>M: Payment
+  M-->>API: Webhook notification
+  API->>DB: Update payment/order
+  API-->>M: 200 OK

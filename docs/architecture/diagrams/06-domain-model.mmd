@@ -1,0 +1,18 @@
+erDiagram
+  USERS ||--o{ ADDRESSES : has
+  USERS ||--o{ ORDERS : places
+  USERS ||--o| CARTS : owns
+  CARTS ||--o{ CART_ITEMS : contains
+  CATEGORIES ||--o{ PRODUCTS : contains
+  PRODUCTS ||--o{ PRODUCT_VARIANTS : has
+  PRODUCTS ||--o{ PRODUCT_IMAGES : has
+  PRODUCTS ||--o{ PRODUCT_OPTIONS : has
+  PRODUCT_OPTIONS ||--o{ PRODUCT_OPTION_VALUES : has
+  PRODUCT_VARIANTS ||--o{ VARIANT_OPTION_VALUES : maps
+  PRODUCT_OPTION_VALUES ||--o{ VARIANT_OPTION_VALUES : maps
+  PRODUCT_VARIANTS ||--o{ INVENTORY_MOVEMENTS : records
+  ORDERS ||--o{ ORDER_ITEMS : contains
+  ORDERS ||--o{ PAYMENTS : has
+  ORDERS ||--o{ SHIPMENTS : has
+  PROMOTIONS ||--o{ PROMOTION_USAGES : has
+  USERS ||--o{ PROMOTION_USAGES : uses

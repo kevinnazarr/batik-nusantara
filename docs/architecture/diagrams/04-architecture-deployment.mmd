@@ -1,0 +1,11 @@
+flowchart TB
+  U[Customer] --> CF[Cloudflare]
+  CF --> FE[Next.js]
+  CF --> API[Laravel API]
+  API --> DB[(PostgreSQL)]
+  API --> REDIS[(Redis)]
+  API --> R2[(Cloudflare R2)]
+  API --> MID[Midtrans]
+  API --> BIT[Biteship]
+  REDIS --> WORKER[Laravel Queue Worker]
+  WORKER --> API

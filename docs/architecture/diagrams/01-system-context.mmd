@@ -1,0 +1,10 @@
+flowchart LR
+  C[Customer] --> FE[Next.js]
+  A[Admin] --> FE
+  FE --> API[Laravel REST API]
+  API --> DB[(PostgreSQL)]
+  API --> R[(Redis)]
+  API --> R2[Cloudflare R2]
+  API --> M[Midtrans]
+  API --> B[Biteship]
+  API --> G[Google OAuth]
