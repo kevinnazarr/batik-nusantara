@@ -1,0 +1,556 @@
+<!doctype html>
+<!--
+  Batik-Nusantara — Preview Halaman Utama (static, single-file)
+  Hallmark · macrostructure: editorial band rhythm (design.md-managed)
+  · theme: DESIGN.md (Airtable DNA, adopsi penuh — ADR-001)
+  · pre-emit critique: P5 H4 E5 S4 R5 V4
+  · preview-only: bukan implementasi Next.js; token di sini akan
+    dipindah ke apps/web (globals.css + tailwind config) saat implementasi.
+-->
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Batik Nusantara — Batik Tulis &amp; Cap Pilihan</title>
+  <meta name="description" content="Kain tulis dan batik cap pilihan dari kota-kota batik Indonesia. Solo, Pekalongan, Cirebon, Lasem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Display:opsz,wght@14..32,400..600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: "#ffffff",
+            "surface-soft": "#f8fafc",
+            "surface-strong": "#e0e2e6",
+            "surface-dark": "#181d26",
+            "surface-dark-elevated": "#1d1f25",
+            ink: "#181d26",
+            "ink-active": "#0d1218",
+            body: "#333840",
+            muted: "#41454d",
+            hairline: "#dddddd",
+            "border-strong": "#9297a0",
+            coral: "#aa2d00",
+            forest: "#0a2e0e",
+            cream: "#f5e9d4",
+            link: "#1b61c9",
+            "link-active": "#1a3866",
+            success: "#006400",
+            "on-dark": "#ffffff",
+          },
+          fontFamily: {
+            display: ['"Inter Display"', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          borderRadius: { xs: "2px", sm: "6px", md: "10px", lg: "12px" },
+          maxWidth: { band: "1280px" },
+          screens: { sm: "768px", md: "768px", lg: "1024px" },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      /* DESIGN.md tokens — sumber: docs/frontend/26-DESIGN-TOKENS.md */
+      --space-unit: 4px;
+      --section-pad: 96px;
+    }
+    html, body { overflow-x: clip; }
+    body {
+      font-family: "Inter Display", Inter, system-ui, sans-serif;
+      color: #333840;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    /* Type scale — DESIGN.md; display tidak pernah bold, 400/500 saja */
+    .t-display-xl { font-size: 48px; line-height: 1.1; font-weight: 500; letter-spacing: -0.02em; }
+    .t-display-lg { font-size: 40px; line-height: 1.2; font-weight: 400; letter-spacing: -0.01em; }
+    .t-display-md { font-size: 32px; line-height: 1.2; font-weight: 400; }
+    .t-title-lg   { font-size: 24px; line-height: 1.35; font-weight: 400; }
+    .t-title-md   { font-size: 20px; line-height: 1.5; font-weight: 400; }
+    .t-title-sm   { font-size: 18px; line-height: 1.4; font-weight: 500; }
+    .t-label      { font-size: 16px; line-height: 1.4; font-weight: 500; }
+    .t-body       { font-size: 14px; line-height: 1.25; font-weight: 400; }
+    .t-caption    { font-size: 14px; line-height: 1.35; font-weight: 500; letter-spacing: 0.16px; }
+    .t-legal      { font-size: 13.12px; line-height: 1.2; font-weight: 600; }
+    @media (max-width: 767px) {
+      .t-display-xl { font-size: 36px; }
+      .t-display-lg { font-size: 30px; }
+      .t-display-md { font-size: 26px; }
+    }
+    /* Pricing dialect — weight 475 + tabular, khusus angka harga */
+    .t-price {
+      font-weight: 475;
+      font-variant-numeric: tabular-nums;
+      font-size: 16px;
+      line-height: 1.4;
+      color: #181d26;
+    }
+    /* Buttons — DESIGN.md: primary near-black, satu per viewport;
+       Default + Active/Pressed; hover tidak didokumentasikan → minimal,
+       hanya feedback active lewat tekanan warna ink-active */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; min-width: 48px; padding: 16px 24px;
+      border-radius: 12px; font-size: 16px; line-height: 1.4; font-weight: 500;
+      transition: background-color 120ms ease, transform 120ms ease;
+    }
+    .btn-primary { background: #181d26; color: #ffffff; }
+    .btn-primary:active { background: #0d1218; }
+    .btn-secondary {
+      background: #ffffff; color: #181d26; box-shadow: inset 0 0 0 1px #dddddd;
+    }
+    .btn-secondary:active { background: #f8fafc; }
+    .btn-secondary-on-dark {
+      background: #ffffff; color: #181d26; /* di atas surface gelap: tetap putih solid, tidak translusen */
+    }
+    .btn-secondary-on-dark:active { background: #f8fafc; }
+    .btn-text-link { color: #1b61c9; }
+    .btn-text-link:active { color: #1a3866; }
+    .focus-ring:focus-visible {
+      outline: 2px solid #458fff; outline-offset: 2px; border-radius: 4px;
+    }
+    /* Inputs — 44px, sm radius, hairline; focus → info border */
+    .input {
+      height: 44px; padding: 12px 16px; border-radius: 6px;
+      border: 1px solid #dddddd; background: #ffffff; color: #181d26;
+      font-size: 14px; line-height: 1.25; width: 100%;
+    }
+    .input:focus-visible { outline: 2px solid #458fff; outline-offset: 0; border-color: #458fff; }
+    .input::placeholder { color: #41454d; }
+    /* Band rhythm: putih → signature → putih → cream → gelap → putih (footer) */
+    .band { padding-block: var(--section-pad); }
+    @media (max-width: 767px) { .band { padding-block: 64px; } }
+    /* Text link di body copy */
+    .link { color: #1b61c9; text-decoration: none; }
+    .link:active { color: #1a3866; }
+    .link:focus-visible { outline: 2px solid #458fff; outline-offset: 2px; border-radius: 4px; }
+    /* Grid produk: track aman untuk konten gambar */
+    .product-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    @media (min-width: 768px)  { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .display-header { overflow-wrap: anywhere; min-width: 0; }
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+    /* Mobile nav sheet */
+    #mobile-nav { display: none; }
+    #mobile-nav.open { display: flex; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP NAV — 64px, putih, tidak pernah invert di atas band gelap ============ -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-canvas" style="height:64px; box-shadow: inset 0 -1px 0 #dddddd;">
+    <nav class="mx-auto flex h-full max-w-band items-center justify-between px-6" aria-label="Navigasi utama">
+      <a href="#" class="focus-ring t-title-sm text-ink" style="letter-spacing:-0.01em;">Batik&nbsp;Nusantara</a>
+      <div class="hidden items-center gap-8 md:flex">
+        <a href="#koleksi" class="focus-ring t-label text-ink no-underline">Toko</a>
+        <a href="#cerita" class="focus-ring t-label text-ink no-underline">Cerita</a>
+        <a href="#kontak" class="focus-ring t-label text-ink no-underline">Kontak</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#" aria-label="Cari produk" class="focus-ring grid place-items-center rounded-full border border-solid border-hairline bg-canvas text-ink" style="width:40px;height:40px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="m11 11 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Keranjang belanja" class="focus-ring grid place-items-center rounded-full border border-solid border-hairline bg-canvas text-ink" style="width:40px;height:40px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2.5 4h11l-1 8h-9l-1-8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M5.5 4a2.5 2.5 0 0 1 5 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <button id="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-nav"
+                class="focus-ring grid place-items-center rounded-full border border-solid border-hairline bg-canvas text-ink md:hidden" style="width:40px;height:40px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile nav sheet — full-screen, single column -->
+  <div id="mobile-nav" class="fixed inset-0 z-50 flex-col bg-canvas px-6" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="flex h-16 items-center justify-between">
+      <span class="t-title-sm text-ink">Batik&nbsp;Nusantara</span>
+      <button id="nav-close" type="button" aria-label="Tutup menu" class="focus-ring grid place-items-center rounded-full border border-solid border-hairline bg-canvas text-ink" style="width:40px;height:40px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mt-12 flex flex-col gap-8" aria-label="Navigasi utama (mobile)">
+      <a href="#koleksi" class="mobile-link focus-ring t-display-md text-ink no-underline" style="font-size:24px;line-height:1.2;">Toko</a>
+      <a href="#cerita" class="mobile-link focus-ring t-display-md text-ink no-underline" style="font-size:24px;line-height:1.2;">Cerita</a>
+      <a href="#kontak" class="mobile-link focus-ring t-display-md text-ink no-underline" style="font-size:24px;line-height:1.2;">Kontak</a>
+    </nav>
+  </div>
+
+  <main id="konten">
+
+    <!-- ============ HERO BAND — putih datar, tanpa card/border/shadow ============ -->
+    <section class="band bg-canvas pt-40 md:pt-48" aria-labelledby="hero-heading">
+      <div class="mx-auto max-w-band px-6">
+        <p class="t-caption text-muted uppercase" style="letter-spacing:0.16px;">Batik tulis &amp; batik cap</p>
+        <h1 id="hero-heading" class="t-display-lg display-header mt-6 text-ink" style="max-width:18ch;">
+          Kain pilihan dari kota-kota batik Indonesia.
+        </h1>
+        <p class="t-label mt-6 text-muted" style="max-width:52ch;">
+          Solo, Pekalongan, Cirebon, Lasem — motif klasik dan karya pengrajin,
+          dipilih satu per satu untuk lemari Anda.
+        </p>
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <a href="#koleksi" class="btn btn-primary focus-ring w-full sm:w-auto">Jelajahi Koleksi</a>
+          <a href="#cerita" class="btn btn-text-link focus-ring w-full sm:w-auto">Baca Cerita Motif &nbsp;→</a>
+        </div>
+      </div>
+
+      <!-- Strip motif — monokrom, seperti logo-strip -->
+      <div class="mx-auto mt-24 max-w-band px-6" aria-label="Motif populer">
+        <ul class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 md:justify-between">
+          <li class="t-caption text-muted">Parang</li>
+          <li class="t-caption text-muted">Megamendung</li>
+          <li class="t-caption text-muted">Truntum</li>
+          <li class="t-caption text-muted">Kawung</li>
+          <li class="t-caption text-muted">Sidomukti</li>
+          <li class="t-caption text-muted">Lasem</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SIGNATURE CARD — coral, full-bleed ============ -->
+    <section class="bg-coral" aria-labelledby="signature-heading">
+      <div class="mx-auto flex max-w-band flex-col gap-8 px-6 py-12 md:flex-row md:items-end md:justify-between md:py-14" style="padding-block:48px;">
+        <div class="display-header" style="max-width:62ch;">
+          <p class="t-caption text-on-dark uppercase opacity-80" style="letter-spacing:0.16px;">Koleksi signature</p>
+          <h2 id="signature-heading" class="t-display-md mt-4 text-on-dark">
+            Kain tulis tulang punggung, dibuat malam-malam di Solo.
+          </h2>
+          <p class="t-label mt-4 text-on-dark opacity-80" style="max-width:46ch;">
+            Batik tulis asli dengan proses pewarnaan bertahap — satu kain,
+            berbulan-bulan pengerjaan.
+          </p>
+        </div>
+        <a href="#koleksi" class="btn btn-secondary-on-dark focus-ring shrink-0 self-start md:self-auto">Lihat Koleksi Signature</a>
+      </div>
+    </section>
+
+    <!-- ============ PRODUK UNGGULAN — putih, grid 3-up ============ -->
+    <section id="koleksi" class="band bg-canvas" aria-labelledby="koleksi-heading">
+      <div class="mx-auto max-w-band px-6">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="display-header">
+            <h2 id="koleksi-heading" class="t-display-md text-ink">Sedang dicari orang</h2>
+            <p class="t-label mt-3 text-muted">Enam kain dan pakaian terbaru dari pengrajin kami.</p>
+          </div>
+          <a href="#" class="link focus-ring t-label shrink-0">Lihat semua produk &nbsp;→</a>
+        </div>
+
+        <div class="product-grid mt-16" role="list">
+          <!-- Kartu produk 1 -->
+          <article role="listitem" class="rounded-md overflow-hidden" style="box-shadow: inset 0 0 0 1px #dddddd;">
+            <a href="#" class="focus-ring block" aria-label="Kemeja Batik Parang — buka detail produk">
+              <div class="aspect-[4/5] bg-surface-soft" aria-hidden="true">
+                <!-- Placeholder motif: Parang (diagonal) -->
+                <svg viewBox="0 0 400 500" class="h-full w-full">
+                  <rect width="400" height="500" fill="#f8fafc"/>
+                  <defs>
+                    <pattern id="motif-parang" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                      <rect width="80" height="80" fill="#f8fafc"/>
+                      <path d="M10 40 Q40 0 70 40 Q40 80 10 40 Z" fill="none" stroke="#333840" stroke-width="3"/>
+                      <circle cx="40" cy="40" r="8" fill="none" stroke="#9297a0" stroke-width="2"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="500" fill="url(#motif-parang)"/>
+                  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#dddddd" stroke-width="2"/>
+                </svg>
+              </div>
+            </a>
+            <div class="p-6">
+              <p class="t-caption text-muted">Solo · batik cap</p>
+              <h3 class="t-title-sm mt-2 text-ink display-header"><a href="#" class="link focus-ring no-underline text-ink">Kemeja Batik Parang</a></h3>
+              <p class="t-price mt-4">Rp 389.000</p>
+            </div>
+          </article>
+
+          <!-- Kartu produk 2 -->
+          <article role="listitem" class="rounded-md overflow-hidden" style="box-shadow: inset 0 0 0 1px #dddddd;">
+            <a href="#" class="focus-ring block" aria-label="Dress Batik Megamendung — buka detail produk">
+              <div class="aspect-[4/5] bg-surface-soft" aria-hidden="true">
+                <!-- Placeholder motif: Megamendung (awan berlapis) -->
+                <svg viewBox="0 0 400 500" class="h-full w-full">
+                  <rect width="400" height="500" fill="#f8fafc"/>
+                  <defs>
+                    <pattern id="motif-mega" width="120" height="70" patternUnits="userSpaceOnUse">
+                      <rect width="120" height="70" fill="#f8fafc"/>
+                      <path d="M0 55 q15 -25 30 -12 q8 -18 26 -12 q14 -14 30 -2 q16 -10 34 4 t0 0 q14 8 -6 14 h-114 Z" fill="none" stroke="#333840" stroke-width="3" stroke-linejoin="round"/>
+                      <path d="M0 30 q18 -20 36 -8 q10 -14 28 -8 q16 -10 32 0 q18 -6 30 6" fill="none" stroke="#9297a0" stroke-width="2"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="500" fill="url(#motif-mega)"/>
+                  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#dddddd" stroke-width="2"/>
+                </svg>
+              </div>
+            </a>
+            <div class="p-6">
+              <p class="t-caption text-muted">Cirebon · batik cap</p>
+              <h3 class="t-title-sm mt-2 text-ink display-header"><a href="#" class="link focus-ring no-underline text-ink">Dress Batik Megamendung</a></h3>
+              <p class="t-price mt-4">Rp 549.000</p>
+            </div>
+          </article>
+
+          <!-- Kartu produk 3 -->
+          <article role="listitem" class="rounded-md overflow-hidden" style="box-shadow: inset 0 0 0 1px #dddddd;">
+            <a href="#" class="focus-ring block" aria-label="Kain Panjang Truntum — buka detail produk">
+              <div class="aspect-[4/5] bg-surface-soft" aria-hidden="true">
+                <!-- Placeholder motif: Truntum (bintang kecil) -->
+                <svg viewBox="0 0 400 500" class="h-full w-full">
+                  <rect width="400" height="500" fill="#f8fafc"/>
+                  <defs>
+                    <pattern id="motif-truntum" width="60" height="60" patternUnits="userSpaceOnUse">
+                      <rect width="60" height="60" fill="#f8fafc"/>
+                      <g fill="none" stroke="#333840" stroke-width="2">
+                        <path d="M30 12 v8 M30 40 v8 M12 30 h8 M40 30 h8 M18 18 l6 6 M36 36 l6 6 M42 18 l-6 6 M24 36 l-6 6"/>
+                      </g>
+                      <circle cx="30" cy="30" r="3" fill="#9297a0"/>
+                      <circle cx="0" cy="60" r="2.5" fill="#9297a0"/>
+                      <circle cx="60" cy="0" r="2.5" fill="#9297a0"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="500" fill="url(#motif-truntum)"/>
+                  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#dddddd" stroke-width="2"/>
+                </svg>
+              </div>
+            </a>
+            <div class="p-6">
+              <p class="t-caption text-muted">Solo · batik tulis</p>
+              <h3 class="t-title-sm mt-2 text-ink display-header"><a href="#" class="link focus-ring no-underline text-ink">Kain Panjang Truntum</a></h3>
+              <p class="t-price mt-4">Rp 1.250.000</p>
+            </div>
+          </article>
+
+          <!-- Kartu produk 4 -->
+          <article role="listitem" class="rounded-md overflow-hidden" style="box-shadow: inset 0 0 0 1px #dddddd;">
+            <a href="#" class="focus-ring block" aria-label="Blus Batik Kawung — buka detail produk">
+              <div class="aspect-[4/5] bg-surface-soft" aria-hidden="true">
+                <!-- Placeholder motif: Kawung (empat elips) -->
+                <svg viewBox="0 0 400 500" class="h-full w-full">
+                  <rect width="400" height="500" fill="#f8fafc"/>
+                  <defs>
+                    <pattern id="motif-kawung" width="80" height="80" patternUnits="userSpaceOnUse">
+                      <rect width="80" height="80" fill="#f8fafc"/>
+                      <g fill="none" stroke="#333840" stroke-width="2.5">
+                        <ellipse cx="40" cy="16" rx="10" ry="16"/>
+                        <ellipse cx="40" cy="64" rx="10" ry="16"/>
+                        <ellipse cx="16" cy="40" rx="16" ry="10"/>
+                        <ellipse cx="64" cy="40" rx="16" ry="10"/>
+                      </g>
+                      <circle cx="40" cy="40" r="3" fill="#9297a0"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="500" fill="url(#motif-kawung)"/>
+                  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#dddddd" stroke-width="2"/>
+                </svg>
+              </div>
+            </a>
+            <div class="p-6">
+              <p class="t-caption text-muted">Yogyakarta · batik cap</p>
+              <h3 class="t-title-sm mt-2 text-ink display-header"><a href="#" class="link focus-ring no-underline text-ink">Blus Batik Kawung</a></h3>
+              <p class="t-price mt-4">Rp 429.000</p>
+            </div>
+          </article>
+
+          <!-- Kartu produk 5 -->
+          <article role="listitem" class="rounded-md overflow-hidden" style="box-shadow: inset 0 0 0 1px #dddddd;">
+            <a href="#" class="focus-ring block" aria-label="Kemeja Batik Lasem — buka detail produk">
+              <div class="aspect-[4/5] bg-surface-soft" aria-hidden="true">
+                <!-- Placeholder motif: Lasem (bingkai geometris) -->
+                <svg viewBox="0 0 400 500" class="h-full w-full">
+                  <rect width="400" height="500" fill="#f8fafc"/>
+                  <defs>
+                    <pattern id="motif-lasem" width="100" height="100" patternUnits="userSpaceOnUse">
+                      <rect width="100" height="100" fill="#f8fafc"/>
+                      <rect x="10" y="10" width="80" height="80" fill="none" stroke="#333840" stroke-width="3"/>
+                      <rect x="28" y="28" width="44" height="44" fill="none" stroke="#9297a0" stroke-width="2"/>
+                      <path d="M50 38 l6 12 12 6 -12 6 -6 12 -6 -12 -12 -6 12 -6 Z" fill="#9297a0" opacity="0.5"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="500" fill="url(#motif-lasem)"/>
+                  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#dddddd" stroke-width="2"/>
+                </svg>
+              </div>
+            </a>
+            <div class="p-6">
+              <p class="t-caption text-muted">Rembang · batik cap</p>
+              <h3 class="t-title-sm mt-2 text-ink display-header"><a href="#" class="link focus-ring no-underline text-ink">Kemeja Batik Lasem</a></h3>
+              <p class="t-price mt-4">Rp 459.000</p>
+            </div>
+          </article>
+
+          <!-- Kartu produk 6 -->
+          <article role="listitem" class="rounded-md overflow-hidden" style="box-shadow: inset 0 0 0 1px #dddddd;">
+            <a href="#" class="focus-ring block" aria-label="Kain Panjang Sidomukti — buka detail produk">
+              <div class="aspect-[4/5] bg-surface-soft" aria-hidden="true">
+                <!-- Placeholder motif: Sidomukti (jajar genjang berselang) -->
+                <svg viewBox="0 0 400 500" class="h-full w-full">
+                  <rect width="400" height="500" fill="#f8fafc"/>
+                  <defs>
+                    <pattern id="motif-sido" width="90" height="90" patternUnits="userSpaceOnUse">
+                      <rect width="90" height="90" fill="#f8fafc"/>
+                      <g fill="none" stroke="#333840" stroke-width="2.5">
+                        <path d="M15 60 l20 -35 h35 l-20 35 Z"/>
+                        <path d="M60 75 l20 -35 h0" stroke="#9297a0"/>
+                      </g>
+                      <circle cx="45" cy="20" r="4" fill="#9297a0"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="500" fill="url(#motif-sido)"/>
+                  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#dddddd" stroke-width="2"/>
+                </svg>
+              </div>
+            </a>
+            <div class="p-6">
+              <p class="t-caption text-muted">Solo · batik tulis</p>
+              <h3 class="t-title-sm mt-2 text-ink display-header"><a href="#" class="link focus-ring no-underline text-ink">Kain Panjang Sidomukti</a></h3>
+              <p class="t-price mt-4">Rp 1.450.000</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CREAM CALLOUT — card, radius md, padding 24 ============ -->
+    <section id="cerita" class="band bg-canvas pt-0" aria-labelledby="cerita-heading">
+      <div class="mx-auto max-w-band px-6">
+        <div class="bg-cream rounded-md" style="padding:24px; padding-block:48px;">
+          <div class="mx-auto max-w-[72ch] text-center">
+            <p class="t-caption text-ink uppercase opacity-70" style="letter-spacing:0.16px;">Cerita motif</p>
+            <h2 id="cerita-heading" class="t-display-md display-header mt-4 text-ink">Setiap helai punya makna.</h2>
+            <p class="t-label mt-6 text-ink opacity-80">
+              <em>Truntum</em> — dari kata <em>tumtrum</em>, terang benderang — dikerjakan ibu untuk
+              menemani putrinya mempelai. <em>Parang</em> melambangkan kesinambungan, <em>kawung</em>
+              pohon aren yang menopang hidup banyak orang. Batik bukan kain; ia cara Jawa
+              menyimpan doa di lipatan motif.
+            </p>
+            <a href="#" class="link focus-ring t-label mt-8 inline-block">Baca semua cerita motif &nbsp;→</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DARK CTA BAND — surface-dark, email capture ============ -->
+    <section class="band bg-surface-dark" aria-labelledby="newsletter-heading">
+      <div class="mx-auto max-w-band px-6">
+        <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <div class="display-header" style="max-width:56ch;">
+            <h2 id="newsletter-heading" class="t-display-md text-on-dark">Kabar koleksi baru, langsung ke email Anda.</h2>
+            <p class="t-label mt-4 text-on-dark opacity-70">
+              Kain tulis dan cap terbaru, sekali sebulan. Tanpa spam.
+            </p>
+          </div>
+          <form class="flex w-full flex-col gap-4 lg:w-[420px] lg:shrink-0" onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='Terkirim ✓';" novalidate>
+            <label for="email-input" class="sr-only">Alamat email</label>
+            <input id="email-input" class="input" type="email" name="email" placeholder="nama@email.com" autocomplete="email" required>
+            <button type="submit" class="btn btn-secondary-on-dark focus-ring w-full">Daftar Newsletter</button>
+            <p class="t-legal text-on-dark opacity-50">
+              Dengan mendaftar, Anda menyetujui ketentuan layanan dan kebijakan privasi kami.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER — putih, 6 kolom, section pad ============ -->
+  <footer id="kontak" class="bg-canvas border-t border-solid border-hairline" aria-labelledby="footer-heading">
+    <div class="mx-auto max-w-band px-6 py-24">
+      <h2 id="footer-heading" class="sr-only">Informasi toko</h2>
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
+        <div class="lg:col-span-2">
+          <p class="t-title-sm text-ink">Batik Nusantara</p>
+          <p class="t-body mt-4 text-muted" style="max-width:32ch;">
+            Batik tulis dan cap pilihan dari kota-kota batik Indonesia.
+          </p>
+        </div>
+        <nav aria-label="Toko">
+          <p class="t-caption text-ink">Toko</p>
+          <ul class="mt-4 flex flex-col gap-3">
+            <li><a href="#" class="link focus-ring t-body">Semua Produk</a></li>
+            <li><a href="#" class="link focus-ring t-body">Batik Tulis</a></li>
+            <li><a href="#" class="link focus-ring t-body">Batik Cap</a></li>
+            <li><a href="#" class="link focus-ring t-body">Kemeja</a></li>
+            <li><a href="#" class="link focus-ring t-body">Kain Panjang</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Bantuan">
+          <p class="t-caption text-ink">Bantuan</p>
+          <ul class="mt-4 flex flex-col gap-3">
+            <li><a href="#" class="link focus-ring t-body">Pengiriman</a></li>
+            <li><a href="#" class="link focus-ring t-body">Pengembalian</a></li>
+            <li><a href="#" class="link focus-ring t-body">Panduan Ukuran</a></li>
+            <li><a href="#" class="link focus-ring t-body">Perawatan Batik</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Tentang">
+          <p class="t-caption text-ink">Tentang</p>
+          <ul class="mt-4 flex flex-col gap-3">
+            <li><a href="#" class="link focus-ring t-body">Cerita Motif</a></li>
+            <li><a href="#" class="link focus-ring t-body">Pengrajin Kami</a></li>
+            <li><a href="#" class="link focus-ring t-body">Kontak</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <p class="t-caption text-ink">Legal</p>
+          <ul class="mt-4 flex flex-col gap-3">
+            <li><a href="#" class="link focus-ring t-body">Ketentuan Layanan</a></li>
+            <li><a href="#" class="link focus-ring t-body">Kebijakan Privasi</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mt-16 flex flex-col gap-4 border-t border-solid border-hairline pt-8 md:flex-row md:items-center md:justify-between">
+        <p class="t-legal text-muted">© <span id="year">2026</span> Batik Nusantara. Semua hak dilindungi.</p>
+        <p class="t-legal text-muted">Preview desain — bukan toko aktif.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav mobile: buka/tutup sheet full-screen
+    (function () {
+      var toggle = document.getElementById("nav-toggle");
+      var sheet = document.getElementById("mobile-nav");
+      var close = document.getElementById("nav-close");
+
+      function openSheet() {
+        sheet.classList.add("open");
+        toggle.setAttribute("aria-expanded", "true");
+        close.focus();
+      }
+      function closeSheet() {
+        sheet.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+      toggle.addEventListener("click", openSheet);
+      close.addEventListener("click", closeSheet);
+      sheet.querySelectorAll(".mobile-link").forEach(function (a) {
+        a.addEventListener("click", closeSheet);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && sheet.classList.contains("open")) closeSheet();
+      });
+    })();
+
+    // Tahun berjalan di footer
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
