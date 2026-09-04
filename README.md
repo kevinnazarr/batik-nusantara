@@ -19,25 +19,125 @@
 
 ---
 
-## 📖 Overview
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/file-text.svg" width="20" height="20" alt=""> Overview
 
 **Batik Nusantara** adalah platform e-commerce **single-store** untuk toko batik Indonesia — menjual kemeja, dress, blouse, kain batik, sarung, tas, dompet, dan produk batik lainnya.
 
-Proyek dibangun sebagai aplikasi fullstack yang realistis dan siap dikembangkan menuju production, sekaligus menjadi project portfolio. Frontend **Next.js** di `apps/web`, backend **Laravel** di `apps/api`, dan dikembangkan secara *docs-driven* dengan dokumentasi lengkap di `batik-nusantara-docs/`.
+Proyek dibangun sebagai aplikasi fullstack yang realistis dan siap dikembangkan menuju production, sekaligus menjadi project portfolio. Frontend **Next.js** di `apps/web`, backend **Laravel** di `apps/api`, dan dikembangkan secara *docs-driven* dengan dokumentasi lengkap di [`docs/`](docs/README.md).
 
-## ✨ Features
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sparkles.svg" width="20" height="20" alt=""> Features
 
-- [ ] Katalog produk batik — pencarian, filter, dan halaman detail
-- [ ] Varian & SKU produk (ukuran, warna, motif)
-- [ ] Keranjang belanja & guest checkout
-- [ ] Autentikasi (email/password & Google OAuth)
-- [ ] Pembayaran melalui Midtrans
-- [ ] Pengiriman multi-courier melalui Biteship
-- [ ] Panel admin — manajemen produk, pesanan, dan pelanggan
-- [ ] **Responsive** — mobile-first, nyaman di semua perangkat
-- [ ] **Docs-driven** — seluruh requirement terdokumentasi di `batik-nusantara-docs/`
+### <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shopping-bag.svg" width="18" height="18" alt=""> Untuk Pembeli
 
-## 🛠 Tech Stack
+<div style="display:flex;flex-wrap:wrap;gap:12px;">
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shopping-bag.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Katalog Produk</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Pencarian, filter, dan halaman detail</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/palette.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Varian & SKU</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Ukuran, warna, dan motif</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shopping-cart.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Keranjang & Checkout</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Termasuk guest checkout tanpa akun</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/lock.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Autentikasi</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Email/password & Google OAuth</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/heart.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Wishlist</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Simpan produk favorit</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/package-search.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Tracking Pesanan</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Riwayat & status pengiriman</div>
+  </div>
+</div>
+
+### <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/banknote.svg" width="18" height="18" alt=""> Transaksi
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;">
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/credit-card.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Pembayaran Midtrans</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Snap, VA, dan metode lain</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/truck.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Multi-Courier</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Tarif & tracking via Biteship</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/boxes.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Inventori & Stok</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Manajemen ketersediaan produk</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/ticket.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Promosi & Kupon</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Diskon dan kode voucher</div>
+  </div>
+</div>
+
+### <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/settings.svg" width="18" height="18" alt=""> Untuk Admin
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;">
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/layout-dashboard.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Dashboard Admin</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Ringkasan performa toko</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/package.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Manajemen Produk</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Produk, kategori, banner, konten</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/clipboard-list.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Manajemen Pesanan</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Proses dan kelola transaksi</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/users.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Manajemen Pelanggan</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Data dan riwayat pelanggan</div>
+  </div>
+</div>
+
+### <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/badge-check.svg" width="18" height="18" alt=""> Kualitas & Pengembangan
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;">
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/smartphone.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Responsive</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Mobile-first, nyaman di semua perangkat</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/search.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">SEO Optimized</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Metadata, Open Graph, canonical URL</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/zap.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">High Performance</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Server Components & image optimization</div>
+  </div>
+  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/book-marked.svg" width="26" height="26" alt="">
+    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:8px;">Docs-Driven</div>
+    <div style="font-size:12px;color:#656d76;margin-top:4px;">Requirement terdokumentasi lengkap</div>
+  </div>
+</div>
+
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/wrench.svg" width="20" height="20" alt=""> Tech Stack
 
 ### Frontend
 
@@ -82,22 +182,21 @@ Proyek dibangun sebagai aplikasi fullstack yang realistis dan siap dikembangkan 
 | [![Biteship](https://img.shields.io/badge/Biteship-1B2430?style=for-the-badge)](https://biteship.com) | Shipping aggregator multi-courier. |
 | [![Cloudflare R2](https://img.shields.io/badge/Cloudflare_R2-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/r2/) | Object storage S3-compatible. |
 
-## 📁 Project Structure
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/folder-tree.svg" width="20" height="20" alt=""> Project Structure
 
 ```
 batik-nusantara/
 ├── apps/
 │   ├── web/              # Frontend Next.js (App Router)
 │   └── api/              # Backend Laravel REST API
-├── batik-nusantara-docs/ # Dokumentasi lengkap project
-├── docs/                 # Dokumentasi pendukung
+├── docs/                 # Dokumentasi lengkap project (docs/README.md)
 ├── infra/                # Konfigurasi infrastruktur & deployment
 ├── scripts/              # Script otomasi development
 ├── .github/              # Workflow CI/CD
 └── compose.yaml          # PostgreSQL 16 + Redis 7 (development)
 ```
 
-## 🚀 Getting Started
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/rocket.svg" width="20" height="20" alt=""> Getting Started
 
 Clone repository:
 
@@ -112,25 +211,62 @@ Jalankan database & cache (Docker):
 docker compose up -d
 ```
 
-## 📚 Documentation
+### <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/code.svg" width="18" height="18" alt=""> Frontend — `apps/web`
 
-Dokumentasi lengkap project tersedia di [`batik-nusantara-docs/`](batik-nusantara-docs/docs/README.md) — berisi PRD, arsitektur, API spec, ERD, state machine, dan panduan pengembangan.
+```bash
+cd apps/web
+npm install
+npm run dev
+```
+
+Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
+
+### <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/server.svg" width="18" height="18" alt=""> Backend — `apps/api`
+
+```bash
+cd apps/api
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+Sesuaikan kredensial database di `.env` dengan `compose.yaml` (contoh: `DB_PASSWORD=batik_secret`), lalu jalankan migrasi dan server:
+
+```bash
+php artisan migrate
+php artisan serve
+```
+
+Buka [http://localhost:8000](http://localhost:8000) di browser Anda.
+
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/book-open.svg" width="20" height="20" alt=""> Documentation
+
+Dokumentasi lengkap project tersedia di [`docs/README.md`](docs/README.md) — berisi PRD, arsitektur, API spec, ERD, state machine, dan panduan pengembangan.
+
+[![Buka Dokumentasi](https://img.shields.io/badge/Buka_Dokumentasi-docs%2FREADME.md-0A66C2?style=for-the-badge&logo=readme&logoColor=white)](docs/README.md)
+
+| Bagian | Isi |
+| ------ | --- |
+| [`docs/guides/`](docs/guides/) | Product, PRD, scope, user stories, test plan, sprint plan |
+| [`docs/architecture/`](docs/architecture/) | Arsitektur, ERD, state machines, deployment, ADR |
+| [`docs/api/`](docs/api/) | Kontrak REST API & webhooks |
+| [`docs/frontend/`](docs/frontend/) | Design system, sitemap, wireframe, SEO |
 
 `README.md` ini hanyalah *entry point*. Seluruh keputusan arsitektur, requirement, dan standar pengembangan dijelaskan di dalam dokumentasi.
 
-## 👤 Author
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/user.svg" width="20" height="20" alt=""> Author
 
 <div align="center">
   <a href="https://github.com/kevinnazarr">
-    <img src="https://img.shields.io/badge/GitHub-kevinnazarr-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub kevinnazarr">
+    <img src="https://avatars.githubusercontent.com/kevinnazarr?size=200" width="120" height="120" style="border-radius:50%;" alt="Avatar kevinnazarr">
   </a>
   <br><br>
   <a href="https://github.com/kevinnazarr">
-    <img src="https://github-readme-stats.vercel.app/api?username=kevinnazarr&show_icons=true&theme=default" alt="Profil GitHub kevinnazarr">
+    <img src="https://img.shields.io/badge/GitHub-kevinnazarr-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub kevinnazarr">
   </a>
 </div>
 
-## 📄 License
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/scale.svg" width="20" height="20" alt=""> License
 
 > Belum ditentukan — lisensi resmi belum ditetapkan.
 
