@@ -29,113 +29,41 @@ Proyek dibangun sebagai aplikasi fullstack yang realistis dan siap dikembangkan 
 
 ### 🛍️ Untuk Pembeli
 
-<div style="display:flex;flex-wrap:wrap;gap:12px;">
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🛍️</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Katalog Produk</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Pencarian, filter, dan halaman detail</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🎨</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Varian & SKU</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Ukuran, warna, dan motif</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🛒</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Keranjang & Checkout</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Termasuk guest checkout tanpa akun</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🔐</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Autentikasi</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Email/password & Google OAuth</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">❤️</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Wishlist</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Simpan produk favorit</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">📦</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Tracking Pesanan</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Riwayat & status pengiriman</div>
-  </div>
-</div>
+| Technology | Deskripsi |
+| ---------- | --------- |
+| 🛍️ **Katalog Produk** | Pencarian, filter, dan halaman detail |
+| 🎨 **Varian & SKU** | Ukuran, warna, dan motif |
+| 🛒 **Keranjang & Checkout** | Termasuk guest checkout tanpa akun |
+| 🔐 **Autentikasi** | Email/password & Google OAuth |
+| ❤️ **Wishlist** | Simpan produk favorit |
+| 📦 **Tracking Pesanan** | Riwayat & status pengiriman |
 
 ### 💳 Transaksi
 
-<div style="display:flex;flex-wrap:wrap;gap:12px;">
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">💳</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Pembayaran Midtrans</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Snap, VA, dan metode lain</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🚚</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Multi-Courier</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Tarif & tracking via Biteship</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">📊</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Inventori & Stok</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Manajemen ketersediaan produk</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🏷️</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Promosi & Kupon</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Diskon dan kode voucher</div>
-  </div>
-</div>
+| Technology | Deskripsi |
+| ---------- | --------- |
+| 💳 **Pembayaran Midtrans** | Snap, VA, dan metode lain |
+| 🚚 **Multi-Courier** | Tarif & tracking via Biteship |
+| 📊 **Inventori & Stok** | Manajemen ketersediaan produk |
+| 🏷️ **Promosi & Kupon** | Diskon dan kode voucher |
 
 ### 🛠️ Untuk Admin
 
-<div style="display:flex;flex-wrap:wrap;gap:12px;">
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">📈</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Dashboard Admin</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Ringkasan performa toko</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">📝</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Manajemen Produk</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Produk, kategori, banner, konten</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🔄</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Manajemen Pesanan</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Proses dan kelola transaksi</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">👥</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Manajemen Pelanggan</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Data dan riwayat pelanggan</div>
-  </div>
-</div>
+| Technology | Deskripsi |
+| ---------- | --------- |
+| 📈 **Dashboard Admin** | Ringkasan performa toko |
+| 📝 **Manajemen Produk** | Produk, kategori, banner, konten |
+| 🔄 **Manajemen Pesanan** | Proses dan kelola transaksi |
+| 👥 **Manajemen Pelanggan** | Data dan riwayat pelanggan |
 
 ### ⚡ Kualitas & Pengembangan
 
-<div style="display:flex;flex-wrap:wrap;gap:12px;">
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">📱</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Responsive</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Mobile-first, nyaman di semua perangkat</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">🔍</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">SEO Optimized</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Metadata, Open Graph, canonical URL</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">⚡</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">High Performance</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Server Components & image optimization</div>
-  </div>
-  <div style="background:#f6f8fa;border:1px solid #d8dee4;border-radius:12px;padding:16px 18px;width:200px;text-align:center;">
-    <div style="font-size:24px;">📚</div>
-    <div style="font-size:14px;font-weight:700;color:#1f2328;margin-top:6px;">Docs-Driven</div>
-    <div style="font-size:12px;color:#656d76;margin-top:4px;">Requirement terdokumentasi lengkap</div>
-  </div>
-</div>
+| Technology | Deskripsi |
+| ---------- | --------- |
+| 📱 **Responsive** | Mobile-first, nyaman di semua perangkat |
+| 🔍 **SEO Optimized** | Metadata, Open Graph, canonical URL |
+| ⚡ **High Performance** | Server Components & image optimization |
+| 📚 **Docs-Driven** | Requirement terdokumentasi lengkap |
 
 ## 🛠️ Tech Stack
 
