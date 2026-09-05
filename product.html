@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serat Batik Atelier — Batik, Reimagined</title>
-  <meta name="description" content="Hand-drawn and hand-stamped batik from Yogyakarta — heritage woven into modern life. Shirts, dresses, fabric and accessories, crafted by Indonesian artisans.">
+  <title>Product — Serat Batik Atelier</title>
+  <meta name="description" content="Hand-drawn and hand-stamped batik from Yogyakarta — product details, materials, motifs and care.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23193741'/%3E%3Ctext x='32' y='42' font-family='Georgia, serif' font-style='italic' font-size='34' fill='%23eac486' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,15 @@
        GLOBAL — design tokens, base and shared chrome. Inlined so
        this page is fully self-contained (no external files).
        ============================================================ */
+
+/* ============================================================
+   SERAT BATIK ATELIER — Global styles
+   Shared by every page: index.html (home), shop.html,
+   product.html, cart.html.
+
+   Page-specific styles live inside each page's own <style> tag.
+   Single source of truth for design: DESIGN.md
+   ============================================================ */
 
 :root {
   /* ——— Colors ——— */
@@ -1701,844 +1710,430 @@ img {
     display: none !important;
   }
 }
-
     /* ============================================================
-       HOME PAGE — styles used only by this page
+       PRODUCT PAGE — styles used only by this page
        ============================================================ */
 
-    /* ——— Reveal on scroll ——— */
+    /* ——— Product detail layout ——— */
 
-    @media (prefers-reduced-motion: no-preference) {
-      .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition:
-          opacity 0.6s var(--ease-out),
-          transform 0.6s var(--ease-out);
-        transition-delay: var(--reveal-delay, 0ms);
-        will-change: opacity, transform;
-      }
-
-      .reveal.is-visible {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* ——— Hero ——— */
-
-    .hero {
-      position: relative;
-      background: var(--color-surface-dark);
-      color: var(--color-snow-white);
-      padding-block: clamp(88px, 12vw, 160px);
-      overflow: hidden;
-    }
-
-    .hero__inner {
-      position: relative;
-      z-index: 2;
-      max-width: 760px;
-      margin-inline: auto;
-      text-align: center;
-      padding-inline: var(--spacing-24);
-    }
-
-    .hero__eyebrow {
-      color: var(--color-snow-white);
-      margin-bottom: var(--spacing-24);
-    }
-
-    .hero__eyebrow .sep {
-      color: var(--color-honey-gold);
-      margin: 0 12px;
-    }
-
-    .hero__title {
-      font-size: clamp(44px, 7vw, 68px);
-      line-height: 1.1;
-      margin-bottom: var(--spacing-24);
-    }
-
-    .hero__title em {
-      font-style: italic;
-      color: var(--color-honey-gold);
-    }
-
-    .hero__lead {
-      color: var(--text-on-dark-secondary);
-      max-width: 46ch;
-      margin: 0 auto var(--spacing-40, 40px);
-      font-size: var(--text-body);
-    }
-
-    .hero__ctas {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--spacing-16);
-    }
-
-    .hero__inset {
-      position: absolute;
-      top: 50%;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .hero__inset--left {
-      left: max(24px, calc(50% - 620px));
-      transform: translateY(-50%);
-    }
-
-    .hero__inset--right {
-      right: max(24px, calc(50% - 620px));
-      transform: translateY(-50%);
-    }
-
-    .hero__inset img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero__inset::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--color-mountain-slate);
-      opacity: 0.42;
-      mix-blend-mode: multiply;
-    }
-
-    /* Scroll indicator (bottom-left, chevron in diamond frame) */
-    .scroll-hint {
-      position: absolute;
-      left: clamp(24px, 4vw, 48px);
-      bottom: 32px;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      color: var(--color-snow-white);
-      font-size: 11px;
-      letter-spacing: 0.167em;
-      text-transform: uppercase;
-    }
-
-    .scroll-hint__diamond {
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      transform: rotate(45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .scroll-hint__diamond svg {
-      width: 16px;
-      height: 16px;
-      transform: rotate(-45deg);
-      stroke: var(--color-snow-white);
-      fill: none;
-      stroke-width: 1.4;
-      animation: scroll-nudge 2.2s var(--ease-out) infinite;
-    }
-
-    @keyframes scroll-nudge {
-      0%,
-      100% {
-        transform: rotate(-45deg) translateY(0);
-      }
-      50% {
-        transform: rotate(-45deg) translateY(4px);
-      }
-    }
-
-    /* Hero bottom motif strip (subtle pattern accent) */
-    .hero__motif {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 10px;
-      opacity: 0.55;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='10' viewBox='0 0 56 10'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Ccircle cx='7' cy='5' r='3'/%3E%3Ccircle cx='49' cy='5' r='3'/%3E%3Cpath d='M14 2l-1.5 3 1.5 3M42 2l-1.5 3 1.5 3'/%3E%3C/g%3E%3C/svg%3E");
-    }
-
-    /* ——— Underline input (newsletter) ——— */
-
-    .input--line {
-      border: none;
-      border-bottom: 1px solid var(--border-light-strong);
-      border-radius: var(--radius-links);
-      padding: 12px 4px;
-      background: transparent;
-    }
-
-    .input--line:focus {
-      border-bottom-color: var(--color-mountain-slate);
-    }
-
-    /* ——— Sub-navigation ——— */
-
-    /* Subnav: sits in-flow inside section 2. Once it reaches the navbar while
-       scrolling down it is promoted to `fixed` and stays pinned below the header
-       to the end of the page — section 2's end is NOT a boundary. A placeholder
-       preserves its flow space so content never jumps when the state changes. */
-    .subnav {
-      position: sticky;             /* no-JS fallback: pins only within section 2 */
-      top: var(--header-h, 76px);
-      z-index: 90;
-      background: var(--color-snow-white);
-      border-top: 1px solid var(--border-light);
-    }
-
-    /* JS promotes the subnav to fixed once engaged (no longer bounded by section 2) */
-    .subnav.is-sticky {
-      position: fixed;
-      top: var(--header-h, 76px);
-      left: 0;
-      right: 0;
-    }
-
-    /* Holds the subnav's flow space while it is fixed (height set by JS) */
-    .subnav-placeholder {
-      display: none;
-    }
-
-    .subnav.is-sticky + .subnav-placeholder {
-      display: block;
-    }
-
-    .subnav__list {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-32);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .subnav__list::-webkit-scrollbar {
-      display: none;
-    }
-
-    .subnav__link {
-      position: relative;
-      display: inline-block;
-      padding: 16px 2px;
-      font-size: var(--text-caption);
-      font-weight: var(--fw-semi);
-      letter-spacing: 0.125em;
-      text-transform: uppercase;
-      color: var(--color-mountain-slate);
-      white-space: nowrap;
-    }
-
-    .subnav__link::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 10px;
-      height: 2px;
-      background: var(--color-honey-gold);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform var(--dur) var(--ease-out);
-    }
-
-    .subnav__link:hover::after,
-    .subnav__link.is-active::after {
-      transform: scaleX(1);
-    }
-
-    .subnav__link.is-active {
-      color: var(--color-deep-teal);
-    }
-
-    /* ——— Featured collections ——— */
-
-    .featured-grid {
+    .pdp {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-32);
-      margin-top: var(--spacing-48);
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(48px, 6vw, 80px);
+      align-items: start;
+      padding-top: var(--spacing-48);
     }
 
-    /* Category tiles (home only) */
-    .tile {
+    /* Gallery */
+    .gallery {
+      position: sticky;
+      top: 148px;
+    }
+
+    .gallery__main {
       position: relative;
-      display: block;
+      aspect-ratio: var(--ratio-gallery);
       overflow: hidden;
       background: var(--color-warm-parchment);
     }
 
-    .tile--portrait {
-      aspect-ratio: 3 / 4;
-    }
-
-    .tile--landscape {
-      aspect-ratio: var(--ratio-editorial);
-    }
-
-    .tile img {
+    .gallery__main img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s var(--ease-out);
-    }
-
-    .tile:hover img {
-      transform: scale(1.04);
-    }
-
-    .tile__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(25, 55, 65, 0.55), transparent 55%);
+      opacity: 0;
       transition: opacity var(--dur) var(--ease-out);
     }
 
-    .tile__content {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      z-index: 2;
-      color: var(--color-snow-white);
+    .gallery__main img.is-active {
+      opacity: 1;
     }
 
-    .tile__content .caption {
-      color: var(--color-honey-gold);
-      margin-bottom: 6px;
-    }
-
-    .tile__content h3 {
-      color: var(--color-snow-white);
-      font-size: var(--text-heading-sm);
-      margin-bottom: 8px;
-    }
-
-    .tile__link {
-      font-size: 11px;
-      letter-spacing: 0.167em;
-      text-transform: uppercase;
-      font-weight: var(--fw-semi);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-      padding-bottom: 3px;
-      transition: border-color var(--dur-fast) var(--ease-out);
-    }
-
-    .tile__link:hover {
-      border-color: var(--color-honey-gold);
-    }
-
-    /* ——— Category grid ——— */
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--spacing-24);
-      margin-top: var(--spacing-48);
-    }
-
-    /* ——— Best sellers ——— */
-
-    .home-best .section-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: var(--spacing-24);
-      max-width: none;
-      margin-bottom: var(--spacing-48);
-    }
-
-    .home-best .section-head .btn {
-      flex-shrink: 0;
-    }
-
-    /* ——— Editorial storytelling band ——— */
-
-    .story-band {
-      padding-block: clamp(80px, 10vw, 140px);
-      position: relative;
-    }
-
-    .story-band__inner {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: clamp(48px, 7vw, 96px);
-      align-items: center;
-    }
-
-    .story-band__text .eyebrow {
-      margin-bottom: var(--spacing-16);
-    }
-
-    .story-band__text h2 {
-      font-size: clamp(32px, 4.5vw, 52px);
-      line-height: 1.12;
-      margin-bottom: var(--spacing-24);
-    }
-
-    .story-band__text p {
-      color: var(--text-on-dark-secondary);
-      max-width: 46ch;
-      margin-bottom: var(--spacing-16);
-    }
-
-    .story-band__text .btn {
-      margin-top: var(--spacing-16);
-    }
-
-    .story-band__media {
-      position: relative;
-    }
-
-    .story-band__media img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-
-    .story-band__medallion {
-      position: absolute;
-      left: -40px;
-      bottom: -28px;
-      z-index: 2;
-    }
-
-    /* Motif medallion badge */
-    .medallion {
-      width: 148px;
-      height: 148px;
-      border-radius: 50%;
-      background: var(--color-mountain-slate);
-      color: var(--color-snow-white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 6px;
-      padding: 24px;
-      line-height: 1.35;
-    }
-
-    .medallion strong {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: var(--fw-bold);
-    }
-
-    .medallion span {
-      font-size: 9px;
-      letter-spacing: 0.167em;
-      text-transform: uppercase;
-      color: var(--text-on-dark-secondary);
-    }
-
-    /* Outline variant for dark sections — gold ring, gold mark */
-    .medallion--outline {
-      background: transparent;
-      border: 1px solid rgba(234, 196, 134, 0.55);
-    }
-
-    .medallion--outline strong {
-      color: var(--color-honey-gold);
-    }
-
-    /* ——— Motif stories ——— */
-
-    .motif-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-32);
-      margin-top: var(--spacing-64);
-    }
-
-    .motif-card__media {
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      margin-bottom: var(--spacing-24);
-      background: var(--color-warm-parchment);
-    }
-
-    .motif-card__media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s var(--ease-out);
-    }
-
-    .motif-card:hover .motif-card__media img {
-      transform: scale(1.04);
-    }
-
-    .motif-card h3 {
-      font-size: var(--text-heading-sm);
-      margin-bottom: var(--spacing-16);
-    }
-
-    .motif-card h3 .jv {
-      font-style: italic;
-      font-weight: var(--fw-regular);
-      color: var(--color-stone-gray);
-      font-size: var(--text-subheading);
-    }
-
-    .motif-card p {
-      font-size: var(--text-body-sm);
-      line-height: 1.6;
-      color: var(--color-mountain-slate);
-    }
-
-    /* ——— Pull quote ——— */
-
-    .pullquote {
-      max-width: 640px;
-      margin-inline: auto;
-      text-align: center;
-      padding-block: var(--spacing-16);
-    }
-
-    .pullquote blockquote {
-      font-family: var(--font-serif);
-      font-weight: var(--fw-bold);
-      font-size: clamp(22px, 3vw, var(--text-heading-lg));
-      line-height: 1.3;
-      color: var(--color-mountain-slate);
-    }
-
-    .pullquote__mark {
-      color: var(--color-honey-gold);
-      font-family: var(--font-serif);
-      font-size: var(--text-heading-lg);
-      line-height: 0;
-      display: block;
-      margin-bottom: var(--spacing-16);
-    }
-
-    .pullquote cite {
-      display: block;
-      margin-top: var(--spacing-16);
-      font-style: normal;
-      font-size: var(--text-caption);
-      letter-spacing: 0.167em;
-      text-transform: uppercase;
-      font-weight: var(--fw-semi);
-      color: var(--color-muted-strong);
-    }
-
-    /* ——— Promo band ——— */
-
-    .promo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: clamp(48px, 7vw, 96px);
-    }
-
-    .promo__media {
-      position: relative;
-    }
-
-    .promo__media img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-
-    .promo__media .badge {
+    .gallery__badges {
       position: absolute;
       top: 20px;
       left: 20px;
-    }
-
-    .promo__body .eyebrow {
-      margin-bottom: var(--spacing-16);
-    }
-
-    .promo__body h2 {
-      font-size: clamp(32px, 4.5vw, 52px);
-      line-height: 1.12;
-      margin-bottom: var(--spacing-24);
-    }
-
-    .promo__body p {
-      max-width: 44ch;
-      margin-bottom: var(--spacing-24);
-    }
-
-    .promo__points {
+      z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: var(--spacing-32);
+      align-items: flex-start;
+      gap: 8px;
     }
 
-    .promo__points li {
+    .gallery__thumbs {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: var(--text-body-sm);
-      color: var(--color-mountain-slate);
+      gap: 12px;
+      margin-top: 16px;
     }
 
-    .promo__points .tick {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 1px solid var(--border-light-strong);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-deep-teal);
-      flex-shrink: 0;
-    }
-
-    .promo__points .tick svg {
-      width: 11px;
-      height: 11px;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
-
-    /* ——— Artisan cards ——— */
-
-    .artisan-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-32);
-    }
-
-    .artisan-card__media {
+    .gallery__thumb {
+      width: 84px;
       aspect-ratio: 4 / 5;
       overflow: hidden;
-      margin-bottom: var(--spacing-16);
-      background: var(--color-deep-teal);
+      border: 1px solid transparent;
+      padding: 0;
+      border-radius: var(--radius-links);
+      opacity: 0.65;
+      transition:
+        opacity var(--dur-fast) var(--ease-out),
+        border-color var(--dur-fast) var(--ease-out);
     }
 
-    .artisan-card__media img {
+    .gallery__thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s var(--ease-out);
     }
 
-    .artisan-card:hover .artisan-card__media img {
-      transform: scale(1.04);
+    .gallery__thumb.is-active {
+      opacity: 1;
+      border-color: var(--color-mountain-slate);
     }
 
-    .artisan-card__step {
-      font-size: var(--text-caption);
-      letter-spacing: 0.167em;
-      font-weight: var(--fw-semi);
-      color: var(--color-honey-gold);
-      display: block;
-      margin-bottom: 8px;
+    .gallery__thumb:hover {
+      opacity: 1;
     }
 
-    .artisan-card h3 {
-      font-size: var(--text-heading-sm);
-      color: var(--color-snow-white);
-      margin-bottom: 8px;
-    }
-
-    .artisan-card p {
-      color: var(--text-on-dark-secondary);
-      font-size: var(--text-body-sm);
-    }
-
-    /* ——— Testimonials ——— */
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-32);
-    }
-
-    .testimonial {
+    /* Info column */
+    .pdp__info {
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-16);
-      padding: var(--spacing-32);
-      background: var(--color-surface-warm);
-      border: 1px solid transparent;
+      gap: var(--spacing-24);
     }
 
-    .testimonial .rating {
-      margin-bottom: 4px;
+    .pdp__info .breadcrumb {
+      margin-bottom: -8px;
     }
 
-    .testimonial blockquote {
-      font-size: var(--text-body);
-      line-height: 1.6;
-      color: var(--color-mountain-slate);
-      flex-grow: 1;
+    .pdp__title {
+      font-size: clamp(30px, 3.5vw, var(--text-heading-lg));
+      line-height: 1.15;
     }
 
-    .testimonial__author {
+    .pdp__price-row {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 12px;
-      border-top: 1px solid var(--border-light);
-      padding-top: var(--spacing-16);
     }
 
-    .testimonial__avatar {
-      width: 40px;
-      height: 40px;
+    .pdp__price {
+      font-size: var(--text-subheading);
+      font-weight: var(--fw-semi);
+      color: var(--color-mountain-slate);
+    }
+
+    .pdp__price s {
+      color: var(--color-stone-gray);
+      font-weight: var(--fw-regular);
+      font-size: var(--text-body);
+    }
+
+    .pdp__desc {
+      color: var(--color-mountain-slate);
+      max-width: 52ch;
+    }
+
+    .pdp__motif {
+      display: flex;
+      gap: var(--spacing-16);
+      align-items: flex-start;
+      padding: var(--spacing-24);
+      background: var(--color-surface-warm);
+    }
+
+    .pdp__motif-mark {
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: var(--color-mountain-slate);
-      color: var(--color-snow-white);
+      border: 1px solid var(--color-honey-gold);
+      color: var(--color-honey-gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: var(--text-caption);
-      font-weight: var(--fw-semi);
-      letter-spacing: 0.125em;
+      flex-shrink: 0;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--text-subheading);
+      font-weight: var(--fw-bold);
     }
 
-    .testimonial__name {
+    .pdp__motif h3 {
+      font-size: var(--text-heading-sm);
+      margin-bottom: 6px;
+    }
+
+    .pdp__motif p {
       font-size: var(--text-body-sm);
-      font-weight: var(--fw-semi);
+      line-height: 1.6;
       color: var(--color-mountain-slate);
     }
 
-    .testimonial__meta {
-      font-size: 11px;
-      letter-spacing: 0.125em;
-      text-transform: uppercase;
-      color: var(--color-muted-strong);
+    .pdp__field {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    /* ——— Newsletter ——— */
+    .pdp__field-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-caption);
+      font-weight: var(--fw-semi);
+      letter-spacing: 0.167em;
+      text-transform: uppercase;
+      color: var(--color-mountain-slate);
+    }
 
-    .newsletter {
-      max-width: 560px;
+    .pdp__field-label .hint {
+      color: var(--color-muted-strong);
+      font-weight: var(--fw-regular);
+      letter-spacing: 0.125em;
+    }
+
+    .pdp__actions {
+      display: flex;
+      gap: var(--spacing-16);
+      margin-top: var(--spacing-8);
+    }
+
+    .pdp__actions .btn {
+      flex: 1;
+    }
+
+    .pdp__wish {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      font-size: var(--text-caption);
+      font-weight: var(--fw-semi);
+      letter-spacing: 0.167em;
+      text-transform: uppercase;
+      color: var(--color-mountain-slate);
+      padding: 8px 12px;
+      border-radius: var(--radius-full);
+      transition: color var(--dur-fast) var(--ease-out);
+    }
+
+    .pdp__wish svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+    }
+
+    .pdp__wish.is-active {
+      color: var(--color-honey-gold);
+    }
+
+    .pdp__wish.is-active svg {
+      fill: currentColor;
+    }
+
+    .pdp__meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border-light);
+      border: 1px solid var(--border-light);
+      margin-top: var(--spacing-8);
+    }
+
+    .pdp__meta div {
+      background: var(--color-snow-white);
+      padding: 14px 16px;
+      font-size: var(--text-body-sm);
+      color: var(--color-mountain-slate);
+    }
+
+    .pdp__meta dt {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.167em;
+      text-transform: uppercase;
+      color: var(--color-muted-strong);
+      font-weight: var(--fw-semi);
+      margin-bottom: 2px;
+    }
+
+    /* Motif story band on PDP */
+    .pdp-story {
+      margin-top: var(--spacing-120);
+    }
+
+    /* ——— Option groups (variants) ——— */
+
+    .option-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Color swatch pills */
+    .swatch {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-light-strong);
+      position: relative;
+      cursor: pointer;
+      transition: transform var(--dur-fast) var(--ease-out);
+    }
+
+    .swatch:hover {
+      transform: scale(1.06);
+    }
+
+    .swatch.is-selected::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1.5px solid var(--color-mountain-slate);
+      border-radius: 50%;
+    }
+
+    .swatch__dot {
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+    }
+
+    /* ——— Accordion ——— */
+
+    .accordion {
+      border-top: 1px solid var(--border-light);
+    }
+
+    .accordion__item {
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .accordion__btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-16);
+      padding: 18px 4px;
+      font-size: var(--text-caption);
+      font-weight: var(--fw-semi);
+      letter-spacing: 0.167em;
+      text-transform: uppercase;
+      color: var(--color-mountain-slate);
+      text-align: left;
+    }
+
+    .accordion__btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      transition: transform var(--dur) var(--ease-out);
+      flex-shrink: 0;
+    }
+
+    .accordion__item.is-open .accordion__btn svg {
+      transform: rotate(45deg);
+    }
+
+    .accordion__panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--dur) var(--ease-out);
+    }
+
+    .accordion__item.is-open .accordion__panel {
+      grid-template-rows: 1fr;
+    }
+
+    .accordion__panel-inner {
+      overflow: hidden;
+    }
+
+    .accordion__panel-inner > div {
+      padding: 0 4px var(--spacing-24);
+      color: var(--color-mountain-slate);
+      font-size: var(--text-body-sm);
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    /* ——— Editorial card (motif story band) ——— */
+
+    .editorial-card {
+      max-width: 700px;
       margin-inline: auto;
       text-align: center;
     }
 
-    .newsletter__form {
-      display: flex;
-      gap: var(--spacing-16);
-      margin-top: var(--spacing-32);
-      text-align: left;
+    .editorial-card__media {
+      aspect-ratio: var(--ratio-editorial);
+      overflow: hidden;
+      margin-bottom: var(--spacing-32);
+      background: var(--color-warm-parchment);
     }
 
-    .newsletter__form .input {
-      flex: 1;
+    .editorial-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .newsletter__note {
-      margin-top: var(--spacing-16);
-      font-size: var(--text-caption);
-      letter-spacing: 0.125em;
-      text-transform: uppercase;
-      color: var(--color-muted-strong);
+    .editorial-card__media--portrait {
+      aspect-ratio: 3 / 4;
+      max-width: 560px;
+      margin-inline: auto;
     }
 
-    .newsletter__success {
-      display: none;
-      padding: var(--spacing-24) 0;
-      font-size: var(--text-body);
+    .editorial-card__eyebrow {
+      margin-bottom: var(--spacing-16);
+    }
+
+    .editorial-card h3 {
+      font-size: clamp(24px, 3vw, var(--text-heading));
+      margin-bottom: var(--spacing-16);
+    }
+
+    .editorial-card p {
+      max-width: 52ch;
+      margin-inline: auto;
       color: var(--color-mountain-slate);
     }
 
-    .newsletter.is-success .newsletter__form {
-      display: none;
+    .editorial-card--inverse p {
+      color: var(--text-on-dark-secondary);
     }
 
-    .newsletter.is-success .newsletter__success {
-      display: block;
+    .editorial-card--inverse h3 {
+      color: var(--color-snow-white);
     }
 
-    /* ——— Responsive home layout ——— */
+    .editorial-card__caption {
+      margin-top: var(--spacing-16);
+      color: var(--color-muted-strong);
+      font-size: var(--text-caption);
+      letter-spacing: 0.125em;
+      text-transform: uppercase;
+    }
+
+    /* ——— Responsive product layout ——— */
 
     @media (max-width: 1023px) {
-      .hero__inset {
-        display: none;
-      }
-
-      .featured-grid {
+      .pdp {
         grid-template-columns: 1fr;
       }
 
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .story-band__inner {
-        grid-template-columns: 1fr;
-      }
-
-      .story-band__medallion {
-        left: auto;
-        right: 16px;
-        bottom: -24px;
-      }
-
-      .promo {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 899px) {
-      .artisan-grid,
-      .testimonial-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .gallery {
+        position: static;
       }
     }
 
     @media (max-width: 639px) {
-      .artisan-grid,
-      .testimonial-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero__ctas .btn {
-        width: 100%;
-      }
-
-      .newsletter__form {
+      .pdp__actions {
         flex-direction: column;
       }
-
-      .scroll-hint {
-        display: none;
-      }
-
-      .category-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .motif-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .home-best .section-head {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .testimonial {
-        padding: var(--spacing-24);
-      }
-    }
-
-    /* Anchor scroll offset for story/artisan/motif sections below sticky header */
-    #story,
-    #artisans,
-    #motifs {
-      scroll-margin-top: 130px;
     }
   </style>
 </head>
@@ -2589,316 +2184,7 @@ img {
     </div>
   </header>
 
-  <main id="app" tabindex="-1">
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero__inner">
-        <p class="eyebrow eyebrow--inverse hero__eyebrow">Indonesian Heritage<span class="sep" aria-hidden="true">·</span>Contemporary Craft</p>
-        <h1 class="hero__title serif--inverse" id="heroTitle">Batik, <em>Reimagined.</em></h1>
-        <p class="hero__lead">Hand-drawn and hand-stamped batik from the workshops of Yogyakarta — heritage woven into modern life, one piece at a time.</p>
-        <div class="hero__ctas">
-          <a class="btn btn--ghost" href="shop.html">Explore the Collection</a>
-          <a class="btn btn--text btn--text--inverse" href="#story">Discover Our Story</a>
-        </div>
-      </div>
-      <figure class="hero__inset hero__inset--left" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1616125162686-770bf85622b9?q=80&w=600&auto=format&fit=crop" alt="" width="200" height="200" fetchpriority="high">
-      </figure>
-      <figure class="hero__inset hero__inset--right" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1586319826907-1ff4aadbaddc?q=80&w=600&auto=format&fit=crop" alt="" width="200" height="200" fetchpriority="high">
-      </figure>
-      <div class="hero__motif" aria-hidden="true"></div>
-      <div class="scroll-hint" aria-hidden="true">
-        <span>Scroll</span>
-        <span class="scroll-hint__diamond"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="featuredTitle">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <p class="eyebrow">Featured Collections</p>
-          <h2 class="heading-lg" id="featuredTitle">Three ways to wear heritage.</h2>
-        </div>
-      </div>
-
-      <nav class="subnav" aria-label="Shop by category">
-        <div class="container subnav__list">
-          <a class="subnav__link" href="shop.html">Shop All</a>
-          <a class="subnav__link" href="shop.html?cat=Shirts">Batik Shirts</a>
-          <a class="subnav__link" href="shop.html?cat=Dresses">Dresses</a>
-          <a class="subnav__link" href="shop.html?cat=Outerwear">Outerwear</a>
-          <a class="subnav__link" href="shop.html?cat=Fabric">Fabric</a>
-          <a class="subnav__link" href="shop.html?cat=Accessories">Accessories</a>
-          <a class="subnav__link" href="shop.html?tag=new">New Arrivals</a>
-          <a class="subnav__link" href="#story">The Story</a>
-        </div>
-      </nav>
-      <div class="subnav-placeholder" aria-hidden="true"></div>
-
-      <div class="container">
-        <div class="featured-grid">
-          <a class="tile tile--portrait reveal" style="--reveal-delay:0ms" href="shop.html?cat=Fabric">
-            <img src="https://images.unsplash.com/photo-1761517099330-13b34b141d74?q=80&w=1000&auto=format&fit=crop" alt="Brown and cream heritage batik fabric" loading="lazy" width="800" height="1067">
-            <span class="tile__overlay" aria-hidden="true"></span>
-            <span class="tile__content">
-              <span class="caption">Heritage Fabrics</span>
-              <h3>The Sogan Edit</h3>
-              <span class="tile__link">Shop the Edit</span>
-            </span>
-          </a>
-          <a class="tile tile--portrait reveal" style="--reveal-delay:80ms" href="shop.html?tag=new">
-            <img src="https://images.unsplash.com/photo-1762111067760-1f0fc2aa2866?q=80&w=1000&auto=format&fit=crop" alt="Blue and brown indigo-dyed batik fabric" loading="lazy" width="800" height="1067">
-            <span class="tile__overlay" aria-hidden="true"></span>
-            <span class="tile__content">
-              <span class="caption">New Season</span>
-              <h3>The Indigo Series</h3>
-              <span class="tile__link">Shop the Series</span>
-            </span>
-          </a>
-          <a class="tile tile--portrait reveal" style="--reveal-delay:160ms" href="shop.html?cat=Shirts">
-            <img src="https://images.unsplash.com/photo-1609407683391-7d127a00b3e1?q=80&w=1000&auto=format&fit=crop" alt="Artisan wearing a hand-stamped batik shirt in Lasem" loading="lazy" width="800" height="1067">
-            <span class="tile__overlay" aria-hidden="true"></span>
-            <span class="tile__content">
-              <span class="caption">Batik Shirts</span>
-              <h3>Worn in Lasem</h3>
-              <span class="tile__link">Shop Shirts</span>
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--warm" aria-labelledby="categoryTitle">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <p class="eyebrow">Shop by Category</p>
-          <h2 class="heading-lg" id="categoryTitle">Woven for every occasion.</h2>
-        </div>
-        <div class="category-grid">
-          <a class="tile tile--portrait reveal" style="--reveal-delay:0ms" href="shop.html?cat=Shirts">
-            <img src="https://images.unsplash.com/photo-1569084755066-cbff1d9fd473?q=80&w=900&auto=format&fit=crop" alt="Man wearing a batik shirt" loading="lazy" width="700" height="933">
-            <span class="tile__overlay" aria-hidden="true"></span>
-            <span class="tile__content"><h3>Batik Shirts</h3><span class="tile__link">Explore</span></span>
-          </a>
-          <a class="tile tile--portrait reveal" style="--reveal-delay:80ms" href="shop.html?cat=Dresses">
-            <img src="https://images.unsplash.com/photo-1630929436231-91f4c6fe4884?q=80&w=900&auto=format&fit=crop" alt="Woman wearing a batik dress" loading="lazy" width="700" height="933">
-            <span class="tile__overlay" aria-hidden="true"></span>
-            <span class="tile__content"><h3>Batik Dresses</h3><span class="tile__link">Explore</span></span>
-          </a>
-          <a class="tile tile--portrait reveal" style="--reveal-delay:160ms" href="shop.html?cat=Fabric">
-            <img src="https://images.unsplash.com/photo-1761516659539-20ec6f407ca4?q=80&w=900&auto=format&fit=crop" alt="Hand-drawn batik fabric in brown and blue" loading="lazy" width="700" height="933">
-            <span class="tile__overlay" aria-hidden="true"></span>
-            <span class="tile__content"><h3>Batik Fabric</h3><span class="tile__link">Explore</span></span>
-          </a>
-          <a class="tile tile--portrait reveal" style="--reveal-delay:240ms" href="shop.html?cat=Accessories">
-            <img src="https://images.unsplash.com/photo-1672716912554-c23ba8fac4ce?q=80&w=900&auto=format&fit=crop" alt="Hand-patterned batik ties hanging on a rack" loading="lazy" width="700" height="933">
-            <span class="tile__overlay" aria-hidden="true"></span>
-            <span class="tile__content"><h3>Accessories</h3><span class="tile__link">Explore</span></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section home-best" aria-labelledby="bestTitle">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">Best Sellers</p>
-            <h2 class="heading-lg" id="bestTitle">Most-loved this season.</h2>
-          </div>
-          <a class="btn btn--outline" href="shop.html">View All Pieces</a>
-        </div>
-        <div class="product-grid" data-grid="best"></div>
-      </div>
-    </section>
-
-    <section class="section section--dark story-band" id="story" aria-labelledby="storyTitle">
-      <div class="container">
-        <div class="story-band__inner">
-          <div class="story-band__text reveal">
-            <p class="eyebrow eyebrow--inverse">The Craft</p>
-            <h2 class="serif--inverse" id="storyTitle">Wax, cloth, and time.</h2>
-            <p>Every Serat piece begins as plain cotton, drawn and stamped by hand with molten wax before it ever touches dye. The word <em>batik</em> carries the Javanese sense of writing — and this writing cannot be rushed.</p>
-            <p>Our artisans work in small studios across Yogyakarta and Lasem, the same way their families have for generations. What you receive is not a print. It is a record of hands.</p>
-            <a class="btn btn--ghost" href="#artisans">Meet the Artisans</a>
-          </div>
-          <div class="story-band__media reveal" style="--reveal-delay:100ms">
-            <img src="https://images.unsplash.com/photo-1695306441929-0082158cfc27?q=80&w=1200&auto=format&fit=crop" alt="Artisan drawing batik with a canting, applying hot wax to cloth" loading="lazy" width="900" height="1125">
-            <span class="medallion medallion--outline story-band__medallion">
-              <strong>Est. 1962</strong>
-              <span>Hand-Drawn</span>
-              <span>&amp; Hand-Stamped</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--warm" id="motifs" aria-labelledby="motifTitle">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <p class="eyebrow">Motifs &amp; Meaning</p>
-          <h2 class="heading-lg" id="motifTitle">Every pattern carries a story.</h2>
-        </div>
-        <div class="motif-grid">
-          <article class="motif-card reveal" style="--reveal-delay:0ms">
-            <div class="motif-card__media">
-              <img src="https://images.unsplash.com/photo-1761516659539-20ec6f407ca4?q=80&w=900&auto=format&fit=crop" alt="Parang motif batik — diagonal blade-like lines" loading="lazy" width="700" height="933">
-            </div>
-            <h3>Parang <span class="jv">— strength</span></h3>
-            <p>Diagonal blades cut through the cloth. Once reserved for Javanese royalty, the Parang speaks of strength, continuity, and the will to keep moving forward.</p>
-          </article>
-          <article class="motif-card reveal" style="--reveal-delay:80ms">
-            <div class="motif-card__media">
-              <img src="https://images.unsplash.com/photo-1762111067841-638cbbe9c6c7?q=80&w=900&auto=format&fit=crop" alt="Kawung motif batik — repeating circles in geometric order" loading="lazy" width="700" height="933">
-            </div>
-            <h3>Kawung <span class="jv">— harmony</span></h3>
-            <p>Four circles, petals of the areca palm, arranged in quiet symmetry — a meditation on purity, harmony, and the balance of a centred life.</p>
-          </article>
-          <article class="motif-card reveal" style="--reveal-delay:160ms">
-            <div class="motif-card__media">
-              <img src="https://images.unsplash.com/photo-1761515315375-1315503bb3ce?q=80&w=900&auto=format&fit=crop" alt="Coastal batik fabric with floral and bird motifs" loading="lazy" width="700" height="933">
-            </div>
-            <h3>Coastal <span class="jv">— openness</span></h3>
-            <p>From the north coast of Java, where Javanese, Chinese and Arab hands have traded cloth for centuries — florals, birds, and the courage of open water.</p>
-          </article>
-        </div>
-        <div class="pullquote reveal">
-          <span class="pullquote__mark" aria-hidden="true">“</span>
-          <blockquote>To wear batik is to carry a story written in wax.</blockquote>
-          <cite>— A Javanese saying, honoured daily</cite>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="promoTitle">
-      <div class="container">
-        <div class="promo">
-          <div class="promo__media reveal">
-            <span class="badge badge--gold">New Season</span>
-            <img src="https://images.unsplash.com/photo-1675994645106-8c48153d8c25?q=80&w=1200&auto=format&fit=crop" alt="Colourful batik fabrics displayed in a shop" loading="lazy" width="900" height="1125">
-          </div>
-          <div class="promo__body reveal" style="--reveal-delay:100ms">
-            <p class="eyebrow">The Indigo Series</p>
-            <h2 class="serif" id="promoTitle">Deep-dyed in natural indigo.</h2>
-            <p>Indigo is the colour batik was born in — fermented from leaves, dipped again and again until the cloth turns from green to a blue that holds the night.</p>
-            <ul class="promo__points">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg></span>Natural indigo, no synthetic dyes</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg></span>Limited run — each dye bath is one of a kind</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg></span>Deepens beautifully with age</li>
-            </ul>
-            <a class="btn btn--outline" href="shop.html?tag=new">Shop the Series</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--dark" id="artisans" aria-labelledby="artisanTitle">
-      <div class="container">
-        <div class="section-head section-head--center section-head--inverse reveal">
-          <p class="eyebrow eyebrow--inverse">Crafted by Hand</p>
-          <h2 class="heading-lg serif--inverse" id="artisanTitle">The hands behind the cloth.</h2>
-          <p>A single length of batik passes through many hands before it reaches yours.</p>
-        </div>
-        <div class="artisan-grid">
-          <article class="artisan-card reveal" style="--reveal-delay:0ms">
-            <div class="artisan-card__media">
-              <img src="https://images.unsplash.com/photo-1604973104381-870c92f10343?q=80&w=900&auto=format&fit=crop" alt="Artisan holding a canting, the wax pen used to draw batik" loading="lazy" width="700" height="875">
-            </div>
-            <span class="artisan-card__step">01 — Drawing</span>
-            <h3>The canting</h3>
-            <p>With a canting — a small copper pen — the artisan draws each line in hot wax. A single cloth can take weeks of patient tracing.</p>
-          </article>
-          <article class="artisan-card reveal" style="--reveal-delay:80ms">
-            <div class="artisan-card__media">
-              <img src="https://images.unsplash.com/photo-1543874911-320748e4c335?q=80&w=900&auto=format&fit=crop" alt="Artisan pressing a copper cap stamp into hot wax" loading="lazy" width="700" height="875">
-            </div>
-            <span class="artisan-card__step">02 — Stamping</span>
-            <h3>The cap</h3>
-            <p>For repeat motifs, a copper cap is stamped into wax and pressed onto the cloth — a rhythm older than the printing press.</p>
-          </article>
-          <article class="artisan-card reveal" style="--reveal-delay:160ms">
-            <div class="artisan-card__media">
-              <img src="https://images.unsplash.com/photo-1721361467569-f8edbf851f44?q=80&w=900&auto=format&fit=crop" alt="Artisan sewing a finished batik garment" loading="lazy" width="700" height="875">
-            </div>
-            <span class="artisan-card__step">03 — Dye &amp; Finish</span>
-            <h3>The cloth</h3>
-            <p>Dye, boil, rinse, dry in the sun — then cutting, sewing and hand-finishing by our atelier tailors.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="testimonialTitle">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <p class="eyebrow">Kind Words</p>
-          <h2 class="heading-lg" id="testimonialTitle">From our patrons.</h2>
-        </div>
-        <div class="testimonial-grid">
-          <article class="testimonial reveal" style="--reveal-delay:0ms">
-            <span class="rating" role="img" aria-label="Rated 5 out of 5 stars">
-              <span class="rating__track" aria-hidden="true">★★★★★</span>
-              <span class="rating__fill" aria-hidden="true" style="width:100%">★★★★★</span>
-            </span>
-            <blockquote>“The Parang shirt arrived wrapped like a gift from another century. The cloth is heavy and honest — you can feel the hours in it.”</blockquote>
-            <footer class="testimonial__author">
-              <span class="testimonial__avatar" aria-hidden="true">RA</span>
-              <div>
-                <div class="testimonial__name">Rani A.</div>
-                <div class="testimonial__meta">Jakarta · Batik Shirts</div>
-              </div>
-            </footer>
-          </article>
-          <article class="testimonial reveal" style="--reveal-delay:80ms">
-            <span class="rating" role="img" aria-label="Rated 5 out of 5 stars">
-              <span class="rating__track" aria-hidden="true">★★★★★</span>
-              <span class="rating__fill" aria-hidden="true" style="width:100%">★★★★★</span>
-            </span>
-            <blockquote>“I commissioned fabric for my wedding and the atelier walked me through every motif. The Sekar Jagad came out more beautiful than I dared hope.”</blockquote>
-            <footer class="testimonial__author">
-              <span class="testimonial__avatar" aria-hidden="true">DN</span>
-              <div>
-                <div class="testimonial__name">Dewi N.</div>
-                <div class="testimonial__meta">Singapore · Batik Fabric</div>
-              </div>
-            </footer>
-          </article>
-          <article class="testimonial reveal" style="--reveal-delay:160ms">
-            <span class="rating" role="img" aria-label="Rated 5 out of 5 stars">
-              <span class="rating__track" aria-hidden="true">★★★★★</span>
-              <span class="rating__fill" aria-hidden="true" style="width:100%">★★★★★</span>
-            </span>
-            <blockquote>“A kimono that feels like a hug and a story at once. My third piece from Serat — the consistency is remarkable.”</blockquote>
-            <footer class="testimonial__author">
-              <span class="testimonial__avatar" aria-hidden="true">MS</span>
-              <div>
-                <div class="testimonial__name">Maya S.</div>
-                <div class="testimonial__meta">Amsterdam · Outerwear</div>
-              </div>
-            </footer>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--warm" aria-labelledby="newsletterTitle">
-      <div class="container">
-        <div class="newsletter reveal" id="newsletter">
-          <p class="eyebrow">The Atelier Letter</p>
-          <h2 class="heading" id="newsletterTitle">Join the atelier.</h2>
-          <p style="margin-top:12px">Seasonal collections, motif stories, and early access to limited runs — once a month, no noise.</p>
-          <form class="newsletter__form" id="newsletterForm" novalidate>
-            <label class="visually-hidden" for="newsletterEmail">Email address</label>
-            <input class="input input--line" type="email" id="newsletterEmail" name="email" placeholder="Your email address" required autocomplete="email">
-            <button class="btn btn--outline" type="submit">Subscribe</button>
-          </form>
-          <p class="newsletter__note">Unsubscribe anytime. We never share your address.</p>
-          <p class="newsletter__success" role="status">Terima kasih — welcome to the atelier. Your first letter is on its way.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <main id="app" tabindex="-1"></main>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -2931,9 +2217,9 @@ img {
         <div class="footer__col">
           <h4>Atelier</h4>
           <ul>
-            <li><a href="#story">Our Story</a></li>
-            <li><a href="#artisans">The Artisans</a></li>
-            <li><a href="#motifs">Motifs &amp; Meaning</a></li>
+            <li><a href="index.html#story">Our Story</a></li>
+            <li><a href="index.html#artisans">The Artisans</a></li>
+            <li><a href="index.html#motifs">Motifs &amp; Meaning</a></li>
             <li><a href="#">Sustainability</a></li>
             <li><a href="#">The Journal</a></li>
           </ul>
@@ -2973,8 +2259,8 @@ img {
       <nav class="drawer__nav" aria-label="Main">
         <a class="drawer__link" href="index.html">Home</a>
         <a class="drawer__link" href="shop.html">Shop All</a>
-        <a class="drawer__link" href="#story">The Story</a>
-        <a class="drawer__link" href="#artisans">The Artisans</a>
+        <a class="drawer__link" href="index.html#story">The Story</a>
+        <a class="drawer__link" href="index.html#artisans">The Artisans</a>
       </nav>
       <div class="drawer__sub">
         <a href="shop.html?cat=Shirts">Batik Shirts</a>
@@ -3019,6 +2305,19 @@ img {
        GLOBAL — data, store and shared chrome. Inlined so this page
        is fully self-contained (no external files).
        ============================================================ */
+
+/* ============================================================
+   SERAT BATIK ATELIER — Global behavior
+   Shared by every page: index.html (home), shop.html,
+   product.html, cart.html.
+
+   Contents: catalog data, cart + wishlist store, toast, counts,
+   product-card renderer, and global chrome (header, menu drawer,
+   modals, language switcher, cookie banner).
+
+   Page-specific logic lives in each page's own inline <script>.
+   Shared API for page scripts: window.Serat.
+   ============================================================ */
 
 'use strict';
 
@@ -3533,145 +2832,270 @@ img {
     refreshCounts,
   };
 })();
-
     /* ============================================================
-       HOME PAGE — best sellers, newsletter, reveal, sticky subnav
+       PRODUCT PAGE — product detail rendered from ?id=
        ============================================================ */
     'use strict';
 
     (() => {
-      const { PRODUCTS, renderGrid } = window.Serat;
+      const Serat = window.Serat;
+      const {
+        PRODUCTS, COLORS, Store, showToast, renderGrid,
+        imgURL, formatIDR, getProductById, getMotif, getCategoryLabel, starWidth,
+      } = Serat;
 
-      /* ——— Best sellers grid ——— */
+      const app = document.getElementById('app');
 
-      const best = document.querySelector('[data-grid="best"]');
-      if (best) renderGrid(best, PRODUCTS.filter((p) => p.bestSeller).slice(0, 4));
+      function renderProduct(id) {
+        const product = getProductById(id);
 
-      /* ——— NEWSLETTER ——— */
-
-      const newsletter = document.getElementById('newsletter');
-      const form = document.getElementById('newsletterForm');
-      if (newsletter && form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const email = form.querySelector('input[type="email"]');
-          const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
-          if (!valid) {
-            email.focus();
-            email.setAttribute('aria-invalid', 'true');
-            return;
-          }
-          newsletter.classList.add('is-success');
-        });
-      }
-
-      /* ——— REVEAL ——— */
-
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      function observeReveals() {
-        if (reduceMotion || !('IntersectionObserver' in window)) {
-          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+        if (!product) {
+          document.title = 'Product — Serat Batik Atelier';
+          app.innerHTML = `
+            <div class="container">
+              <div class="shop-empty" style="padding-block:100px">
+                <h2 class="heading">This piece has left the atelier.</h2>
+                <p>The link may be outdated — the collection is still here.</p>
+                <a class="btn btn--outline" href="shop.html">Back to the collection</a>
+              </div>
+            </div>`;
           return;
         }
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
+
+        document.title = `${product.name} — Serat Batik Atelier`;
+
+        const soldOut = !product.available;
+        const isLength = product.sizes.some((s) => /m$/i.test(s));
+        const sizeLabel = isLength ? 'Length' : 'Size';
+        const motif = getMotif(product.pattern);
+
+        const gallery = `
+          <div class="gallery">
+            <div class="gallery__main">
+              ${product.images.map((img, i) =>
+                `<img class="${i === 0 ? 'is-active' : ''}" src="${imgURL(img, 1000)}" alt="${i === 0 ? product.name : `${product.name} — detail ${i + 1}`}" width="800" height="1000" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}>`).join('')}
+              <div class="gallery__badges">
+                ${product.badge ? `<span class="badge">${product.badge}</span>` : ''}
+                ${soldOut ? '<span class="badge">Sold Out</span>' : ''}
+                ${product.compareAtPrice ? '<span class="badge badge--gold">Limited</span>' : ''}
+              </div>
+            </div>
+            <div class="gallery__thumbs" role="tablist" aria-label="Product images">
+              ${product.images.map((img, i) =>
+                `<button class="gallery__thumb${i === 0 ? ' is-active' : ''}" data-index="${i}" role="tab" aria-selected="${i === 0}" aria-label="View image ${i + 1}">
+                  <img src="${imgURL(img, 200)}" alt="" width="84" height="105" loading="lazy">
+                </button>`).join('')}
+            </div>
+          </div>`;
+
+        const info = `
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a href="shop.html?cat=${product.category}">${getCategoryLabel(product.category)}</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <span aria-current="page">${product.name}</span>
+          </nav>
+          <p class="eyebrow">${getCategoryLabel(product.category)} · ${product.pattern}</p>
+          <h1 class="pdp__title serif">${product.name}</h1>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="rating" role="img" aria-label="Rated ${product.rating} out of 5 stars">
+              <span class="rating__track" aria-hidden="true">★★★★★</span>
+              <span class="rating__fill" aria-hidden="true" style="width:${starWidth(product.rating)}">★★★★★</span>
+              <span class="rating__count">${product.rating} · ${product.reviews} reviews</span>
+            </span>
+          </div>
+          <div class="pdp__price-row">
+            <span class="pdp__price">${formatIDR(product.price)}</span>
+            ${product.compareAtPrice ? `<s>${formatIDR(product.compareAtPrice)}</s>` : ''}
+          </div>
+          <p class="pdp__desc">${product.description}</p>
+          ${motif ? `
+          <div class="pdp__motif">
+            <span class="pdp__motif-mark" aria-hidden="true">${motif.name.charAt(0)}</span>
+            <div>
+              <h3>The ${motif.name} motif <span style="font-style:italic;font-weight:400;color:var(--color-muted-strong)">— ${motif.jv}</span></h3>
+              <p>${motif.story}</p>
+            </div>
+          </div>` : ''}
+          <div class="pdp__field">
+            <span class="pdp__field-label" id="colorLabel">Colour <span class="hint" id="colorHint">${product.colors[0]}</span></span>
+            <div class="option-group" role="radiogroup" aria-labelledby="colorLabel">
+              ${product.colors.map((c, i) => `
+                <button class="swatch${i === 0 ? ' is-selected' : ''}" data-color="${c}" role="radio" aria-checked="${i === 0}" aria-label="${c}">
+                  <span class="swatch__dot" style="background:${COLORS[c] || '#ccc'}"></span>
+                </button>`).join('')}
+            </div>
+          </div>
+          <div class="pdp__field">
+            <span class="pdp__field-label" id="sizeLabel">${sizeLabel} <span class="hint">${product.sizes.join(' · ')}</span></span>
+            <div class="option-group" role="radiogroup" aria-labelledby="sizeLabel">
+              ${product.sizes.map((s, i) =>
+                `<button class="option-pill${i === 0 ? ' is-selected' : ''}" data-size="${s}" role="radio" aria-checked="${i === 0}">${s}</button>`).join('')}
+            </div>
+          </div>
+          <div class="pdp__field">
+            <span class="pdp__field-label">Quantity</span>
+            <div class="qty">
+              <button class="qty__btn" id="qtyMinus" aria-label="Decrease quantity"><svg viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button>
+              <input class="qty__input" id="qtyInput" type="number" min="1" max="10" value="1" aria-label="Quantity">
+              <button class="qty__btn" id="qtyPlus" aria-label="Increase quantity"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button>
+            </div>
+          </div>
+          ${soldOut ? '<p style="font-size:var(--text-body-sm);color:var(--color-deep-teal)">This limited piece has sold out. Join the atelier letter to hear when the series returns.</p>' : ''}
+          <div class="pdp__actions">
+            <button class="btn btn--outline" id="addToCartBtn" ${soldOut ? 'disabled' : ''}>Add to Cart</button>
+            <button class="btn btn--outline-teal" id="buyNowBtn" ${soldOut ? 'disabled' : ''}>Buy Now</button>
+          </div>
+          <button class="pdp__wish js-wishlist-toggle${Store.isWishlisted(product.id) ? ' is-active' : ''}" data-id="${product.id}" aria-pressed="${Store.isWishlisted(product.id)}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5S3.5 15.5 3.5 9.6A4.6 4.6 0 0 1 12 6.5a4.6 4.6 0 0 1 8.5 3.1c0 5.9-8.5 10.9-8.5 10.9z"></path></svg>
+            ${Store.isWishlisted(product.id) ? 'Saved to wishlist' : 'Save to wishlist'}
+          </button>
+          <dl class="pdp__meta">
+            <div><dt>Material</dt><dd>${product.material}</dd></div>
+            <div><dt>Motif</dt><dd>${product.pattern}</dd></div>
+            <div><dt>SKU</dt><dd>${product.sku}</dd></div>
+            <div><dt>Made in</dt><dd>Yogyakarta, Indonesia</dd></div>
+          </dl>
+          <div class="accordion">
+            <div class="accordion__item is-open">
+              <button class="accordion__btn" aria-expanded="true" aria-controls="acc-craft">
+                Craftsmanship &amp; Materials
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+              </button>
+              <div class="accordion__panel" id="acc-craft" role="region">
+                <div class="accordion__panel-inner"><div>
+                  ${product.material}. ${motif ? motif.story : ''} The cloth is boiled to release the wax, rinsed by hand, and sun-dried in Yogyakarta before cutting.
+                </div></div>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__btn" aria-expanded="false" aria-controls="acc-care">
+                Care Instructions
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+              </button>
+              <div class="accordion__panel" id="acc-care" role="region">
+                <div class="accordion__panel-inner"><div>
+                  <ul style="list-style:disc;padding-left:18px;display:flex;flex-direction:column;gap:6px">
+                    ${product.care.map((c) => `<li>${c}</li>`).join('')}
+                  </ul>
+                </div></div>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__btn" aria-expanded="false" aria-controls="acc-ship">
+                Shipping &amp; Returns
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+              </button>
+              <div class="accordion__panel" id="acc-ship" role="region">
+                <div class="accordion__panel-inner"><div>
+                  Complimentary shipping within Indonesia on orders over Rp 2.000.000 (otherwise Rp 60.000). Worldwide delivery in 5–10 working days. Returns accepted within 14 days, unworn and with tags attached.
+                </div></div>
+              </div>
+            </div>
+          </div>`;
+
+        app.innerHTML = `
+          <div class="container">
+            <div class="pdp">${gallery}<div class="pdp__info">${info}</div></div>
+          </div>
+          ${motif ? `
+          <section class="section section--warm pdp-story">
+            <div class="container">
+              <div class="editorial-card">
+                <div class="editorial-card__media editorial-card__media--portrait">
+                  <img src="${imgURL(product.images[2] || product.image, 1000)}" alt="${motif.name} motif detail on ${product.name}" loading="lazy" width="700" height="933">
+                </div>
+                <p class="eyebrow editorial-card__eyebrow">The ${motif.name} Motif</p>
+                <h3 class="heading">“${motif.story}”</h3>
+                <p class="editorial-card__caption">${motif.jv.charAt(0).toUpperCase() + motif.jv.slice(1)} — the meaning carried in this cloth</p>
+              </div>
+            </div>
+          </section>` : ''}
+          <section class="section" aria-labelledby="relatedTitle">
+            <div class="container">
+              <div class="section-head section-head--center">
+                <p class="eyebrow">Continue Exploring</p>
+                <h2 class="heading-lg" id="relatedTitle">You may also love.</h2>
+              </div>
+              <div class="product-grid" id="relatedGrid"></div>
+            </div>
+          </section>`;
+
+        // Wire gallery
+        const mainImgs = app.querySelectorAll('.gallery__main img');
+        const thumbs = app.querySelectorAll('.gallery__thumb');
+        thumbs.forEach((thumb) => {
+          thumb.addEventListener('click', () => {
+            const idx = Number(thumb.dataset.index);
+            mainImgs.forEach((img, i) => img.classList.toggle('is-active', i === idx));
+            thumbs.forEach((t) => {
+              const active = t === thumb;
+              t.classList.toggle('is-active', active);
+              t.setAttribute('aria-selected', String(active));
+            });
           });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('#app .reveal').forEach((el) => observer.observe(el));
-      }
-      observeReveals();
-
-      /* ——— STICKY SUBNAV ———
-         Starts in-flow inside section 2. When scrolling down and the subnav's
-         natural position reaches the navbar it is promoted to `fixed` and stays
-         pinned below the header to the end of the page — section 2's end is not a
-         boundary. Scrolling back up keeps it pinned until section 2 is reached
-         again, then it returns to its natural spot. A hidden placeholder holds its
-         flow space so the layout never jumps on state change. ——— */
-
-      function initStickySubnav() {
-        const subnav = document.querySelector('#app .subnav');
-        const placeholder = document.querySelector('#app .subnav-placeholder');
-        if (!subnav || !placeholder) return;
-
-        const header = document.getElementById('siteHeader');
-        let sticky = false;
-        let headerH = header ? header.offsetHeight : 76;
-        let naturalTop = measureNaturalTop();
-
-        // Document-space top of the subnav's in-flow position (section 2).
-        // Measured from the placeholder when pinned, since the fixed subnav no
-        // longer occupies its natural spot.
-        function measureNaturalTop() {
-          const el = sticky ? placeholder : subnav;
-          return el.getBoundingClientRect().top + window.scrollY;
-        }
-
-        function setSticky(on) {
-          if (on === sticky) return;
-          sticky = on;
-          subnav.classList.toggle('is-sticky', on);
-          if (on) placeholder.style.height = `${subnav.offsetHeight}px`;
-        }
-
-        // Pinned exactly when the natural position reaches the navbar line:
-        // at that instant fixed position and natural position coincide, so the
-        // switch is seamless in both directions — no jump, no flicker.
-        function update() {
-          if (!subnav.isConnected) return;
-          setSticky(window.scrollY + headerH >= naturalTop);
-        }
-
-        const onScroll = () => update();
-        const onResize = () => {
-          headerH = header ? header.offsetHeight : 76;
-          naturalTop = measureNaturalTop();
-          update();
-        };
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onResize);
-
-        // Font swaps can resize the bar; keep the placeholder's height in sync
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(() => {
-            if (sticky) placeholder.style.height = `${subnav.offsetHeight}px`;
-          });
-        }
-
-        update();
-      }
-      initStickySubnav();
-
-      /* ——— IN-PAGE ANCHORS (#story / #artisans / #motifs) ———
-         Smooth-scroll to the section when arriving with a hash, mirroring the
-         old #/story-style routes. */
-
-      function syncSubnavActive() {
-        const name = window.location.hash.replace('#', '');
-        document.querySelectorAll('.subnav__link').forEach((a) => {
-          const active = Boolean(name) && a.getAttribute('href') === `#${name}`;
-          a.classList.toggle('is-active', active);
         });
+
+        // Wire variants
+        const colorHint = document.getElementById('colorHint');
+        let selColor = product.colors[0];
+        let selSize = product.sizes[0];
+        let qty = 1;
+
+        app.querySelectorAll('.swatch').forEach((sw) => {
+          sw.addEventListener('click', () => {
+            selColor = sw.dataset.color;
+            app.querySelectorAll('.swatch').forEach((s) => {
+              const active = s === sw;
+              s.classList.toggle('is-selected', active);
+              s.setAttribute('aria-checked', String(active));
+            });
+            if (colorHint) colorHint.textContent = selColor;
+          });
+        });
+        app.querySelectorAll('[data-size]').forEach((pill) => {
+          pill.addEventListener('click', () => {
+            selSize = pill.dataset.size;
+            app.querySelectorAll('[data-size]').forEach((p) => {
+              const active = p === pill;
+              p.classList.toggle('is-selected', active);
+              p.setAttribute('aria-checked', String(active));
+            });
+          });
+        });
+
+        // Wire quantity
+        const qtyInput = document.getElementById('qtyInput');
+        const qtyMinus = document.getElementById('qtyMinus');
+        const qtyPlus = document.getElementById('qtyPlus');
+        qtyMinus.addEventListener('click', () => { qty = Math.max(1, qty - 1); qtyInput.value = qty; });
+        qtyPlus.addEventListener('click', () => { qty = Math.min(10, qty + 1); qtyInput.value = qty; });
+        qtyInput.addEventListener('change', () => { qty = Math.max(1, Math.min(10, Number(qtyInput.value) || 1)); qtyInput.value = qty; });
+
+        // Wire add / buy
+        const addToCart = () => {
+          Store.addToCart(product.id, { color: selColor, size: selSize, qty });
+          showToast(`${product.name} · ${selColor} · ${selSize} added to your cart`, { label: 'View cart', href: 'cart.html' });
+        };
+        document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+        document.getElementById('buyNowBtn').addEventListener('click', () => {
+          Store.addToCart(product.id, { color: selColor, size: selSize, qty });
+          window.location.href = 'cart.html';
+        });
+
+        // Related
+        const relatedGrid = document.getElementById('relatedGrid');
+        if (relatedGrid) {
+          const sameCategory = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id);
+          const others = PRODUCTS.filter((p) => p.category !== product.category && p.id !== product.id);
+          renderGrid(relatedGrid, [...sameCategory, ...others].slice(0, 4));
+        }
       }
 
-      function scrollToSectionHash() {
-        const name = window.location.hash.replace('#', '');
-        if (!name) return;
-        const el = document.getElementById(name);
-        if (!el) return;
-        syncSubnavActive();
-        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }));
-      }
-
-      syncSubnavActive();
-      window.addEventListener('hashchange', scrollToSectionHash);
-      window.addEventListener('load', scrollToSectionHash);
+      // Initial render: read id from the query string (e.g. product.html?id=1)
+      const params = new URLSearchParams(window.location.search);
+      renderProduct(params.get('id'));
     })();
   </script>
 </body>
