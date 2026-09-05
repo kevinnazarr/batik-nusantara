@@ -1,26 +1,32 @@
 /* ============================================================
    validate-pages.mjs — static validation for the per-page HTML
-   refactor of the Serat Batik Atelier preview.
+   refactor of the Serat Batik Atelier preview (proto/).
 
    Run:  node scripts/validate-pages.mjs
    Exit: 0 on success, 1 when any check fails.
    ============================================================ */
 'use strict';
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const DIR = 'proto';
 
-const PAGES = ['index.html', 'shop.html', 'product.html', 'cart.html'];
+const BASE_PAGES = ['index.html', 'shop.html', 'product.html', 'cart.html'];
+const GENERATED_PAGES = readdirSync(resolve(ROOT, DIR))
+  .filter((f) => /^product-\d+\.html$/.test(f))
+  .sort((a, b) => Number(a.match(/\d+/)[0]) - Number(b.match(/\d+/)[0]));
+const PAGES = [...BASE_PAGES, ...GENERATED_PAGES];
+const FILES = readdirSync(resolve(ROOT, DIR)).filter((f) => f.endsWith('.html'));
 
 let failures = 0;
 const fail = (msg) => { failures += 1; console.error(`  ✗ ${msg}`); };
 const ok = (msg) => console.log(`  ✓ ${msg}`);
 
-const read = (p) => readFileSync(resolve(ROOT, p), 'utf8');
+const read = (p) => readFileSync(resolve(ROOT, DIR, p), 'utf8');
 
 /* ——— Extract blocks ——— */
 
@@ -85,14 +91,26 @@ const anchorIds = (page) => {
   for (const m of js.matchAll(/\bid="(\$\{?[^"}]*)"/g)) markup.add(m[1]);
   return markup;
 };
+// A templated link (e.g. product-${p.id}.html built by JS) is valid when at
+// least one concrete file matches the pattern with ${...} replaced by digits.
+const templatedTargetExists = (file) => {
+  const escaped = file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp('^' + escaped.replace(/\\\$\{[^}]*\\\}/g, '\\d+') + '$');
+  return FILES.some((f) => re.test(f));
+};
 for (const page of PAGES) {
   const html = read(page);
   const links = [...html.matchAll(/href="([^"#]+\.html)(#[^"]*)?"/g)].map((m) => ({ file: m[1], anchor: (m[2] || '').replace('#', '') }));
   if (!links.length) { fail(`${page} — no internal .html links found`); continue; }
   let bad = 0;
   for (const { file, anchor } of links) {
-    if (!existsSync(resolve(ROOT, file))) { fail(`${page} — links to missing file ${file}`); bad++; continue; }
-    if (anchor && !anchorIds(file).has(anchor)) { fail(`${page} — link ${file}#${anchor}: anchor not found on target`); bad++; }
+    const templated = file.includes('${');
+    if (templated ? !templatedTargetExists(file) : !existsSync(resolve(ROOT, DIR, file))) {
+      fail(`${page} — links to missing file ${file}`); bad++; continue;
+    }
+    if (anchor && !templated && !anchorIds(file).has(anchor)) {
+      fail(`${page} — link ${file}#${anchor}: anchor not found on target`); bad++;
+    }
   }
   if (!bad) ok(`${page} — ${links.length} internal links verified`);
 }
@@ -152,7 +170,7 @@ for (const page of PAGES) {
 console.log('\n[7] Page CSS isolation sanity');
 const pageOnlyBlocks = {
   'index.html': ['hero', 'subnav', 'tile', 'promo', 'artisan', 'testimonial', 'motif', 'newsletter', 'pullquote', 'medallion', 'featured-grid', 'category-grid', 'home-best', 'story-band', 'scroll-hint'],
-  // NOTE: .shop-empty lives in global.css — shared by shop + product (not-found state)
+  // NOTE: .shop-empty lives in the inlined global CSS — shared by shop + product (not-found state)
   'shop.html': ['shop-layout', 'filters', 'shop-toolbar', 'shop-search', 'search__input', 'load-more', 'filter-toggle'],
   'product.html': ['pdp', 'gallery', 'swatch', 'accordion', 'editorial-card', 'option-group'],
   'cart.html': ['cart-layout', 'cart-item', 'cart-summary', 'discount-form', 'cart-empty'],
@@ -162,6 +180,27 @@ for (const [page, blocks] of Object.entries(pageOnlyBlocks)) {
   const missing = blocks.filter((b) => !css.includes(`.${b}`));
   if (missing.length) fail(`${page} — expected page CSS missing: ${missing.join(', ')}`);
   else ok(`${page} — page CSS blocks present`);
+}
+
+/* ——— 8. Generated product pages consistency ——— */
+
+console.log('\n[8] Generated product pages');
+if (!GENERATED_PAGES.length) {
+  fail('no product-N.html files found — run scripts/generate-product-pages.mjs');
+} else {
+  for (const page of GENERATED_PAGES) {
+    const html = read(page);
+    const id = Number(page.match(/\d+/)[0]);
+    const title = (html.match(/<title>([^<]+)<\/title>/) || [])[1];
+    const hasFixedRender = html.includes(`renderProduct(${id});`);
+    const hasDynamicTail = html.includes("params.get('id')");
+    const problems = [];
+    if (hasDynamicTail) problems.push('still reads ?id= from the query string');
+    if (!hasFixedRender) problems.push(`missing fixed renderProduct(${id}) call`);
+    if (!title || title === 'Product — Serat Batik Atelier') problems.push('generic title (expected product name)');
+    if (problems.length) fail(`${page} — ${problems.join('; ')}`);
+    else ok(`${page} — "${title}" (fixed id ${id})`);
+  }
 }
 
 /* ——— Summary ——— */
