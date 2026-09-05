@@ -813,6 +813,48 @@ img {
   }
 }
 
+/* Language switcher (global nav action) */
+.lang-switcher {
+  position: relative;
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 148px;
+  padding: 6px;
+  background: var(--color-snow-white);
+  border: 1px solid var(--border-light-strong);
+  border-radius: var(--radius-links);
+  z-index: 95;
+}
+
+.lang-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-links);
+  font-size: var(--text-body-sm);
+  font-weight: var(--fw-semi);
+  color: var(--color-mountain-slate);
+  text-align: left;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.lang-menu__item:hover {
+  background: var(--color-warm-parchment);
+}
+
+.lang-menu__item.is-selected::after {
+  content: '✓';
+  font-size: 12px;
+  color: var(--color-honey-gold);
+}
+
 /* ——— Sub-navigation ——— */
 
 /* Subnav: sits in-flow inside section 2. Once it reaches the navbar while
@@ -2140,6 +2182,31 @@ img {
   font-size: var(--text-body-sm);
   font-weight: var(--fw-semi);
   color: var(--color-mountain-slate);
+}
+
+/* Shop page search — product discovery, part of the page not the navbar */
+.shop-search {
+  margin-bottom: var(--spacing-32);
+}
+
+.shop-search__icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-mountain-slate);
+  fill: none;
+  stroke-width: 1.4;
+  pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .shop-search .search__input {
+    font-size: 20px;
+    padding-block: 12px;
+  }
 }
 
 /* Wishlist modal rows */
@@ -3580,9 +3647,15 @@ img {
 
       <div class="header-right">
         <nav class="header-actions" aria-label="Account and cart">
-          <button class="icon-btn" id="searchBtn" aria-label="Search products" aria-haspopup="dialog">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.8-3.8"></path></svg>
-          </button>
+          <div class="lang-switcher">
+            <button class="icon-btn" id="langBtn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"></path></svg>
+            </button>
+            <div class="lang-menu" id="langMenu" role="menu" aria-label="Language" hidden>
+              <button class="lang-menu__item" role="menuitemradio" aria-checked="true" data-lang="en">English</button>
+              <button class="lang-menu__item" role="menuitemradio" aria-checked="false" data-lang="id">Indonesia</button>
+            </div>
+          </div>
           <button class="icon-btn hide-mobile" id="accountBtn" aria-label="Account">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c1.2-3.4 4.1-5 7.5-5s6.3 1.6 7.5 5"></path></svg>
           </button>
@@ -3687,26 +3760,6 @@ img {
       </div>
       <div class="drawer__foot">
         <a class="btn btn--outline btn--sm" href="#/shop">View Collection</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Search modal -->
-  <div class="modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search products">
-    <div class="modal__overlay" data-close-modal></div>
-    <div class="modal__panel">
-      <div class="modal__head">
-        <h3>Search the collection</h3>
-        <button class="modal__close" data-close-modal aria-label="Close search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-        </button>
-      </div>
-      <div class="modal__body">
-        <div class="search__input-wrap">
-          <label class="visually-hidden" for="searchInput">Search products</label>
-          <input class="search__input" id="searchInput" type="search" placeholder="Parang, dress, fabric…" autocomplete="off">
-        </div>
-        <div class="search__results" id="searchResults"></div>
       </div>
     </div>
   </div>
@@ -4104,59 +4157,61 @@ img {
     if (menuDrawer && menuDrawer.classList.contains('is-open')) closeDrawer(menuDrawer);
     const fd = document.querySelector('#app .filters__drawer.is-open');
     if (fd) closeDrawer(fd);
+    setLangMenu(false);
   });
 
-  /* ——— SEARCH ——— */
+  /* ——— LANGUAGE SWITCHER ——— */
 
-  const searchModal = document.getElementById('searchModal');
-  const searchBtn = document.getElementById('searchBtn');
-  const searchInput = document.getElementById('searchInput');
-  const searchResults = document.getElementById('searchResults');
+  const langBtn = document.getElementById('langBtn');
+  const langMenu = document.getElementById('langMenu');
+  const LANGS = { en: 'English', id: 'Indonesia' };
+  let currentLang = 'en';
+  try { currentLang = localStorage.getItem('serat:lang') || 'en'; } catch (err) { /* storage blocked */ }
+  if (!LANGS[currentLang]) currentLang = 'en';
 
-  function searchProducts(query) {
-    const q = query.trim().toLowerCase();
-    if (!q) return [];
-    return PRODUCTS.filter((p) => [p.name, p.category, p.pattern, p.material, p.description].join(' ').toLowerCase().includes(q)).slice(0, 6);
-  }
-
-  function renderSearchResults(query) {
-    if (!searchResults) return;
-    const results = searchProducts(query);
-    if (!query.trim()) { searchResults.innerHTML = ''; return; }
-    if (!results.length) {
-      searchResults.innerHTML = `<p class="search__empty">No pieces match “${query.trim()}” — try “parang”, “dress”, or “fabric”.</p>`;
-      return;
+  function applyLang(lang) {
+    if (!LANGS[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('serat:lang', lang); } catch (err) { /* storage blocked */ }
+    if (langMenu) {
+      langMenu.querySelectorAll('.lang-menu__item').forEach((item) => {
+        const active = item.dataset.lang === currentLang;
+        item.setAttribute('aria-checked', String(active));
+        item.classList.toggle('is-selected', active);
+      });
     }
-    searchResults.innerHTML = results.map((p) => `
-      <a class="search-result" href="#/product/${p.id}">
-        <img src="${imgURL(p.image, 300)}" alt="" width="64" height="84" loading="lazy">
-        <span>
-          <span class="search-result__name">${p.name}</span>
-          <span class="search-result__cat">${getCategoryLabel(p.category)} · ${p.pattern}</span>
-        </span>
-        <span class="search-result__price">${formatIDR(p.price)}</span>
-      </a>`).join('');
   }
 
-  if (searchBtn && searchModal) {
-    searchBtn.addEventListener('click', () => {
-      openModal(searchModal, searchInput);
-      if (searchInput) {
-        searchInput.value = '';
-        renderSearchResults('');
-        setTimeout(() => searchInput.focus(), 60);
-      }
+  function setLangMenu(open) {
+    if (!langMenu) return;
+    langMenu.hidden = !open;
+    if (langBtn) langBtn.setAttribute('aria-expanded', String(open));
+  }
+
+  if (langBtn && langMenu) {
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setLangMenu(langMenu.hidden);
+    });
+    langMenu.addEventListener('click', (e) => {
+      const item = e.target.closest('.lang-menu__item');
+      if (!item) return;
+      applyLang(item.dataset.lang);
+      setLangMenu(false);
+      langBtn.focus();
+    });
+    langMenu.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { setLangMenu(false); langBtn.focus(); }
     });
   }
-  if (searchInput) {
-    searchInput.addEventListener('input', () => renderSearchResults(searchInput.value));
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const first = searchResults.querySelector('.search-result');
-        if (first) window.location.hash = first.getAttribute('href');
-      }
-    });
-  }
+
+  document.addEventListener('click', (e) => {
+    const sw = document.querySelector('.lang-switcher');
+    if (sw && !sw.contains(e.target)) setLangMenu(false);
+  });
+
+  applyLang(currentLang);
 
   /* ——— WISHLIST MODAL ——— */
 
@@ -4603,6 +4658,16 @@ img {
     return items;
   }
 
+  // Keep the URL hash in sync with the search query (#/shop?q=…)
+  function syncShopUrl() {
+    const p = new URLSearchParams();
+    if (shopState.category !== 'all') p.set('cat', shopState.category);
+    if (shopState.tag === 'new') p.set('tag', 'new');
+    if (shopState.q) p.set('q', shopState.q);
+    const qs = p.toString();
+    history.replaceState(null, '', `#/shop${qs ? `?${qs}` : ''}`);
+  }
+
   const shopTemplate = `
     <div class="page-head">
       <div class="container page-head__inner">
@@ -4617,6 +4682,13 @@ img {
     </div>
 
     <div class="container">
+      <div class="shop-search">
+        <label class="visually-hidden" for="shopSearchInput">Search products</label>
+        <div class="search__input-wrap">
+          <input class="search__input" id="shopSearchInput" type="search" placeholder="Search the collection — parang, dress, fabric…" autocomplete="off">
+          <svg class="shop-search__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.8-3.8"></path></svg>
+        </div>
+      </div>
       <div class="shop-layout">
         <aside class="filters" aria-label="Product filters">
           <div class="filters__drawer" id="filtersDrawer">
@@ -4735,7 +4807,7 @@ img {
     document.title = 'The Collection — Serat Batik Atelier';
     if (params) {
       if (params.get('cat')) shopState.category = params.get('cat');
-      if (params.has('q')) shopState.q = params.get('q').trim();
+      shopState.q = params.has('q') ? params.get('q').trim() : '';
       if (params.get('tag') === 'new') shopState.tag = 'new';
     }
     shopState.visible = PAGE_SIZE;
@@ -4771,6 +4843,27 @@ img {
     const sort = document.getElementById('sortSelect');
     if (sort) sort.addEventListener('change', () => { shopState.sort = sort.value; renderShopGrid(); });
 
+    // Product search lives here, on the shop page, not in the global navbar
+    const searchBox = document.getElementById('shopSearchInput');
+    if (searchBox) {
+      searchBox.value = shopState.q;
+      searchBox.addEventListener('input', () => {
+        shopState.q = searchBox.value.trim();
+        shopState.visible = PAGE_SIZE;
+        syncShopUrl();
+        renderShopGrid();
+      });
+      searchBox.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          searchBox.value = '';
+          shopState.q = '';
+          syncShopUrl();
+          renderShopGrid();
+          searchBox.blur();
+        }
+      });
+    }
+
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     if (loadMoreBtn) loadMoreBtn.addEventListener('click', () => { shopState.visible += PAGE_SIZE; renderShopGrid(); });
 
@@ -4781,6 +4874,9 @@ img {
       shopState.q = '';
       shopState.tag = '';
       shopState.visible = PAGE_SIZE;
+      const searchBox = document.getElementById('shopSearchInput');
+      if (searchBox) searchBox.value = '';
+      syncShopUrl();
       syncShopPills();
       renderShopGrid();
     };
@@ -5195,6 +5291,7 @@ img {
     if (menuDrawer && menuDrawer.classList.contains('is-open')) closeDrawer(menuDrawer);
     const fd = document.querySelector('#app .filters__drawer.is-open');
     if (fd) closeDrawer(fd);
+    setLangMenu(false);
   }
 
   function syncSubnav(name, params) {
