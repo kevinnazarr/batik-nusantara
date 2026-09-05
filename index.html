@@ -668,6 +668,8 @@ img {
   border-bottom-color: var(--border-light);
 }
 
+/* The logo sits in the auto track between two equal 1fr tracks, so it is
+   always dead-center of the navbar regardless of left/right content width. */
 .header-main {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -699,11 +701,6 @@ img {
   letter-spacing: 0.167em;
   text-transform: uppercase;
   color: var(--color-mountain-slate);
-  transition: background-color var(--dur-fast) var(--ease-out);
-}
-
-.menu-toggle:hover {
-  background: var(--color-warm-parchment);
 }
 
 .menu-toggle .icon {
@@ -772,11 +769,6 @@ img {
   height: 44px;
   border-radius: 50%;
   color: var(--color-mountain-slate);
-  transition: background-color var(--dur-fast) var(--ease-out);
-}
-
-.icon-btn:hover {
-  background: var(--color-warm-parchment);
 }
 
 .icon-btn svg {
@@ -823,8 +815,33 @@ img {
 
 /* ——— Sub-navigation ——— */
 
+/* Subnav: sits in-flow inside section 2. Once it reaches the navbar while
+   scrolling down it is promoted to `fixed` and stays pinned below the header
+   to the end of the page — section 2's end is NOT a boundary. A placeholder
+   preserves its flow space so content never jumps when the state changes. */
 .subnav {
+  position: sticky;             /* no-JS fallback: pins only within section 2 */
+  top: var(--header-h, 76px);
+  z-index: 90;
+  background: var(--color-snow-white);
   border-top: 1px solid var(--border-light);
+}
+
+/* JS promotes the subnav to fixed once engaged (no longer bounded by section 2) */
+.subnav.is-sticky {
+  position: fixed;
+  top: var(--header-h, 76px);
+  left: 0;
+  right: 0;
+}
+
+/* Holds the subnav's flow space while it is fixed (height set by JS) */
+.subnav-placeholder {
+  display: none;
+}
+
+.subnav.is-sticky + .subnav-placeholder {
+  display: block;
 }
 
 .subnav__list {
@@ -2525,10 +2542,6 @@ img {
   .testimonial-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .header-main {
-    grid-template-columns: 1fr auto 1fr;
-  }
 }
 
 @media (max-width: 639px) {
@@ -3584,19 +3597,6 @@ img {
         </nav>
       </div>
     </div>
-
-    <nav class="subnav" aria-label="Shop by category">
-      <div class="container subnav__list">
-        <a class="subnav__link" href="#/shop">Shop All</a>
-        <a class="subnav__link" href="#/shop?cat=Shirts">Batik Shirts</a>
-        <a class="subnav__link" href="#/shop?cat=Dresses">Dresses</a>
-        <a class="subnav__link" href="#/shop?cat=Outerwear">Outerwear</a>
-        <a class="subnav__link" href="#/shop?cat=Fabric">Fabric</a>
-        <a class="subnav__link" href="#/shop?cat=Accessories">Accessories</a>
-        <a class="subnav__link" href="#/shop?tag=new">New Arrivals</a>
-        <a class="subnav__link" href="#/story">The Story</a>
-      </div>
-    </nav>
   </header>
 
   <main id="app" tabindex="-1"></main>
@@ -4040,6 +4040,14 @@ img {
     onScroll();
   }
 
+  /* Sticky subnav offset: keep it flush below the actual header height */
+  const syncHeaderHeight = () => {
+    const h = document.getElementById('siteHeader');
+    if (h) document.documentElement.style.setProperty('--header-h', `${h.offsetHeight}px`);
+  };
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+
   function openDrawer(el) {
     if (!el) return;
     el.classList.add('is-open');
@@ -4280,6 +4288,23 @@ img {
           <p class="eyebrow">Featured Collections</p>
           <h2 class="heading-lg" id="featuredTitle">Three ways to wear heritage.</h2>
         </div>
+      </div>
+
+      <nav class="subnav" aria-label="Shop by category">
+        <div class="container subnav__list">
+          <a class="subnav__link" href="#/shop">Shop All</a>
+          <a class="subnav__link" href="#/shop?cat=Shirts">Batik Shirts</a>
+          <a class="subnav__link" href="#/shop?cat=Dresses">Dresses</a>
+          <a class="subnav__link" href="#/shop?cat=Outerwear">Outerwear</a>
+          <a class="subnav__link" href="#/shop?cat=Fabric">Fabric</a>
+          <a class="subnav__link" href="#/shop?cat=Accessories">Accessories</a>
+          <a class="subnav__link" href="#/shop?tag=new">New Arrivals</a>
+          <a class="subnav__link" href="#/story">The Story</a>
+        </div>
+      </nav>
+      <div class="subnav-placeholder" aria-hidden="true"></div>
+
+      <div class="container">
         <div class="featured-grid">
           <a class="tile tile--portrait reveal" style="--reveal-delay:0ms" href="#/shop?cat=Fabric">
             <img src="${imgURL('1761517099330-13b34b141d74', 1000)}" alt="Brown and cream heritage batik fabric" loading="lazy" width="800" height="1067">
@@ -5154,6 +5179,8 @@ img {
   /* ——— ROUTER ——— */
 
   let currentRoute = 'home';
+  let teardownStickySubnav = null;
+  let refreshStickySubnav = null;
 
   function parseHash() {
     const h = window.location.hash.replace(/^#\/?/, '') || '';
@@ -5187,6 +5214,7 @@ img {
 
   function navigate() {
     closeOverlays();
+    if (teardownStickySubnav) teardownStickySubnav();
     const { segs, params } = parseHash();
     const name = segs[0] || 'home';
     currentRoute = name;
@@ -5215,6 +5243,9 @@ img {
     } else {
       window.scrollTo(0, 0);
     }
+
+    // Re-evaluate sticky state against the final scroll position of this route
+    if (refreshStickySubnav) refreshStickySubnav();
   }
 
   function renderHome() {
@@ -5224,6 +5255,83 @@ img {
     if (best) renderGrid(best, PRODUCTS.filter((p) => p.bestSeller).slice(0, 4));
     wireNewsletter();
     observeReveals();
+    initStickySubnav();
+  }
+
+  /* ——— STICKY SUBNAV ———
+     Starts in-flow inside section 2. When scrolling down and the subnav's
+     natural position reaches the navbar it is promoted to `fixed` and stays
+     pinned below the header to the end of the page — section 2's end is not a
+     boundary. Scrolling back up keeps it pinned until section 2 is reached
+     again, then it returns to its natural spot. A hidden placeholder holds its
+     flow space so the layout never jumps on state change. ——— */
+
+  function initStickySubnav() {
+    if (teardownStickySubnav) teardownStickySubnav();
+
+    const subnav = document.querySelector('#app .subnav');
+    const placeholder = document.querySelector('#app .subnav-placeholder');
+    if (!subnav || !placeholder) return;
+
+    const header = document.getElementById('siteHeader');
+    let sticky = false;
+    let headerH = header ? header.offsetHeight : 76;
+    let naturalTop = measureNaturalTop();
+
+    // Document-space top of the subnav's in-flow position (section 2).
+    // Measured from the placeholder when pinned, since the fixed subnav no
+    // longer occupies its natural spot.
+    function measureNaturalTop() {
+      const el = sticky ? placeholder : subnav;
+      return el.getBoundingClientRect().top + window.scrollY;
+    }
+
+    function setSticky(on) {
+      if (on === sticky) return;
+      sticky = on;
+      subnav.classList.toggle('is-sticky', on);
+      if (on) placeholder.style.height = `${subnav.offsetHeight}px`;
+    }
+
+    // Pinned exactly when the natural position reaches the navbar line:
+    // at that instant fixed position and natural position coincide, so the
+    // switch is seamless in both directions — no jump, no flicker.
+    function update() {
+      if (!subnav.isConnected) {
+        teardown();
+        return;
+      }
+      setSticky(window.scrollY + headerH >= naturalTop);
+    }
+
+    const onScroll = () => update();
+    const onResize = () => {
+      headerH = header ? header.offsetHeight : 76;
+      naturalTop = measureNaturalTop();
+      update();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    refreshStickySubnav = update;
+
+    // Font swaps can resize the bar; keep the placeholder's height in sync
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        if (sticky) placeholder.style.height = `${subnav.offsetHeight}px`;
+      });
+    }
+
+    function teardown() {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+      subnav.classList.remove('is-sticky');
+      teardownStickySubnav = null;
+      refreshStickySubnav = null;
+    }
+    teardownStickySubnav = teardown;
+
+    update();
   }
 
   window.addEventListener('hashchange', navigate);
