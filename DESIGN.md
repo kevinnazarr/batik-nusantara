@@ -1,554 +1,461 @@
----
-version: alpha
-name: Airtable-design-analysis
-description: A sober, editorial workflow-software interface anchored on white canvas and dark-ink type, where brand voltage comes from full-bleed signature cards in coral, dark green, peach, and dark navy that punctuate long-scroll explainer pages. Primary actions use a near-black pill CTA; secondary actions sit in a white outlined button. Type runs Haas Grotesk in modest weights — never bold for its own sake.
+# Batik Nusantara — Style Reference
+> warisan yang dipakai hari ini · heritage woven into everyday
 
-colors:
-  primary: "#181d26"
-  primary-active: "#0d1218"
-  ink: "#181d26"
-  body: "#333840"
-  muted: "#41454d"
-  hairline: "#dddddd"
-  border-strong: "#9297a0"
-  canvas: "#ffffff"
-  surface-soft: "#f8fafc"
-  surface-strong: "#e0e2e6"
-  surface-dark: "#181d26"
-  surface-dark-elevated: "#1d1f25"
-  signature-coral: "#aa2d00"
-  signature-forest: "#0a2e0e"
-  signature-cream: "#f5e9d4"
-  signature-peach: "#fcab79"
-  signature-mint: "#a8d8c4"
-  signature-yellow: "#f4d35e"
-  signature-mustard: "#d9a441"
-  on-primary: "#ffffff"
-  on-dark: "#ffffff"
-  link: "#1b61c9"
-  link-active: "#1a3866"
-  info: "#254fad"
-  info-border: "#458fff"
-  success: "#006400"
-  success-border: "#39bf45"
-  pricing-ink: "#1d1f25"
+**Theme:** editorial
 
-typography:
-  display-xl:
-    fontFamily: "Haas Groot Disp, Haas, sans-serif"
-    fontSize: 48px
-    fontWeight: 500
-    lineHeight: 1.1
-    letterSpacing: 0
-  display-lg:
-    fontFamily: "Haas Groot Disp, Haas, sans-serif"
-    fontSize: 40px
-    fontWeight: 400
-    lineHeight: 1.2
-    letterSpacing: 0
-  display-md:
-    fontFamily: "Haas Groot Disp, Haas, sans-serif"
-    fontSize: 32px
-    fontWeight: 400
-    lineHeight: 1.2
-    letterSpacing: 0
-  title-lg:
-    fontFamily: "Haas, sans-serif"
-    fontSize: 24px
-    fontWeight: 400
-    lineHeight: 1.35
-    letterSpacing: 0.12px
-  title-md:
-    fontFamily: "Haas Groot Disp, Haas, sans-serif"
-    fontSize: 20px
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: 0
-  title-sm:
-    fontFamily: "Haas, sans-serif"
-    fontSize: 18px
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: 0
-  label-md:
-    fontFamily: "Haas, sans-serif"
-    fontSize: 16px
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: 0
-  button:
-    fontFamily: "Haas, sans-serif"
-    fontSize: 16px
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: 0
-  body-md:
-    fontFamily: "Haas, sans-serif"
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.25
-    letterSpacing: 0
-  caption:
-    fontFamily: "Haas, sans-serif"
-    fontSize: 14px
-    fontWeight: 500
-    lineHeight: 1.35
-    letterSpacing: 0.16px
-  legal:
-    fontFamily: "Haas, sans-serif"
-    fontSize: 13.12px
-    fontWeight: 600
-    lineHeight: 1.2
-    letterSpacing: 0
-  pricing-display:
-    fontFamily: "Inter Display, system-ui, sans-serif"
-    fontSize: 44.8px
-    fontWeight: 475
-    lineHeight: 1.1
-    letterSpacing: 0
-  pricing-section:
-    fontFamily: "Inter Display, system-ui, sans-serif"
-    fontSize: 28px
-    fontWeight: 475
-    lineHeight: 1.2
-    letterSpacing: 0
-  pricing-card-title:
-    fontFamily: "Inter Display, system-ui, sans-serif"
-    fontSize: 20px
-    fontWeight: 475
-    lineHeight: 1.3
-    letterSpacing: 0
+Batik Nusantara adalah single-store ecommerce untuk batik Indonesia — kemeja, dress, blouse, kain, sarung, tas, dan produk turunan batik. Sistem visualnya meminjam logika editorial Airtable: kanvas putih bersih, tipografi near-black yang tegas, whitespace yang sangat generus, dan signature cards full-bleed sebagai brand voltage yang memecah scroll panjang. Batik hadir bukan sebagai ornamen ramai, melainkan sebagai tekstur — close-up canting, serat katun, dan motif yang di-crop ketat seperti material story, bukan kostum. Kesan yang dikejar: refined, contemporary, premium yang approachable — majalah fashion artisan, bukan katalog grosir dan bukan museum yang kaku.
 
-rounded:
-  xs: 2px
-  sm: 6px
-  md: 10px
-  lg: 12px
-  pill: 9999px
-  full: 9999px
+## Tokens — Colors
 
-spacing:
-  xxs: 4px
-  xs: 8px
-  sm: 12px
-  md: 16px
-  lg: 24px
-  xl: 32px
-  xxl: 48px
-  section: 96px
+| Name | Value | Token | Role |
+|------|-------|-------|------|
+| Ink Near-Black | `#181d26` | `--color-ink` | Primary absolut — teks utama, header, tombol primary, icon fill, dan dark surface. Near-black adalah brand color, bukan aksen |
+| Ink Active | `#0d1218` | `--color-ink-active` | Pressed/active state untuk primary button dan interactive dark element. Sedikit lebih pekat dari Ink |
+| Snow White | `#ffffff` | `--color-snow-white` | Canvas utama, header bar, card background, dan negative space dominan |
+| Surface Soft | `#f8fafc` | `--color-surface-soft` | Alternating band yang sangat lembut — katalog grid, filter bar, dan section pemisah yang hampir putih |
+| Surface Strong | `#e0e2e6` | `--color-surface-strong` | Border hairline yang sedikit lebih gelap, divider, dan surface sekunder untuk skeleton/placeholder |
+| Stone Gray | `#9297a0` | `--color-stone-gray` | Border strong, secondary text, metadata, dan muted UI elements |
+| Body Gray | `#333840` | `--color-body` | Body copy utama di atas putih — sedikit lebih lunak dari Ink untuk readability panjang |
+| Muted | `#41454d` | `--color-muted` | Caption, helper text, dan secondary label |
+| Hairline | `#dddddd` | `--color-hairline` | Hairline border default untuk card, input, dan table row divider |
+| Link Blue | `#1b61c9` | `--color-link` | Hanya untuk text link inline — JANGAN dipakai sebagai warna tombol primary (kesalahan umum) |
+| Link Active | `#1a3866` | `--color-link-active` | Hover/active state untuk text link |
+| Success | `#006400` | `--color-success` | Stok tersedia, badge berhasil, dan status completed |
+| Warning | `#d97706` | `--color-warning` | Stok menipis, peringatan checkout |
+| Danger | `#dc2626` | `--color-danger` | Error, stok habis, validasi gagal |
+| Coral Signature | `#aa2d00` | `--color-coral` | Signature card full-bleed #1 — brand voltage untuk promo, editorial highlight, dan campaign band (jangan dipakai sebagai accent kecil) |
+| Forest Signature | `#0a2e0e` | `--color-forest` | Signature card full-bleed #2 — deep green untuk koleksi premium / heritage story |
+| Cream Signature | `#f5e9d4` | `--color-cream` | Signature card full-bleed #3 — warm cream untuk story/cultural band, kontras lembut terhadap putih |
+| Peach | `#fcab79` | `--color-peach` | Pastel extension — hanya di dalam signature card system, tidak untuk CTA |
+| Mint | `#a8d8c4` | `--color-mint` | Pastel extension — sama seperti Peach |
+| Yellow | `#f4d35e` | `--color-yellow` | Pastel extension |
+| Mustard | `#d9a441` | `--color-mustard` | Pastel extension |
 
-components:
-  button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.button}"
-    rounded: "{rounded.lg}"
-    padding: 16px 24px
-  button-primary-active:
-    backgroundColor: "{colors.primary-active}"
-    textColor: "{colors.on-primary}"
-    rounded: "{rounded.lg}"
-  button-secondary:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.lg}"
-    padding: 16px 24px
-  button-secondary-on-dark:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.lg}"
-    padding: 16px 24px
-  button-legal:
-    backgroundColor: "{colors.link}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.legal}"
-    rounded: "{rounded.xs}"
-    padding: 12px 10px
-  button-icon-circular:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.full}"
-    size: 40px
-  button-pricing-pill:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.pricing-ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.pill}"
-    padding: 12px 24px
-  text-link:
-    backgroundColor: transparent
-    textColor: "{colors.link}"
-    typography: "{typography.body-md}"
-  top-nav:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-md}"
-    height: 64px
-  hero-band:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.display-lg}"
-    padding: 96px
-  signature-coral-card:
-    backgroundColor: "{colors.signature-coral}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.display-md}"
-    rounded: "{rounded.lg}"
-    padding: 48px
-  signature-forest-card:
-    backgroundColor: "{colors.signature-forest}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.display-md}"
-    rounded: "{rounded.lg}"
-    padding: 48px
-  hero-card-dark:
-    backgroundColor: "{colors.surface-dark}"
-    textColor: "{colors.on-dark}"
-    typography: "{typography.display-md}"
-    rounded: "{rounded.lg}"
-    padding: 48px
-  feature-card-tabbed:
-    backgroundColor: "{colors.surface-soft}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-lg}"
-    rounded: "{rounded.lg}"
-    padding: 32px
-  cream-callout-card:
-    backgroundColor: "{colors.signature-cream}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-lg}"
-    rounded: "{rounded.md}"
-    padding: 24px
-  demo-grid-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.md}"
-    padding: 16px
-  logo-strip:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.muted}"
-    typography: "{typography.body-md}"
-    padding: 32px
-  article-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.title-sm}"
-    rounded: "{rounded.md}"
-    padding: 16px
-  topic-filter-rail:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.body}"
-    typography: "{typography.body-md}"
-    width: 240px
-  text-input:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.sm}"
-    padding: 12px 16px
-    height: 44px
-  text-input-focus:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.sm}"
-  pricing-tier-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.pricing-ink}"
-    typography: "{typography.pricing-card-title}"
-    rounded: "{rounded.md}"
-    padding: 32px
-  pricing-tier-card-featured:
-    backgroundColor: "{colors.surface-soft}"
-    textColor: "{colors.pricing-ink}"
-    typography: "{typography.pricing-card-title}"
-    rounded: "{rounded.md}"
-    padding: 32px
-  pricing-comparison-row:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.body}"
-    typography: "{typography.body-md}"
-    padding: 12px
-  cta-band-light:
-    backgroundColor: "{colors.surface-strong}"
-    textColor: "{colors.ink}"
-    typography: "{typography.display-md}"
-    rounded: "{rounded.lg}"
-    padding: 48px
-  footer:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.body}"
-    typography: "{typography.body-md}"
-    padding: 64px
----
+> Signature palette (coral, forest, cream + peach/mint/yellow/mustard) hanya untuk full-bleed brand voltage bands. Jangan pakai sebagai warna badge kecil, icon, atau button fill.
 
-## Overview
+## Tokens — Typography
 
-Airtable's marketing surfaces are quietly editorial. The base atmosphere is white canvas, dark ink type, generous whitespace, and a near-black pill CTA — nothing is fighting for attention until a section needs to. The brand voltage doesn't come from gradient washes or accent walls; it comes from **full-bleed signature cards** in `{colors.signature-coral}`, `{colors.signature-forest}`, and `{colors.surface-dark}` that punctuate long-scroll explainer pages every two or three screens. Between those signature bands, the page reads like a print magazine: a headline, supporting copy, a small image cluster, then breathing room.
+Sistem ini memakai **satu family saja** — Haas Grotesk / Haas Grotesk Display (berlisensi), dengan substitusi open-source **Inter Display variable** (line-height −5%). Tidak ada pairing serif+sans. Kontras diciptakan dari weight, size, dan whitespace, bukan pergantian family. Ini yang membedakan dari sistem hotel sebelumnya (Avenir + ITC Giovanni).
 
-Type voice is Haas Grotesk at modest weights (400 for display, 500 for sub-titles and buttons). Display headlines never go bolder than 500 — emphasis comes from size and color contrast, not from weight. Body copy stays at 14px / 400 throughout. The pricing surface runs its own dialect: **Inter Display** at unusual mid-weights (475 / 575) and **pill-shaped buttons** (`{rounded.pill}`) that don't appear on any other page — a deliberate sub-system signaling "this page is about commercial precision."
+### Inter Display Variable — Semua peran: display, UI, navigation, body, price, label
 
-**Key Characteristics:**
-- Primary CTA is `{colors.primary}` (near-black ink) with white text and a `{rounded.lg}` (12px) corner — it reads as confident and final, never decorative.
-- Secondary CTA is a `{colors.canvas}` button with `{colors.ink}` text and a hairline outline. The two together form Airtable's signature button pair.
-- Hero is white canvas. There is no atmospheric gradient, no mesh, no background flourish. The brand strength comes from the type and the buttons sitting in clean whitespace.
-- Brand voltage lives in **signature surface cards**: `{colors.signature-coral}`, `{colors.signature-forest}`, and `{colors.surface-dark}` carry full-bleed product callouts every few screens.
-- Demo-card grids carry product UI fragments on `{colors.signature-peach}`, `{colors.signature-mint}`, `{colors.signature-cream}` and other warm pastel surfaces.
-- Section rhythm: white canvas → coral signature card → white body → cream callout band → dark navy CTA → light gray CTA banner → footer. The canvas resets between every signature surface.
-- Border radius is hierarchical: `{rounded.lg}` (12px) for primary CTAs and large signature cards, `{rounded.md}` (10px) for content cards and demo grids, `{rounded.sm}` (6px) for inputs, `{rounded.full}` for icon buttons. Pricing buttons jump to `{rounded.pill}` to mark themselves as a separate dialect.
-- Vertical rhythm is `{spacing.section}` (96px) between major bands — universal across every page.
+- **Substitute:** Inter Display variable → Inter → system-ui
+- **Weights:** 400 (regular), 475 (price), 500 (medium), 600/700 hanya untuk legal 13.12px
+- **Features:** tabular numerals untuk harga, `font-variant-numeric: tabular-nums`
+- **Role:** Satu family untuk seluruh interface. Display headline terasa editorial karena tracking dan whitespace, bukan karena serif.
 
-## Colors
+### Type Scale
 
-### Brand & Accent
-- **Primary** (`{colors.primary}` — #181d26): The dominant brand color. Used for the primary CTA background, h1/h2 display type, and the `{component.surface-dark}` band. Not "blue, then black" — black IS the primary throughout the marketing system.
-- **Primary Active** (`{colors.primary-active}` — #0d1218): The press state on primary buttons.
+| Role | Size | Weight | Line Height | Letter Spacing | Token | Penggunaan |
+|------|------|--------|-------------|----------------|-------|------------|
+| legal | 13.12px | 600 | 1.2 | — | `--text-legal` | Footnote legal, disclaimer kecil |
+| caption | 14px | 500 | 1.35 | — | `--text-caption` | Eyebrow, kategori kecil uppercase tracked, metadata produk |
+| body | 14px | 400 | 1.25 | — | `--text-body` | Body default, deskripsi produk ringkas |
+| label | 16px | 500 | 1.4 | — | `--text-label` | Label form, filter, nav item, button text |
+| title-sm | 18px | 500 | 1.4 | — | `--text-title-sm` | Nama produk di card, sub-section title |
+| title-md | 20px | 400 | 1.5 | — | `--text-title-md` | Section heading kecil, drawer title |
+| title-lg | 24px | 400 | 1.35 | — | `--text-title-lg` | Section heading, cart/drawer heading |
+| display-md | 32px | 400 | 1.2 | — | `--text-display-md` | Product detail title, collection heading |
+| display-lg | 40px | 400 | 1.2 | — | `--text-display-lg` | Hero headline di light canvas |
+| display-xl | 48px | 500 | 1.1 | — | `--text-display-xl` | Hero display besar — trust/heritage statement |
+| price | 16–20px | 475 | 1.2 | — | `--text-price` | Harga produk, selalu tabular-nums, weight 475 |
 
-### Surface
-- **Canvas** (`{colors.canvas}` — #ffffff): The default page surface; the floor of every editorial body.
-- **Surface Soft** (`{colors.surface-soft}` — #f8fafc): Tabbed feature cards and the featured pricing tier.
-- **Surface Strong** (`{colors.surface-strong}` — #e0e2e6): The light gray "Start building with Airtable" CTA banner near the footer.
-- **Surface Dark** (`{colors.surface-dark}` — #181d26): The dark navy CTA cards used mid-page (for example "The path to 10× every person in your organization").
-- **Surface Dark Elevated** (`{colors.surface-dark-elevated}` — #1d1f25): The articles-page hero base behind the rainbow-stripe overlay.
-- **Hairline** (`{colors.hairline}` — #dddddd): The 1px border tone for input outlines, table dividers, secondary-button outlines.
+> Display weights **400–500 saja**. Jangan pakai 600/700 untuk headline (hanya legal). Pricing selalu 475 + tabular-nums agar angka sejajar saat scan katalog.
 
-### Text
-- **Ink** (`{colors.ink}` — #181d26): The strongest text — h1/h2 display type and primary button text-on-light. Same hex as `{colors.primary}` because they are the same role expressed at type and button layers.
-- **Body** (`{colors.body}` — #333840): The default running-text color.
-- **Muted** (`{colors.muted}` — #41454d): Footer links, breadcrumbs, captions.
-- **Border Strong** (`{colors.border-strong}` — #9297a0): The 1px outline color on disabled secondary buttons.
-- **On Primary / On Dark** (`{colors.on-primary}` — #ffffff): The text color on primary buttons and dark surfaces.
+## Tokens — Spacing & Shapes
 
-### Signature Card Surfaces
-These are the colors that carry Airtable's brand voltage. They appear as full-bleed, full-card surfaces — never as accents on a small element.
-- **Coral** (`{colors.signature-coral}` — #aa2d00): The largest signature card on the homepage ("Production apps in prototype speed"). Full-bleed dark coral with white type.
-- **Forest** (`{colors.signature-forest}` — #0a2e0e): A deep-green signature card used in the homepage demo-grid cluster.
-- **Cream** (`{colors.signature-cream}` — #f5e9d4): The cream callout band ("The path to 10× every person in your organization") — a soft beige surface holding dark type and product UI fragments.
-- **Peach** (`{colors.signature-peach}` — #fcab79), **Mint** (`{colors.signature-mint}` — #a8d8c4), **Yellow** (`{colors.signature-yellow}` — #f4d35e), **Mustard** (`{colors.signature-mustard}` — #d9a441): Demo-card surfaces that carry small product UI fragments inside the multi-card grid sections.
+**Base unit:** 4px
 
-### Semantic
-- **Link** (`{colors.link}` — #1b61c9): Inline body links and anchor text. Darker on press to `{colors.link-active}` (#1a3866). Despite the `--theme_button-background-primary` CSS-variable name, this color is **not** the primary button color — it is the link color.
-- **Info** (`{colors.info}` — #254fad) and **Info Border** (`{colors.info-border}` — #458fff): Inline info badges and focused-input outline.
-- **Success** (`{colors.success}` — #006400) and **Success Border** (`{colors.success-border}` — #39bf45): Confirmation states.
+**Density:** comfortable — editorial breathing, bukan dense marketplace
 
-## Typography
+### Spacing Scale
 
-### Font Family
-The system runs **Haas / Haas Groot Disp** (Airtable's licensed display + text type). Haas Groot Disp covers display sizes (h1 / h2); Haas Grotesk covers everything 24px and below. The fallback stack walks `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`.
+| Name | Value | Token |
+|------|-------|-------|
+| 4 | 4px | `--spacing-4` |
+| 8 | 8px | `--spacing-8` |
+| 12 | 12px | `--spacing-12` |
+| 16 | 16px | `--spacing-16` |
+| 24 | 24px | `--spacing-24` |
+| 32 | 32px | `--spacing-32` |
+| 48 | 48px | `--spacing-48` |
+| 96 | 96px | `--spacing-96` |
 
-The pricing surface runs a separate **Inter Display** stack at mid-weights (475 / 575) — a deliberate sub-system signaling commercial precision.
+Section band rhythm: **96px** vertikal antar band besar. Horizontal breathing: **48px** di dalam container. Card padding: 48px (signature card), 32px (feature), 24px (cream band), 16px (demo grid).
 
-### Hierarchy
+### Border Radius
 
-| Token | Size | Weight | Line Height | Letter Spacing | Use |
-|---|---|---|---|---|---|
-| `{typography.display-xl}` | 48px | 500 | 1.1 | 0 | Articles page h2 — second-tier editorial headline |
-| `{typography.display-lg}` | 40px | 400 | 1.2 | 0 | Homepage h1 hero |
-| `{typography.display-md}` | 32px | 400 | 1.2 | 0 | Platform-page h2 — feature-section headlines |
-| `{typography.title-lg}` | 24px | 400 | 1.35 | 0.12px | Section titles |
-| `{typography.title-md}` | 20px | 400 | 1.5 | 0 | Sub-section titles in tabbed feature cards |
-| `{typography.title-sm}` | 18px | 500 | 1.4 | 0 | Article-card titles |
-| `{typography.label-md}` | 16px | 500 | 1.4 | 0 | Demo-card titles, list labels |
-| `{typography.button}` | 16px | 500 | 1.4 | 0 | Standard CTA button labels |
-| `{typography.body-md}` | 14px | 400 | 1.25 | 0 | Body copy, footer links, top-nav items |
-| `{typography.caption}` | 14px | 500 | 1.35 | 0.16px | Light captions and meta text |
-| `{typography.legal}` | 13.12px | 600 | 1.2 | 0 | Cookie/legal CTA buttons |
-| `{typography.pricing-display}` | 44.8px | 475 | 1.1 | 0 | Pricing-page h1 |
-| `{typography.pricing-section}` | 28px | 475 | 1.2 | 0 | Pricing-page section heads |
-| `{typography.pricing-card-title}` | 20px | 475 | 1.3 | 0 | Pricing tier card plan name |
+| Element | Value | Token |
+|---------|-------|-------|
+| legal / tag kecil | 2px | `--radius-xs` |
+| inputs, select, filter | 6px | `--radius-sm` |
+| content cards, ProductCard | 10px | `--radius-md` |
+| primary CTA, signature cards | 12px | `--radius-lg` |
+| pricing pill | 9999px | `--radius-pill` |
+| avatar, icon button circular | 9999px | `--radius-full` |
 
-### Principles
-The Haas system prefers weight 400 for display sizes — a 40px h1 is **not** bold. Visual emphasis is delegated to size, color contrast, and the signature surface cards. Where the system does want weight, it pivots to 500 (sub-titles, buttons, article titles), never 600 or 700 in the editorial body. The only true bold (600) lives in `{typography.legal}` — a sign that boldness is reserved for terms-of-service surfaces, not marketing.
+> Konvensi tombol: satu primary (near-black) per viewport. Secondary = white outline hairline di atas dark, atau ghost di atas putih. Radius pill **hanya untuk pricing/badge harga** — tombol utama tetap 12px.
 
-The pricing-page sub-system uses Inter Display at `font-weight: 475` — a custom mid-weight between regular (400) and medium (500), shipped as a variable font.
+### Layout
 
-### Note on Font Substitutes
-If Haas Groot Disp and Haas Grotesk are unavailable, **Inter Display** (variable) is the closest open-source substitute for both — adjust line-height down by ~5% to match Haas's tighter cap-height. For the pricing sub-system, use Inter Display directly. On macOS / iOS, **system-ui** is sufficient; on Windows, the chain falls through to Segoe UI, which is a usable but slightly cooler substitute.
-
-## Layout
-
-### Spacing System
-- **Base unit:** 4px (all spacing snaps to 4-multiples).
-- **Tokens:** `{spacing.xxs}` 4px · `{spacing.xs}` 8px · `{spacing.sm}` 12px · `{spacing.md}` 16px · `{spacing.lg}` 24px · `{spacing.xl}` 32px · `{spacing.xxl}` 48px · `{spacing.section}` 96px.
-- **Section padding (vertical):** `{spacing.section}` (96px) is the universal vertical rhythm constant — every major editorial band on every page uses 96px top + 96px bottom internal padding.
-- **Card internal padding:** `{spacing.xl}` (32px) for tabbed feature cards and pricing tier cards; `{spacing.xxl}` (48px) inside signature coral / forest / dark cards; `{spacing.lg}` (24px) for cream callouts and demo-grid cards.
-- **Gutters:** `{spacing.lg}` (24px) between cards in 3-up grids; `{spacing.md}` (16px) inside denser logo strips and footer column gutters.
-
-### Grid & Container
-- **Max content width:** ~1280px centered, with `{spacing.xxl}` (48px) horizontal breathing room.
-- **Editorial body:** Single 8/12-column at large breakpoints, collapsing to single-column on mobile.
-- **Demo-card grids:** 3 or 4 columns at desktop, 2 at tablet, 1 at mobile. Card sizes are deliberately uneven within the grid to dodge a uniform "spec sheet" feel.
-- **Logo strip:** 6 monochrome partner logos in a single row at desktop; wraps to 3-up on mobile.
-
-### Whitespace Philosophy
-Airtable uses whitespace as the dominant atmospheric tool. Hero sections sit in 96px+ of pure whitespace above and below the headline + sub-headline pair, with no decoration in that whitespace. The hero is intentionally calm — there is no gradient, no aurora, no atmospheric mesh behind the type. The system trusts whitespace alone to do the framing.
-
-## Elevation & Depth
-
-| Level | Treatment | Use |
-|---|---|---|
-| Flat | No shadow, no border | Body sections, top nav, footer |
-| Soft hairline | 1px `{colors.hairline}` border | Inputs, sub-nav rails, comparison-table dividers, secondary buttons |
-| Button rest | Soft drop with subtle blue-tinted glow at low alpha | Primary CTA buttons (the blue tint is a holdover from the link color and reads as a faint accent under the dark button) |
-| Button focus | Outer 2px blue ring at higher alpha | Keyboard focus state on primary buttons |
-| Card flat | No shadow; relies on color contrast against the surface band | Signature coral / forest / dark cards, cream callouts, demo-grid cards |
-
-The elevation philosophy is **color-block first, shadow second**. Shadows are minimal; depth is delegated to the contrast between white canvas and signature surface cards. There is no soft-glow / atmospheric-shadow / heavy-elevation language anywhere in the marketing system.
-
-### Decorative Depth
-- **Vertical rainbow stripes** appear on the articles hero only — multi-color vertical bands sitting on `{colors.surface-dark-elevated}`. This is a single-page treatment, not a system-wide signature.
-- **Photography-as-depth** in the demo-card grid: every card carries a real product UI screenshot or mockup, contributing depth through legible artifact density rather than decorative effects.
-
-## Shapes
-
-### Border Radius Scale
-
-| Token | Value | Use |
-|---|---|---|
-| `{rounded.xs}` | 2px | Cookie-consent and legal CTA buttons — system-required surfaces |
-| `{rounded.sm}` | 6px | Text inputs, small inline buttons |
-| `{rounded.md}` | 10px | Secondary content cards, article cards, cream callouts |
-| `{rounded.lg}` | 12px | Primary CTA buttons, signature surface cards, tabbed feature cards |
-| `{rounded.pill}` | 9999px | Pricing-page CTA buttons (sub-system only) |
-| `{rounded.full}` | 9999px / 50% | Circular icon buttons, avatar surfaces |
-
-### Photography Geometry
-Product UI screenshots inside demo-card grids retain native aspect ratios (typically 4:3 or 16:10) and crop into `{rounded.md}` containers. Hero illustrations bleed full-width with no rounding. Article-card thumbnails use 16:9 with `{rounded.md}` corners. Avatars in testimonials use `{rounded.full}` (perfect circles). Pricing comparison table images stay rectangular with no rounding.
+- **Page max-width:** 1280px centered
+- **Horizontal breathing:** 48px (16px di mobile)
+- **Section gap:** 96px antar band
+- **Grid katalog:** 2 col mobile → 3 col tablet → 4 col desktop, gap 16–24px
+- **Element gap:** 12–24px
+- **Touch target:** button min 48×48, input 44px height
 
 ## Components
 
-> **No hover states documented.** Per the global no-hover policy (Step 6), every component spec below documents only Default and Active/Pressed states. Variants live as separate entries in the `components:` front matter.
+### Header / Navigation Bar
+**Role:** Site-wide top bar — wayfinding + commerce actions
 
-**`top-nav`** — A 64px-tall white bar pinned to the top of every page. Airtable wordmark sits at left; primary horizontal menu (Platform, Solutions, Resources, Enterprise, Pricing) sits center-left in `{typography.body-md}`; the right cluster carries a "Book Demo" outline link, "Sign up for free" `{component.button-primary}`, and "Log In" text link. The nav stays light on every page — Airtable does not invert the nav over dark sections.
+Putih `#ffffff`, sticky, hairline border bottom `#dddddd`, tanpa shadow. Kiri: wordmark "BATIK NUSANTARA" Inter 14px medium, tracking 0.08em, `#181d26` + hamburger di mobile. Tengah: nav link Katalog · Koleksi · Cerita · Tentang (Inter 14px 400, `#333840`, hover `#181d26`). Kanan: search icon, akun, wishlist, cart dengan quantity badge (pill, `#181d26` bg, putih text, 18px circle). Cart badge hanya muncul jika >0.
 
-### Buttons
+### ProductCard
+**Role:** Unit katalog — foto + info + harga
 
-**`button-primary`** — The signature primary CTA. Background `{colors.primary}` (near-black), text `{colors.on-primary}`, type `{typography.button}`, padding 16px × 24px, rounded `{rounded.lg}` (12px). This is the "Get started for free" / "Sign up for free" button visible on every hero. It reads as confident and final — not decorative — which is why the system uses it sparingly (one per viewport).
-- Active state: `button-primary-active` darkens to `{colors.primary-active}` (#0d1218).
+Background putih, border 1px `#dddddd`, radius 10px, overflow hidden. Image 4:5, object-cover, hover scale 1.02 (transform only, 240ms). Body padding 12–16px. Title: Inter 18px 500 `#181d26`, 1 baris clamp. Motif/meta: Inter 14px 400 `#41454d`. Price: Inter 16px 475 tabular-nums `#181d26` + strikethrough compare-at `#9297a0` jika diskon. Badge stok: "Tersedia" `#006400` / "Menipis" `#d97706` / "Habis" `#dc2626` — pill kecil 2px radius tidak, tapi 6px. Hover: border menjadi `#9297a0`. Tidak ada shadow.
 
-**`button-secondary`** — White outline button (e.g. "Book demo"). Background `{colors.canvas}`, text `{colors.ink}`, type `{typography.button}`, rounded `{rounded.lg}` (12px), 1px hairline outline. Sits next to `{component.button-primary}` as the "less-committed" choice.
+### ProductGallery
+**Role:** PDP image viewer
 
-**`button-secondary-on-dark`** — Same shape as `{component.button-secondary}` but used on signature coral / forest / dark surfaces. Background `{colors.canvas}`, text `{colors.ink}` — the white button stays white over dark surfaces because the system never inverts to a translucent on-dark style on the marketing site.
+Desktop: 2-column — thumbnail vertikal kiri (64px), main image kanan 4:5, radius 10px. Mobile: swipe horizontal dengan dot indicator. Zoom on click: dialog full-bleed dengan pan. Alt text wajib (motif + warna + bahan). Image optimization Next.js + R2.
 
-**`button-pricing-pill`** — The pricing-page CTA family. Background `{colors.canvas}`, text `{colors.pricing-ink}`, rounded `{rounded.pill}` (9999px), padding 12px × 24px. The only place pill-shape appears in the marketing system. Treat it as part of the pricing sub-system signaling.
+### VariantSelector
+**Role:** Pilih varian SKU (ukuran, warna, motif)
 
-**`button-legal`** — Cookie-consent and legal-banner CTAs. Background `{colors.link}`, text `{colors.on-primary}`, type `{typography.legal}` (13.12px / 600), rounded `{rounded.xs}` (2px), padding 12px × 10px. The 2px corner radius and 600 weight signal "this is a required system surface," not a designed brand surface.
+Segmented pill group untuk ukuran (S/M/L) — pill radius 9999px hanya di sini untuk variant chips? Tidak, variant chips pakai 6px agar konsisten. Selected: bg `#181d26` text putih, border `#181d26`. Unselected: bg putih border `#dddddd` text `#333840`. Disabled (stok 0): opacity 0.4 + strikethrough, tidak bisa klik. Warna: swatch 32px circle dengan ring 1.5px `#181d26` saat selected, plus label motif di bawah.
 
-**`button-icon-circular`** — 40px × 40px circular button with `{colors.canvas}` background, hairline border, and `{colors.ink}` icon. Used for carousel controls, "share", and "back" affordances.
+### Price
+**Role:** Display harga konsisten
 
-**`text-link`** — Inline body links in `{colors.link}` (#1b61c9, the actual link blue). No underline by default. Type inherits `{typography.body-md}`.
+Inter 500/475 tabular-nums. Format: `Rp 399.000`. Jika ada diskon: harga aktif `#181d26` + harga coret `#9297a0` 14px + badge diskon pill putih di atas signature? Badge diskon: bg `#181d26` text putih, radius pill 9999px, padding 4px 8px, Inter 12px 500. Harga tidak pernah pakai warna link blue.
 
-### Cards & Containers
+### QuantitySelector
+**Role:** Stepper jumlah item
 
-**`hero-band`** — The full-page-width white-canvas hero. No surface card, no border, no shadow, no atmospheric gradient — just the headline, sub-headline, and primary + secondary button pair sitting in 96px of whitespace. Vertical padding `{spacing.section}` (96px).
+Border 1px `#dddddd`, radius 6px, height 44px. Button 44×44, Inter 16px, hover bg `#f8fafc`. Input center 48px wide, text center, tabular-nums. Min 1, max = stok varian. Jika stok <5, tampilkan helper "Sisa 3" warna `#d97706`.
 
-**`signature-coral-card`** — The large full-bleed coral card on the homepage ("Production apps in prototype speed"). Background `{colors.signature-coral}` (#aa2d00, a dark coral / oxide red), text `{colors.on-primary}`, rounded `{rounded.lg}` (12px), internal padding `{spacing.xxl}` (48px). Carries an h2 in `{typography.display-md}`, supporting copy in `{typography.body-md}`, and `{component.button-secondary-on-dark}` as the CTA.
+### AddToCartButton (Primary CTA)
+**Role:** Primary action — satu per viewport PDP
 
-**`signature-forest-card`** — A deep green signature card (`{colors.signature-forest}` — #0a2e0e) used as a demo-grid sibling to the coral card on the homepage.
+Background `#181d26`, text putih, Inter 16px 500, radius 12px, padding 14px 24px, width full di mobile / auto di desktop, height 48px. Hover: `#0d1218`. Active/pressed: `#0d1218` + scale 0.98. Disabled: bg `#e0e2e6` text `#9297a0` + cursor not-allowed. Tidak menunggu animasi. Secondary action (Wishlist) = outline hairline `#dddddd`, bg putih, text `#181d26`.
 
-**`hero-card-dark`** — The dark navy mid-page CTA card (e.g. "The path to 10× every person in your organization"). Background `{colors.surface-dark}` (#181d26), text `{colors.on-dark}`, rounded `{rounded.lg}` (12px), internal padding `{spacing.xxl}` (48px). The same color as `{colors.primary}` because the system uses ink as both type color and signature dark surface.
+### CartDrawer
+**Role:** Slide-over keranjang (Framer Motion)
 
-**`feature-card-tabbed`** — Light-cream cards (e.g. the "Coke / Pelosi / Conde Nast / Time Inc" tabbed feature card on the homepage). Background `{colors.surface-soft}`, rounded `{rounded.lg}` (12px), internal padding `{spacing.xl}` (32px). Left rail carries vertically-stacked tab labels in `{typography.title-md}`; right pane shows the active tab's content (illustration + body copy + small CTA).
+Drawer kanan 420px (100vw di mobile), bg putih, border kiri 1px `#dddddd`. Header: "Keranjang (3)" Inter 20px 400 + close. List CartItem dengan divider `#dddddd`. Footer sticky: subtotal (Inter 16px 475 tabular-nums), shipping note, primary CTA "Checkout" full-width `#181d26`. EmptyState: ilustrasi + "Keranjang kosong" + CTA "Mulai Belanja".
 
-**`cream-callout-card`** — Beige callout cards (`{colors.signature-cream}`). Rounded `{rounded.md}` (10px), internal padding `{spacing.lg}` (24px). Carry product UI fragments or stat callouts — softer than the dark/coral signature cards but still a deliberate brand surface.
+### CartItem
+**Role:** Row di drawer/cart page
 
-**`demo-grid-card`** — Used in multi-card grids that punctuate every page. Background `{colors.canvas}` or one of the demo-grid surfaces (`{colors.signature-peach}`, `{colors.signature-mint}`, `{colors.signature-yellow}`, `{colors.signature-mustard}`), rounded `{rounded.md}` (10px), internal padding `{spacing.md}` (16px). Each card frames a product UI fragment. Card heights vary deliberately to dodge a uniform "spec sheet" feel.
+Layout: image 80×100 radius 6px kiri, detail tengah (title 14px 500, variant meta 12px `#41454d`, price 14px 475), stepper + remove kanan. Remove = text link `#9297a0` hover `#dc2626` (text-only, bukan button danger). Divider 1px `#dddddd` antar item. Skeleton saat update quantity (optimistic UI).
 
-**`logo-strip`** — Horizontal monochrome partner-logo row (HBO, Netflix, Amazon, Time, Conde Nast). Logos render in `{colors.muted}`, surface is `{colors.canvas}`, vertical padding `{spacing.xl}` (32px). 6 logos at desktop, 3 at mobile.
+### CouponInput
+**Role:** Input kode voucher di cart/checkout
 
-**`article-card`** — The trending-stories grid on the articles page. Background `{colors.canvas}`, rounded `{rounded.md}` (10px), internal padding `{spacing.md}` (16px). Each card carries a colorful illustrated thumbnail (16:9), a small uppercase category tag, an `{typography.title-sm}` title, and a meta line. 3-up at desktop.
+Input 44px height, border 1px `#dddddd` radius 6px, placeholder `#9297a0`. Button "Pakai" di dalam (suffix) — Inter 14px 500 `#181d26` outline. Success: border `#006400` + message hijau. Error: border `#dc2626` + message merah. Applied coupon ditampilkan sebagai pill removable: bg `#f8fafc` border `#dddddd`, label kode + diskon, × remove.
 
-**`topic-filter-rail`** — The left rail on the articles page. 240px wide, `{colors.canvas}` background, `{typography.body-md}`, vertically grouped category headings ("Marketing", "Product", "Project management", "Operations") with sub-bullets. Active item carries a small numeric count badge.
+### ShippingRateCard
+**Role:** Pilihan kurir (Biteship abstraction)
 
-### Inputs & Forms
+Card border 1px `#dddddd` radius 10px, padding 16px. Selected: border `#181d26` 1.5px + bg `#f8fafc` subtle. Isi: logo kurir 32px, nama layanan, ETA ("1–2 hari"), harga tabular-nums `#181d26`. Radio di kanan. List di dalam checkout step — mobile stack 1 col, desktop 1 col juga (jangan grid).
 
-**`text-input`** — Standard text input. Background `{colors.canvas}`, text `{colors.ink}`, type `{typography.body-md}`, rounded `{rounded.sm}` (6px), padding 12px × 16px, height 44px. 1px hairline border in `{colors.hairline}`.
+### OrderTimeline / OrderStatus
+**Role:** Status tracking pesanan (terpisah: order / payment / shipment)
 
-**`text-input-focus`** — Focus state. Border thickens or recolors to `{colors.info-border}`.
+Vertical stepper, dot 12px + line 1px `#dddddd`. Active dot: bg `#181d26` border 2px putih + ring `#181d26`. Completed: bg `#006400`. Pending: bg `#e0e2e6`. Label: Inter 14px 500 `#181d26` + timestamp 12px `#41454d`. StatusBadge: pill 6px radius, padding 4px 10px, Inter 12px 500 uppercase tracked 0.06em — "Diproses" `#d97706` bg `#fef3c7`, "Dikirim" `#1b61c9` bg `#eff6ff`, "Selesai" `#006400` bg `#dcfce7`, "Batal" `#dc2626` bg `#fee2e2`.
 
-### Pricing Sub-System
+### Breadcrumb
+**Role:** Navigasi hierarki katalog
 
-**`pricing-tier-card`** — Standard tier card. Background `{colors.canvas}`, text `{colors.pricing-ink}`, type `{typography.pricing-card-title}` for the plan name, rounded `{rounded.md}` (10px), internal padding `{spacing.xl}` (32px). Carries the plan name, a price block in `{typography.pricing-display}` (44.8px / 475), feature checklist, and a `{component.button-pricing-pill}` at the bottom.
+Inter 14px 400 `#41454d`, separator `/` atau `·` (`#9297a0`). Current page `#181d26` 500. Link hover `#1b61c9` (satu-satunya tempat link blue muncul sebagai interactive text). Mobile: truncate atau hidden, ganti dengan "← Kembali".
 
-**`pricing-tier-card-featured`** — The featured tier (typically "Team" or "Business"). Background shifts to `{colors.surface-soft}`. No accent border, no badge — the background tone shift is the only signal.
+### FilterBar & Search
+**Role:** Filter katalog — kategori, harga, ukuran, warna, motif
 
-**`pricing-comparison-row`** — Each row of the long comparison table at the bottom of the pricing page. Labels in the left column; checkmarks or values across 4 plan columns. 12px vertical padding per row, hairline divider between rows.
+Bar horizontal sticky di bawah header pada katalog, bg `#ffffff` dengan border bottom `#dddddd`. Chips filter: Inter 14px 400, border 1px `#dddddd` radius 6px, padding 8px 14px. Active chip: bg `#181d26` text putih. Mobile: drawer bottom-sheet (Framer Motion) dengan apply/reset. Search input: 44px height, border `#dddddd`, focus ring 2px `#181d26` (bukan blue), clear button × di suffix.
 
-### Navigation Variants
+### EmptyState / ErrorState / Skeleton
+**Role:** Feedback pattern
 
-**`footer`** — Light surface (`{colors.canvas}`), 6-column link list at desktop covering Platform / Solutions / Resources / Learn / Company sub-trees. Vertical padding `{spacing.section}` divided across upper link block and lower legal row. Type `{typography.body-md}`.
+EmptyState: centered, icon 48px `#9297a0`, title Inter 20px 400 `#181d26`, body 14px `#41454d`, CTA primary. ErrorState: icon `#dc2626` + message + retry button. Skeleton: bg `#e0e2e6` shimmer, radius sesuai komponen (card 10px, text 6px). Jangan pakai spinner besar — skeleton adalah default loading.
 
-**`cta-band-light`** — The light gray "Start building with Airtable" CTA strip near the footer. Background `{colors.surface-strong}` (#e0e2e6), text `{colors.ink}`, rounded `{rounded.lg}` (12px), padding `{spacing.xxl}` (48px). Carries an h2 in `{typography.display-md}` and a `{component.button-primary}`.
+### Signature Card (Brand Voltage)
+**Role:** Full-bleed editorial break — bukan komponen commerce reguler
 
-### Signature Components
+Full-bleed (100vw), padding 48px (mobile) / 80–96px (desktop), radius 12px jika inset, atau 0 jika edge-to-edge. Varian: Coral `#aa2d00` putih text, Forest `#0a2e0e` putih text, Cream `#f5e9d4` Ink text. Isi: eyebrow 12px 500 uppercase tracked 0.12em + headline 40–48px 400 + body 16px + CTA (pill putih jika di atas dark, near-black jika di atas cream). Dipakai untuk: campaign koleksi baru, cerita pengrajin, atau editorial "Mengenal Motif Parang". Jangan pakai signature color untuk badge kecil.
 
-**Articles Vertical Rainbow Stripe Hero** — The articles-page hero treatment. Multi-color vertical bands at varying widths sitting on `{colors.surface-dark-elevated}`. The h1 + sub-head + CTA cluster sits center-left on top of the stripes. This is a single-page hero treatment, not a system-wide signature — do not promote it to a multi-page pattern.
+### Footer
+**Role:** Navigasi sekunder + trust signals
+
+Bg `#181d26`, text `#f8fafc` / muted `#9297a0`. 4 kolom desktop: Brand + tagline, Bantuan, Koleksi, Kontak. Newsletter input dark: bg `#0d1218` border `#41454d` text putih, button putih text `#181d26`. Divider 1px `#41454d`. Bottom bar: © + link legal 13.12px 600 + payment icons + social. Mobile stack 1 col, accordion untuk nav groups.
 
 ## Do's and Don'ts
 
 ### Do
-- Keep `{component.button-primary}` near-black. The brand's primary CTA is `{colors.primary}`, not the link blue. Mixing them up turns a confident hero into a confused one.
-- Reserve `{component.button-primary}` for one primary action per viewport. The system is designed for scarcity at the brand-action layer.
-- Use `{component.button-secondary}` (white with hairline outline) as the natural pair with `{component.button-primary}`. The two together form Airtable's signature button row.
-- Trust whitespace as the hero atmosphere. Hero bands are intentionally calm — no gradient, no mesh, no atmospheric backdrop. Going against this reads as off-brand.
-- Use `{component.signature-coral-card}`, `{component.signature-forest-card}`, and `{component.hero-card-dark}` to break editorial monotony. These are the brand's voltage moments.
-- Keep `{component.demo-grid-card}` heights uneven within a grid. Uniform heights feel like a spec sheet.
-- Treat the pricing surface as its own dialect: keep `{typography.pricing-display}`, `{typography.pricing-card-title}`, and `{component.button-pricing-pill}` together. Mixing them with Haas Grotesk button type breaks the sub-system's voice.
-- Anchor every editorial band with `{spacing.section}` (96px) vertical padding.
+- Gunakan satu family Inter Display untuk semua — headline besar terasa editorial karena **whitespace & tracking**, bukan karena ganti serif
+- Pakai near-black `#181d26` sebagai primary untuk **semua tombol utama** — satu primary per viewport, secondary selalu hairline outline
+- Jaga section rhythm **putih → signature card → putih → cream → dark → putih** — jangan dua surface sama berturut-turut
+- Pertahankan 96px gap antar band besar dan 48px horizontal breathing — biar katalog yang padat tetap breathable
+- Pakai tabular-nums + weight 475 untuk **semua harga** agar scan vertikal di grid rata
+- Perlakukan batik sebagai **material story**: crop ketat motif, macro canting/wax, foto on-model yang natural — bukan pattern fill yang ramai
+- Gunakan radius **12px untuk CTA/signature, 10px untuk card produk, 6px untuk input, pill hanya untuk harga/badge** — jangan random
+- Fokus visual hierarchy: 1) foto produk → 2) nama/harga → 3) CTA → 4) cerita budaya → 5) navigasi sekunder
+- Verifikasi stok/harga/diskon di backend — frontend hanya display, bukan source of truth
 
 ### Don't
-- Don't make `{colors.link}` (#1b61c9) the primary button color. It is the link color. The primary button is `{colors.primary}` (#181d26, near-black). Treating link-blue as the brand action is the most common mistake when reading Airtable's CSS variables.
-- Don't add a gradient backdrop to the hero. Airtable's hero is white, full stop. Mesh, aurora, spotlight gradients all read as "another SaaS template" — not Airtable.
-- Don't bold display-weight type. `{typography.display-xl}` and `{typography.display-lg}` are intentionally weight 400 / 500 — going to 700 reads as marketing-page-template.
-- Don't use `{rounded.pill}` outside the pricing surface. It's a sub-system signal, not a general radius option.
-- Don't repeat the same surface mode in two consecutive bands. The editorial pacing depends on rhythm: white → signature card → white → cream → dark → white. Two whites in a row read as a typography blog.
-- Don't add hover state styling beyond what the system already encodes. The system documents Default and Active/Pressed only.
-- Don't introduce additional accent colors beyond the documented signature card palette. The system's voltage already uses coral, forest, dark navy, cream, peach, mint, yellow, and mustard.
+- Jangan pakai link blue `#1b61c9` untuk tombol — hanya untuk text link inline
+- Jangan pakai coral/forest/cream sebagai fill tombol atau badge kecil — signature colors hanya untuk full-bleed bands
+- Jangan pakai drop shadow tebal — depth dari border 1px `#dddddd` dan kontras surface saja; shadow hanya `0 1px 2px rgba(24,29,38,0.06)` jika benar-benar perlu di atas putih
+- Jangan bold headline (600/700) — display tetap 400–500, bold hanya untuk legal 13.12px
+- Jangan compress section padding di bawah 48px atau grid gap di bawah 12px — density yang padat membunuh kesan premium
+- Jangan pakai motif batik sebagai background tile yang berulang di seluruh page — motif dipakai sebagai **hero image yang di-crop**, bukan wallpaper
+- Jangan campur banyak radius dalam satu view — konsistensi radius adalah sinyal kematangan
+- Jangan buat guest checkout second-class — flow tanpa login harus sama mulusnya dengan yang login
+- Jangan percaya status pembayaran dari frontend — Midtrans webhook adalah source of truth
 
-## Responsive Behavior
+## Surfaces
 
-### Breakpoints
+| Level | Name | Value | Purpose |
+|-------|------|-------|---------|
+| 0 | Snow White Canvas | `#ffffff` | Canvas utama, header, ProductCard, cart drawer, PDP |
+| 1 | Soft Surface | `#f8fafc` | Alternating band lembut, filter bar, skeleton base, selected card tint |
+| 2 | Strong Surface | `#e0e2e6` | Divider kuat, disabled button bg, placeholder, skeleton shimmer |
+| 3 | Ink Surface | `#181d26` | Dark footer, primary button, cart badge, selected variant, signature dark band |
+| 4 | Ink Active | `#0d1218` | Pressed state untuk dark surface, newsletter input bg di footer |
+| — | Coral Signature | `#aa2d00` | Full-bleed campaign band — teks putih |
+| — | Forest Signature | `#0a2e0e` | Full-bleed heritage band — teks putih |
+| — | Cream Signature | `#f5e9d4` | Full-bleed story band — teks Ink |
 
-| Name | Width | Key Changes |
-|---|---|---|
-| Mobile | < 768px | Single-column body; top nav collapses to hamburger; demo-grid drops to 1-up; signature cards stay full-bleed; logo strip wraps to 2 rows; footer collapses to single-column |
-| Tablet | 768–1024px | 2-up demo-grid; top nav stays horizontal but tightens; cream-callout cards stack 2-up; pricing comparison table becomes horizontally scrollable |
-| Desktop | 1024–1440px | 3-up demo-grid (and 4-up for tighter content); full top-nav with all menu items visible; pricing tier cards render 4-across |
-| Wide | > 1440px | Same as Desktop with more outer breathing room; max content width caps at ~1280px and the page adds outer margin rather than scaling type up |
+## Elevation
 
-### Touch Targets
-- `{component.button-primary}` and siblings render at 48 × 48px minimum (16px vertical padding + 16px line-height) — comfortably above WCAG AAA's 44 × 44.
-- `{component.button-icon-circular}` is exactly 40 × 40px — slightly under WCAG's recommended 44, but the centered icon and dot-radius compensate visually.
-- `{component.text-input}` height is 44px.
+Hampir flat — depth dari kontras dan hairline border, bukan shadow. Jika butuh separasi di atas putih (mis. sticky header, drawer, dropdown), pakai maksimal `shadow: 0 1px 2px rgba(24,29,38,0.06)` + border `1px solid #dddddd`. ProductCard, CartItem, Filter chips: **tanpa shadow**, hanya border. Drawer/modal: border + shadow halus tersebut. Jangan pakai shadow besar/blur — rasa editorial datang dari whitespace, bukan elevasi.
 
-### Collapsing Strategy
-- Top nav collapses to a hamburger at < 768px; the menu opens as a full-screen sheet rather than a dropdown.
-- Card grids reduce columns rather than scaling cards down.
-- The `{component.feature-card-tabbed}` re-stacks the tab rail above the content pane on mobile.
-- The pricing comparison table converts to horizontally-scrollable swipe at < 1024px; the four plan headers stay visible while body rows scroll.
+## Imagery
 
-### Image Behavior
-- Demo-card UI screenshots crop to fit their container rather than scaling up.
-- Hero illustrations bleed full-width on mobile, losing horizontal margin.
-- Signature card images (inside coral / forest / dark cards) compress to their card width without cropping.
+Fotografi adalah 50–60% dari visual weight — seperti majalah fashion artisan, bukan marketplace generik.
 
-## Iteration Guide
+- **Product hero:** on-model natural light, background putih/soft `#f8fafc`, pose relaxed, crop 4:5 — jangan studio glossy yang over-retouch
+- **Detail/texture:** macro canting, malam wax, weave katun/sutra, close-up motif Parang/Megamendung/Kawung yang di-crop ketat — dipakai sebagai material story di PDP tab "Cerita Motif"
+- **Lifestyle:** aktivitas harian — kemeja batik di kafe, dress di pasar, kain di among keluarga — warm, human, tidak staged berlebihan
+- **Flat lay:** kain digelar, tas/dompet dari atas, shadow sangat halus — untuk varian warna/motif
+- **Treatment:** full color, warm white balance, tidak ada overlay teal/monochrome. Motif tidak di-recolor — warna asli batik adalah hero. Icon style: line icon 1.5px stroke, `#181d26` atau putih, 20–24px, jangan filled icon
+- **Jangan:** ilustrasi generik, vector batik clip-art, stock photo yang tidak relevan, atau product screenshot
 
-1. Focus on ONE component at a time. Reference its YAML key directly (`{component.button-primary}`, `{component.signature-coral-card}`).
-2. When adding a new component, decide first which sub-system it belongs to: the main editorial system (Haas, `{rounded.lg}`/`{rounded.md}`) or the pricing sub-system (Inter Display, `{rounded.pill}`).
-3. Variants of an existing component (`-active`, `-disabled`, `-focus`) live as separate entries in `components:` — never as nested state objects.
-4. Use `{token.refs}` everywhere prose mentions a color, a radius, a typography role, or a spacing value. Hex codes appear at most once next to the reference.
-5. Never document hover. The system documents Default and Active/Pressed states only.
-6. Run `npx @google/design.md lint DESIGN.md` after edits — `broken-ref`, `contrast-ratio`, and `orphaned-tokens` warnings flag issues automatically.
-7. When in doubt about emphasis: bigger type before bolder type, signature surface card before solid accent.
+## Layout
 
-## Known Gaps
+Katalog-first, bukan hero-first seperti hotel. Struktur halaman tipikal:
 
-- The exact hex values of pastel demo-grid surfaces (`{colors.signature-peach}`, `{colors.signature-mint}`, `{colors.signature-yellow}`, `{colors.signature-mustard}`) are inferred from screenshot pixel sampling. Some product launches may swap these surfaces seasonally.
-- Hover behavior across all components is not documented (per global no-hover policy).
-- Animation and transition timings are not in scope.
-- Form validation states beyond `text-input-focus` are not extracted — error and success states for inputs would need a dedicated form page to confirm.
-- The pricing comparison table's checkmark glyph and column-divider widths are described structurally but not formalized as tokens.
-- The CSS variable `--theme_button-background-primary: #1b61c9` exists at `:root` but is not used as the primary CTA color anywhere on the marketing site. It maps to the link/info color role instead. Documented here so future extractions don't re-trip over the misleading variable name.
+- **Header sticky** (64px) + **FilterBar** (opsional, 52px) di katalog
+- **Hero editorial** hanya di homepage: headline 48px di kiri (max 640px), visual kain/model di kanan — 50/50 di desktop, stack di mobile. Tinggi hero tidak full-viewport agar katalog terlihat di fold (ecommerce signal)
+- **Section rhythm:** putih (katalog/grid) → signature card full-bleed (campaign/cerita) → putih (koleksi curated 3–4 items) → cream (testimoni/pengrajin) → dark footer. Jarak 96px antar band, 48px breathing horizontal (16px mobile)
+- **Grid katalog:** 2 col @ 375px → 3 col @ 768px → 4 col @ 1280px, gap 16px mobile / 24px desktop. ProductCard konsisten 4:5, tidak ada masonry
+- **PDP:** gallery kiri (50%) + info sticky kanan (50%) di desktop; stack di mobile dengan CTA sticky bottom bar (48px height, bg putih + border top, shadow halus)
+- **Checkout:** single column 640px centered, stepper horizontal (Keranjang → Informasi → Pengiriman → Pembayaran), card putih border `#dddddd` radius 10px, gap 24px antar card. Guest checkout toggle di paling atas — tidak disembunyikan
+- **Densitas:** breathable — jangan information-dense. Whitespace adalah kemewahan yang membuat produk batik terasa premium dan approachable
+
+## Agent Prompt Guide
+
+**Quick Color Reference**
+- text: #181d26
+- text-body: #333840
+- background: #ffffff
+- surface-soft: #f8fafc
+- border: #dddddd
+- border-strong: #9297a0
+- primary: #181d26 (tombol utama)
+- primary-active: #0d1218
+- link: #1b61c9 (hanya text link)
+- accent brand voltage: #aa2d00 / #0a2e0e / #f5e9d4 (hanya full-bleed)
+
+**3 Example Component Prompts**
+
+1. Create a catalog ProductCard: container 4:5, bg #ffffff, border 1px #dddddd, radius 10px, overflow hidden. Image 4:5 object-cover, hover scale 1.02 transform 240ms. Body padding 12px. Title Inter 18px 500 #181d26 clamp 1 line. Meta Inter 14px 400 #41454d: "Kawung · Katun Primis". Price Inter 16px 475 tabular-nums #181d26 "Rp 399.000" + compare-at 14px #9297a0 strikethrough if discounted. Badge "Tersedia" 12px 500 bg #dcfce7 text #006400 radius 6px. No shadow.
+
+2. Create a PDP hero: two-column 50/50. Left: ProductGallery — thumbnails 64px vertical + main 4:5 radius 10px, border 1px #dddddd. Right: sticky info. Eyebrow Inter 12px 500 uppercase tracked 0.12em #41454d "KOLEKSI MEGAMENDUNG". Title Inter 32px 400 #181d26 line-height 1.2. Price Inter 20px 475 tabular-nums #181d26. VariantSelector chips 6px radius, selected bg #181d26 text white. QuantitySelector 44px height border #dddddd. Primary CTA full-width bg #181d26 text white Inter 16px 500 radius 12px height 48px, hover #0d1218. Trust row below: icon + "Pengiriman Biteship · Pembayaran Midtrans" 12px #41454d.
+
+3. Create a signature campaign band: full-bleed 100vw bg #aa2d00, padding 80px vertical 48px horizontal. Eyebrow Inter 12px 500 uppercase tracked 0.12em white 0.9 opacity "KOLEKSI BARU". Headline Inter 48px 500 white line-height 1.1 "Parang Kusumo, ditulis ulang". Body Inter 16px 400 white 0.9, max 560px. CTA pill white bg #ffffff text #181d26 Inter 14px 500 radius 12px padding 12px 24px "Lihat Koleksi". Right visual: kain flat-lay 4:3 radius 12px, no border. Section gap 96px before/after.
+
+## Similar Brands
+
+- **COS** — Editorial minimal dengan near-black primary, palette sangat restrained, whitespace generus, dan product photography yang membiarkan material berbicara — referensi utama untuk katalog premium yang tenang.
+- **ARKET** — Skandinavia artisan: grid produk yang breathable, detail material/asal-usul sebagai story layer, dan signature bands yang memecah katalog tanpa mengganggu scanability.
+- **Sejauh Mata Memandang** — Referensi lokal: batik/textile yang diangkat sebagai fashion contemporary, bukan kostum — storytelling motif + sustainability yang relevan untuk heritage positioning Batik Nusantara.
+- **Aritzia** — PDP pattern yang kuat: gallery + sticky info + variant swatch yang jelas, dengan CTA hierarchy yang sangat disiplin (satu primary per viewport).
+- **Everlane** — Transparansi dan editorial copy yang jujur — pendekatan "cerita di balik produk" yang cocok untuk mengangkat pengrajin dan proses tulis/cap batik tanpa kesan museum.
+
+## Quick Start
+
+### CSS Custom Properties
+
+```css
+:root {
+  /* Colors — Core */
+  --color-ink: #181d26;
+  --color-ink-active: #0d1218;
+  --color-snow-white: #ffffff;
+  --color-surface-soft: #f8fafc;
+  --color-surface-strong: #e0e2e6;
+  --color-stone-gray: #9297a0;
+  --color-body: #333840;
+  --color-muted: #41454d;
+  --color-hairline: #dddddd;
+  --color-link: #1b61c9;
+  --color-link-active: #1a3866;
+  --color-success: #006400;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  /* Colors — Signature (full-bleed only) */
+  --color-coral: #aa2d00;
+  --color-forest: #0a2e0e;
+  --color-cream: #f5e9d4;
+  --color-peach: #fcab79;
+  --color-mint: #a8d8c4;
+  --color-yellow: #f4d35e;
+  --color-mustard: #d9a441;
+
+  /* Typography — Family (single family) */
+  --font-display: 'Inter Display', Inter, ui-sans-serif, system-ui, sans-serif;
+
+  /* Typography — Scale */
+  --text-legal: 13.12px;
+  --leading-legal: 1.2;
+  --text-caption: 14px;
+  --leading-caption: 1.35;
+  --text-body: 14px;
+  --leading-body: 1.25;
+  --text-label: 16px;
+  --leading-label: 1.4;
+  --text-title-sm: 18px;
+  --leading-title-sm: 1.4;
+  --text-title-md: 20px;
+  --leading-title-md: 1.5;
+  --text-title-lg: 24px;
+  --leading-title-lg: 1.35;
+  --text-display-md: 32px;
+  --leading-display-md: 1.2;
+  --text-display-lg: 40px;
+  --leading-display-lg: 1.2;
+  --text-display-xl: 48px;
+  --leading-display-xl: 1.1;
+  --text-price: 16px;
+  --leading-price: 1.2;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-price: 475;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  /* Spacing — 4px base */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-96: 96px;
+
+  /* Layout */
+  --page-max-width: 1280px;
+  --section-gap: 96px;
+  --card-padding: 32px;
+  --element-gap: 24px;
+  --horizontal-breathing: 48px;
+
+  /* Border Radius */
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+
+  /* Surfaces */
+  --surface-canvas: #ffffff;
+  --surface-soft: #f8fafc;
+  --surface-strong: #e0e2e6;
+  --surface-ink: #181d26;
+  --surface-ink-active: #0d1218;
+  --surface-coral: #aa2d00;
+  --surface-forest: #0a2e0e;
+  --surface-cream: #f5e9d4;
+}
+```
+
+### Tailwind v4
+
+```css
+@theme {
+  /* Colors — Core */
+  --color-ink: #181d26;
+  --color-ink-active: #0d1218;
+  --color-snow-white: #ffffff;
+  --color-surface-soft: #f8fafc;
+  --color-surface-strong: #e0e2e6;
+  --color-stone-gray: #9297a0;
+  --color-body: #333840;
+  --color-muted: #41454d;
+  --color-hairline: #dddddd;
+  --color-link: #1b61c9;
+  --color-link-active: #1a3866;
+  --color-success: #006400;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  /* Colors — Signature */
+  --color-coral: #aa2d00;
+  --color-forest: #0a2e0e;
+  --color-cream: #f5e9d4;
+  --color-peach: #fcab79;
+  --color-mint: #a8d8c4;
+  --color-yellow: #f4d35e;
+  --color-mustard: #d9a441;
+
+  /* Typography */
+  --font-display: 'Inter Display', Inter, ui-sans-serif, system-ui, sans-serif;
+
+  --text-legal: 13.12px;
+  --leading-legal: 1.2;
+  --text-caption: 14px;
+  --leading-caption: 1.35;
+  --text-body: 14px;
+  --leading-body: 1.25;
+  --text-label: 16px;
+  --leading-label: 1.4;
+  --text-title-sm: 18px;
+  --leading-title-sm: 1.4;
+  --text-title-md: 20px;
+  --leading-title-md: 1.5;
+  --text-title-lg: 24px;
+  --leading-title-lg: 1.35;
+  --text-display-md: 32px;
+  --leading-display-md: 1.2;
+  --text-display-lg: 40px;
+  --leading-display-lg: 1.2;
+  --text-display-xl: 48px;
+  --leading-display-xl: 1.1;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-96: 96px;
+
+  /* Border Radius */
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+}
+```
