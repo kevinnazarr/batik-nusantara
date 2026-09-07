@@ -951,18 +951,27 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  gap: 8px;
+  min-width: 40px;
   height: 40px;
+  padding: 0 4px;
   color: var(--color-mountain-slate);
   margin-bottom: 72px;
   align-self: flex-start;
 }
 
+.drawer__close-text {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  font-weight: var(--fw-semi);
+  line-height: 1;
+}
+
 .drawer__close svg {
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
   stroke: currentColor;
-  stroke-width: 1.5;
+  stroke-width: 1.4;
   fill: none;
 }
 
@@ -1108,6 +1117,9 @@ img {
   }
   .drawer__close {
     margin-bottom: 44px;
+  }
+  .drawer__close-text {
+    display: none;
   }
   .drawer__body {
     padding-top: 8px;
@@ -3328,6 +3340,7 @@ img {
       <div class="drawer__content">
         <button class="drawer__close" data-close-drawer aria-label="Close menu">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          <span class="drawer__close-text">CLOSE</span>
         </button>
         <div class="drawer__body">
           <div class="drawer__col">
