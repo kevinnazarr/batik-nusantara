@@ -41,3 +41,4 @@ apps/api/storage/framework/cache/data/*
 *.pid
 *.seed
 .omo
+.opencode
