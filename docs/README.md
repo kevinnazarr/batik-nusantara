@@ -6,6 +6,8 @@ Documentation package v2.0 untuk project ecommerce **Batik-Nusantara**, sebuah s
 
 Dokumen ini menjadi sumber kebenaran bersama untuk product, UX/UI, engineering, QA, deployment, dan operasional.
 
+> 💡 **Butuh gambaran project secara keseluruhan?** Baca [`PROJECT-OVERVIEW.md`](PROJECT-OVERVIEW.md) — ringkasan detail arsitektur, tech stack, struktur repository, dan status implementasi.
+
 ## Status
 
 - Product direction: Draft baseline, siap divalidasi.
