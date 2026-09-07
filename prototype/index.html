@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serat Batik Atelier — Batik, Reimagined</title>
+  <meta name="description" content="Hand-drawn and hand-stamped batik from Yogyakarta — heritage woven into modern life. Shirts, dresses, fabric and accessories, crafted by Indonesian artisans.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23193741'/%3E%3Ctext x='32' y='42' font-family='Georgia, serif' font-style='italic' font-size='34' fill='%23eac486' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-main">
+      <div class="header-left">
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuDrawer">
+          <span class="icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="menu-label">Menu</span>
+        </button>
+      </div>
+
+      <a class="logo" href="index.html" aria-label="Serat Batik Atelier — home">
+        <span class="logo__monogram" aria-hidden="true">S</span>
+        <span>
+          <span class="logo__word">Serat</span>
+          <span class="logo__sub">Batik Atelier</span>
+        </span>
+      </a>
+
+      <div class="header-right">
+        <nav class="header-actions" aria-label="Account and cart">
+          <div class="lang-switcher">
+            <button class="icon-btn" id="langBtn" aria-label="Change language" aria-expanded="false" aria-haspopup="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"></path></svg>
+            </button>
+            <div class="lang-menu" id="langMenu" role="menu" aria-label="Language" hidden>
+              <button class="lang-menu__item" role="menuitemradio" aria-checked="true" data-lang="en">English</button>
+              <button class="lang-menu__item" role="menuitemradio" aria-checked="false" data-lang="id">Indonesia</button>
+            </div>
+          </div>
+          <button class="icon-btn" id="wishlistBtn" aria-label="Open wishlist" aria-haspopup="dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5S3.5 15.5 3.5 9.6A4.6 4.6 0 0 1 12 6.5a4.6 4.6 0 0 1 8.5 3.1c0 5.9-8.5 10.9-8.5 10.9z"></path></svg>
+            <span class="count-badge" data-count="wishlist" aria-hidden="true"></span>
+          </button>
+          <a class="icon-btn" href="cart.html" aria-label="Cart">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+            <span class="count-badge" data-count="cart" aria-hidden="true"></span>
+          </a>
+          <button class="icon-btn" id="accountBtn" aria-label="Account">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c1.2-3.4 4.1-5 7.5-5s6.3 1.6 7.5 5"></path></svg>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__slide is-active" style="background-image:url('https://images.unsplash.com/photo-1609407683391-7d127a00b3e1?q=80&w=1920&auto=format&fit=crop')"></div>
+        <div class="hero__slide" style="background-image:url('https://images.unsplash.com/photo-1761517099330-13b34b141d74?q=80&w=1920&auto=format&fit=crop')"></div>
+        <div class="hero__slide" style="background-image:url('https://images.unsplash.com/photo-1762111067760-1f0fc2aa2866?q=80&w=1920&auto=format&fit=crop')"></div>
+      </div>
+      <div class="hero__inner">
+        <h1 class="hero__title serif--inverse" id="heroTitle">Batik, <em>Reimagined.</em></h1>
+        <p class="hero__lead">Hand-drawn and hand-stamped batik from the workshops of Yogyakarta — heritage woven into modern life, one piece at a time.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--ghost" href="shop.html">Explore the Collection</a>
+          <a class="btn btn--text btn--text--inverse" href="#story">Discover Our Story</a>
+        </div>
+      </div>
+
+      <div class="hero__motif" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" aria-labelledby="featuredTitle">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">Featured Collections</p>
+          <h2 class="heading-lg" id="featuredTitle">Three ways to wear heritage.</h2>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="featured-grid">
+          <a class="tile tile--portrait reveal" style="--reveal-delay:0ms" href="shop.html?cat=Fabric">
+            <img src="https://images.unsplash.com/photo-1761517099330-13b34b141d74?q=80&w=1000&auto=format&fit=crop" alt="Brown and cream heritage batik fabric" loading="lazy" width="800" height="1067">
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__content">
+              <span class="caption">Heritage Fabrics</span>
+              <h3>The Sogan Edit</h3>
+              <span class="tile__link">Shop the Edit</span>
+            </span>
+          </a>
+          <a class="tile tile--portrait reveal" style="--reveal-delay:80ms" href="shop.html?tag=new">
+            <img src="https://images.unsplash.com/photo-1762111067760-1f0fc2aa2866?q=80&w=1000&auto=format&fit=crop" alt="Blue and brown indigo-dyed batik fabric" loading="lazy" width="800" height="1067">
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__content">
+              <span class="caption">New Season</span>
+              <h3>The Indigo Series</h3>
+              <span class="tile__link">Shop the Series</span>
+            </span>
+          </a>
+          <a class="tile tile--portrait reveal" style="--reveal-delay:160ms" href="shop.html?cat=Shirts">
+            <img src="https://images.unsplash.com/photo-1609407683391-7d127a00b3e1?q=80&w=1000&auto=format&fit=crop" alt="Artisan wearing a hand-stamped batik shirt in Lasem" loading="lazy" width="800" height="1067">
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__content">
+              <span class="caption">Batik Shirts</span>
+              <h3>Worn in Lasem</h3>
+              <span class="tile__link">Shop Shirts</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--warm" aria-labelledby="categoryTitle">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">Shop by Category</p>
+          <h2 class="heading-lg" id="categoryTitle">Woven for every occasion.</h2>
+        </div>
+        <div class="category-grid">
+          <a class="tile tile--portrait reveal" style="--reveal-delay:0ms" href="shop.html?cat=Shirts">
+            <img src="https://images.unsplash.com/photo-1569084755066-cbff1d9fd473?q=80&w=900&auto=format&fit=crop" alt="Man wearing a batik shirt" loading="lazy" width="700" height="933">
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__content"><h3>Batik Shirts</h3><span class="tile__link">Explore</span></span>
+          </a>
+          <a class="tile tile--portrait reveal" style="--reveal-delay:80ms" href="shop.html?cat=Dresses">
+            <img src="https://images.unsplash.com/photo-1630929436231-91f4c6fe4884?q=80&w=900&auto=format&fit=crop" alt="Woman wearing a batik dress" loading="lazy" width="700" height="933">
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__content"><h3>Batik Dresses</h3><span class="tile__link">Explore</span></span>
+          </a>
+          <a class="tile tile--portrait reveal" style="--reveal-delay:160ms" href="shop.html?cat=Fabric">
+            <img src="https://images.unsplash.com/photo-1761516659539-20ec6f407ca4?q=80&w=900&auto=format&fit=crop" alt="Hand-drawn batik fabric in brown and blue" loading="lazy" width="700" height="933">
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__content"><h3>Batik Fabric</h3><span class="tile__link">Explore</span></span>
+          </a>
+          <a class="tile tile--portrait reveal" style="--reveal-delay:240ms" href="shop.html?cat=Accessories">
+            <img src="https://images.unsplash.com/photo-1672716912554-c23ba8fac4ce?q=80&w=900&auto=format&fit=crop" alt="Hand-patterned batik ties hanging on a rack" loading="lazy" width="700" height="933">
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__content"><h3>Accessories</h3><span class="tile__link">Explore</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-best" aria-labelledby="bestTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Best Sellers</p>
+            <h2 class="heading-lg" id="bestTitle">Most-loved this season.</h2>
+          </div>
+          <a class="btn btn--outline" href="shop.html">View All Pieces</a>
+        </div>
+        <div class="product-grid" data-grid="best"></div>
+      </div>
+    </section>
+
+    <section class="section section--dark story-band" id="story" aria-labelledby="storyTitle">
+      <div class="container">
+        <div class="story-band__inner">
+          <div class="story-band__text reveal">
+            <p class="eyebrow eyebrow--inverse">The Craft</p>
+            <h2 class="serif--inverse" id="storyTitle">Wax, cloth, and time.</h2>
+            <p>Every Serat piece begins as plain cotton, drawn and stamped by hand with molten wax before it ever touches dye. The word <em>batik</em> carries the Javanese sense of writing — and this writing cannot be rushed.</p>
+            <p>Our artisans work in small studios across Yogyakarta and Lasem, the same way their families have for generations. What you receive is not a print. It is a record of hands.</p>
+            <a class="btn btn--ghost" href="#artisans">Meet the Artisans</a>
+          </div>
+          <div class="story-band__media reveal" style="--reveal-delay:100ms">
+            <img src="https://images.unsplash.com/photo-1695306441929-0082158cfc27?q=80&w=1200&auto=format&fit=crop" alt="Artisan drawing batik with a canting, applying hot wax to cloth" loading="lazy" width="900" height="1125">
+            <span class="medallion medallion--outline story-band__medallion">
+              <strong>Est. 1962</strong>
+              <span>Hand-Drawn</span>
+              <span>&amp; Hand-Stamped</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--warm" id="motifs" aria-labelledby="motifTitle">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">Motifs &amp; Meaning</p>
+          <h2 class="heading-lg" id="motifTitle">Every pattern carries a story.</h2>
+        </div>
+        <div class="motif-grid">
+          <article class="motif-card reveal" style="--reveal-delay:0ms">
+            <div class="motif-card__media">
+              <img src="https://images.unsplash.com/photo-1761516659539-20ec6f407ca4?q=80&w=900&auto=format&fit=crop" alt="Parang motif batik — diagonal blade-like lines" loading="lazy" width="700" height="933">
+            </div>
+            <h3>Parang <span class="jv">— strength</span></h3>
+            <p>Diagonal blades cut through the cloth. Once reserved for Javanese royalty, the Parang speaks of strength, continuity, and the will to keep moving forward.</p>
+          </article>
+          <article class="motif-card reveal" style="--reveal-delay:80ms">
+            <div class="motif-card__media">
+              <img src="https://images.unsplash.com/photo-1762111067841-638cbbe9c6c7?q=80&w=900&auto=format&fit=crop" alt="Kawung motif batik — repeating circles in geometric order" loading="lazy" width="700" height="933">
+            </div>
+            <h3>Kawung <span class="jv">— harmony</span></h3>
+            <p>Four circles, petals of the areca palm, arranged in quiet symmetry — a meditation on purity, harmony, and the balance of a centred life.</p>
+          </article>
+          <article class="motif-card reveal" style="--reveal-delay:160ms">
+            <div class="motif-card__media">
+              <img src="https://images.unsplash.com/photo-1761515315375-1315503bb3ce?q=80&w=900&auto=format&fit=crop" alt="Coastal batik fabric with floral and bird motifs" loading="lazy" width="700" height="933">
+            </div>
+            <h3>Coastal <span class="jv">— openness</span></h3>
+            <p>From the north coast of Java, where Javanese, Chinese and Arab hands have traded cloth for centuries — florals, birds, and the courage of open water.</p>
+          </article>
+        </div>
+        <div class="pullquote reveal">
+          <span class="pullquote__mark" aria-hidden="true">“</span>
+          <blockquote>To wear batik is to carry a story written in wax.</blockquote>
+          <cite>— A Javanese saying, honoured daily</cite>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="promoTitle">
+      <div class="container">
+        <div class="promo">
+          <div class="promo__media reveal">
+            <span class="badge badge--gold">New Season</span>
+            <img src="https://images.unsplash.com/photo-1675994645106-8c48153d8c25?q=80&w=1200&auto=format&fit=crop" alt="Colourful batik fabrics displayed in a shop" loading="lazy" width="900" height="1125">
+          </div>
+          <div class="promo__body reveal" style="--reveal-delay:100ms">
+            <p class="eyebrow">The Indigo Series</p>
+            <h2 class="serif" id="promoTitle">Deep-dyed in natural indigo.</h2>
+            <p>Indigo is the colour batik was born in — fermented from leaves, dipped again and again until the cloth turns from green to a blue that holds the night.</p>
+            <ul class="promo__points">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg></span>Natural indigo, no synthetic dyes</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg></span>Limited run — each dye bath is one of a kind</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"></path></svg></span>Deepens beautifully with age</li>
+            </ul>
+            <a class="btn btn--outline" href="shop.html?tag=new">Shop the Series</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="artisans" aria-labelledby="artisanTitle">
+      <div class="container">
+        <div class="section-head section-head--center section-head--inverse reveal">
+          <p class="eyebrow eyebrow--inverse">Crafted by Hand</p>
+          <h2 class="heading-lg serif--inverse" id="artisanTitle">The hands behind the cloth.</h2>
+          <p>A single length of batik passes through many hands before it reaches yours.</p>
+        </div>
+        <div class="artisan-grid">
+          <article class="artisan-card reveal" style="--reveal-delay:0ms">
+            <div class="artisan-card__media">
+              <img src="https://images.unsplash.com/photo-1604973104381-870c92f10343?q=80&w=900&auto=format&fit=crop" alt="Artisan holding a canting, the wax pen used to draw batik" loading="lazy" width="700" height="875">
+            </div>
+            <span class="artisan-card__step">01 — Drawing</span>
+            <h3>The canting</h3>
+            <p>With a canting — a small copper pen — the artisan draws each line in hot wax. A single cloth can take weeks of patient tracing.</p>
+          </article>
+          <article class="artisan-card reveal" style="--reveal-delay:80ms">
+            <div class="artisan-card__media">
+              <img src="https://images.unsplash.com/photo-1543874911-320748e4c335?q=80&w=900&auto=format&fit=crop" alt="Artisan pressing a copper cap stamp into hot wax" loading="lazy" width="700" height="875">
+            </div>
+            <span class="artisan-card__step">02 — Stamping</span>
+            <h3>The cap</h3>
+            <p>For repeat motifs, a copper cap is stamped into wax and pressed onto the cloth — a rhythm older than the printing press.</p>
+          </article>
+          <article class="artisan-card reveal" style="--reveal-delay:160ms">
+            <div class="artisan-card__media">
+              <img src="https://images.unsplash.com/photo-1721361467569-f8edbf851f44?q=80&w=900&auto=format&fit=crop" alt="Artisan sewing a finished batik garment" loading="lazy" width="700" height="875">
+            </div>
+            <span class="artisan-card__step">03 — Dye &amp; Finish</span>
+            <h3>The cloth</h3>
+            <p>Dye, boil, rinse, dry in the sun — then cutting, sewing and hand-finishing by our atelier tailors.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="testimonialTitle">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <p class="eyebrow">Kind Words</p>
+          <h2 class="heading-lg" id="testimonialTitle">From our patrons.</h2>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial reveal" style="--reveal-delay:0ms">
+            <span class="rating" role="img" aria-label="Rated 5 out of 5 stars">
+              <span class="rating__track" aria-hidden="true">★★★★★</span>
+              <span class="rating__fill" aria-hidden="true" style="width:100%">★★★★★</span>
+            </span>
+            <blockquote>“The Parang shirt arrived wrapped like a gift from another century. The cloth is heavy and honest — you can feel the hours in it.”</blockquote>
+            <footer class="testimonial__author">
+              <span class="testimonial__avatar" aria-hidden="true">RA</span>
+              <div>
+                <div class="testimonial__name">Rani A.</div>
+                <div class="testimonial__meta">Jakarta · Batik Shirts</div>
+              </div>
+            </footer>
+          </article>
+          <article class="testimonial reveal" style="--reveal-delay:80ms">
+            <span class="rating" role="img" aria-label="Rated 5 out of 5 stars">
+              <span class="rating__track" aria-hidden="true">★★★★★</span>
+              <span class="rating__fill" aria-hidden="true" style="width:100%">★★★★★</span>
+            </span>
+            <blockquote>“I commissioned fabric for my wedding and the atelier walked me through every motif. The Sekar Jagad came out more beautiful than I dared hope.”</blockquote>
+            <footer class="testimonial__author">
+              <span class="testimonial__avatar" aria-hidden="true">DN</span>
+              <div>
+                <div class="testimonial__name">Dewi N.</div>
+                <div class="testimonial__meta">Singapore · Batik Fabric</div>
+              </div>
+            </footer>
+          </article>
+          <article class="testimonial reveal" style="--reveal-delay:160ms">
+            <span class="rating" role="img" aria-label="Rated 5 out of 5 stars">
+              <span class="rating__track" aria-hidden="true">★★★★★</span>
+              <span class="rating__fill" aria-hidden="true" style="width:100%">★★★★★</span>
+            </span>
+            <blockquote>“A kimono that feels like a hug and a story at once. My third piece from Serat — the consistency is remarkable.”</blockquote>
+            <footer class="testimonial__author">
+              <span class="testimonial__avatar" aria-hidden="true">MS</span>
+              <div>
+                <div class="testimonial__name">Maya S.</div>
+                <div class="testimonial__meta">Amsterdam · Outerwear</div>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--warm" aria-labelledby="newsletterTitle">
+      <div class="container">
+        <div class="newsletter reveal" id="newsletter">
+          <p class="eyebrow">The Atelier Letter</p>
+          <h2 class="heading" id="newsletterTitle">Join the atelier.</h2>
+          <p style="margin-top:12px">Seasonal collections, motif stories, and early access to limited runs — once a month, no noise.</p>
+          <form class="newsletter__form" id="newsletterForm" novalidate>
+            <label class="visually-hidden" for="newsletterEmail">Email address</label>
+            <input class="input input--line" type="email" id="newsletterEmail" name="email" placeholder="Your email address" required autocomplete="email">
+            <button class="btn btn--outline" type="submit">Subscribe</button>
+          </form>
+          <p class="newsletter__note">Unsubscribe anytime. We never share your address.</p>
+          <p class="newsletter__success" role="status">Terima kasih — welcome to the atelier. Your first letter is on its way.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer-logo" href="index.html" aria-label="Serat Batik Atelier — home">
+            <span class="footer-logo__monogram" aria-hidden="true">S</span>
+            <span class="footer-logo__word">Serat</span>
+            <span class="footer-logo__sub">Batik Atelier · Yogyakarta</span>
+          </a>
+          <p>Serat is a batik atelier working with artisan studios across Java — preserving the craft of hand-drawn and hand-stamped cloth, and shaping it for contemporary life.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"></circle></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4.5h-3A3.5 3.5 0 0 0 10.5 8v2.5H8V14h2.5v6H14v-6h2.5l.5-3.5H14V8z"></path></svg></a>
+            <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M10.5 15.5c.5-2 1.2-5 1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.9 1.6 1.9 1.9 0 3.2-2.4 3.2-5.2 0-2.1-1.4-3.7-4-3.7-2.9 0-4.7 2.2-4.7 4.6 0 .9.3 1.5.7 2 .2.2.2.3.1.5l-.2.9c-.1.3-.3.4-.6.2-1.1-.5-1.7-1.8-1.7-3.2 0-2.6 2.1-5.7 6.4-5.7 3.4 0 5.7 2.5 5.7 5.1 0 3.5-1.9 6.1-4.8 6.1-.9 0-1.8-.5-2.1-1.1l-.6 2.3c-.2.8-.7 1.6-1 2.2z"></path></svg></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="shop.html">All Pieces</a></li>
+            <li><a href="shop.html?cat=Shirts">Batik Shirts</a></li>
+            <li><a href="shop.html?cat=Dresses">Batik Dresses</a></li>
+            <li><a href="shop.html?cat=Outerwear">Outerwear</a></li>
+            <li><a href="shop.html?cat=Fabric">Batik Fabric</a></li>
+            <li><a href="shop.html?cat=Accessories">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Atelier</h4>
+          <ul>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#artisans">The Artisans</a></li>
+            <li><a href="#motifs">Motifs &amp; Meaning</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">The Journal</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Shipping &amp; Delivery</a></li>
+            <li><a href="#">Returns &amp; Exchanges</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Care Guide</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Serat Batik Atelier · Yogyakarta, Indonesia</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile menu drawer -->
+  <div class="drawer" id="menuDrawer" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer__overlay" data-close-drawer></div>
+    <div class="drawer__logo" aria-hidden="true">
+      <span class="drawer__logo-mark">S</span>
+      <span class="drawer__logo-word">Serat</span>
+      <span class="drawer__logo-sub">Batik Atelier</span>
+    </div>
+    <div class="drawer__panel">
+      <div class="drawer__content">
+        <button class="drawer__close" data-close-drawer aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          <span class="drawer__close-text">CLOSE</span>
+        </button>
+        <div class="drawer__body">
+          <div class="drawer__col">
+            <p class="drawer__eyebrow">MENU</p>
+            <nav class="drawer__nav" aria-label="Main">
+              <a class="drawer__link" href="index.html">Philosophy</a>
+              <a class="drawer__link" href="shop.html">Collections</a>
+              <a class="drawer__link" href="shop.html?cat=Fabric">Fabrics</a>
+              <a class="drawer__link" href="#story">Wellness</a>
+              <a class="drawer__link" href="#artisans">Artisans</a>
+              <a class="drawer__link" href="#motifs">Motifs</a>
+              <a class="drawer__link" href="shop.html?tag=new">Offers</a>
+              <a class="drawer__link" href="shop.html">Shop</a>
+              <a class="drawer__link" href="shop.html">Contact</a>
+            </nav>
+          </div>
+          <div class="drawer__col drawer__col--more">
+            <p class="drawer__eyebrow">MORE</p>
+            <div class="drawer__sub">
+              <a href="shop.html?tag=new">News &amp; Blog</a>
+              <a href="shop.html">Gallery</a>
+              <a href="#story">Lounge</a>
+              <a href="#artisans">Brands &amp; Partner</a>
+              <a href="shop.html?cat=Fabric">Exclusive rental</a>
+              <a href="shop.html">Limousine &amp; Shuttle</a>
+              <a href="shop.html">Gift Vouchers</a>
+              <a href="shop.html">Jobs</a>
+              <a href="shop.html">Media Area</a>
+            </div>
+          </div>
+        </div>
+        <div class="drawer__social">
+          <p class="drawer__eyebrow">SOCIAL MEDIA</p>
+          <div class="drawer__social-links">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg class="is-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V5h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v5H14v-5h2.5l.5-3H14V8.5c0-.8.3-1.5 1-1.5z"></path></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg class="is-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM5 10h4v10H5zM11 10h3.8v1.4h.1c.5-1 1.9-2 3.9-2 4.2 0 5 2.7 5 6.3V20h-4v-4.8c0-1.1 0-2.6-1.6-2.6-1.6 0-1.9 1.2-1.9 2.5V20h-4z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="drawer__media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1761517099330-13b34b141d74?q=80&w=1200&auto=format&fit=crop" alt="" loading="lazy" width="1200" height="1600">
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist modal -->
+  <div class="modal" id="wishlistModal" role="dialog" aria-modal="true" aria-label="Wishlist">
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3>Your wishlist</h3>
+        <button class="modal__close" data-close-modal aria-label="Close wishlist">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+      </div>
+      <div class="modal__body" id="wishlistResults"></div>
+    </div>
+  </div>
+
+  <!-- Cookie banner -->
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie notice">
+    <button class="cookie-banner__close" id="cookieClose" aria-label="Dismiss cookie notice">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <p>We use a single cookie to remember your cart — nothing more, nothing sold. <a class="cookie-banner__link" href="#">Learn more</a></p>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+    <script src="js/global.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
