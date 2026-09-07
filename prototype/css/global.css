@@ -95,9 +95,7 @@
 }
 /* ——— Breakpoints (mobile / tablet / desktop / large desktop) ——— */
 /* 640px, 900px, 1200px container max, 1440px+ large */
-   BASE — reset, typography, primitives
-   ============================================================ */
-
+  BASE — reset, typography, primitives
 *,
 *::before,
 *::after {
