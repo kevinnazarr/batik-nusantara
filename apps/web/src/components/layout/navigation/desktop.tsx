@@ -1,46 +1,42 @@
 import Link from "next/link";
+import { Menu, Globe, Heart, ShoppingBag, User } from "lucide-react";
 
 type NavLink = { label: string; href: string };
 
-export default function Desktop({ links }: { links: NavLink[] }) {
+export default function Desktop({ links: _links }: { links: NavLink[] }) {
+  void _links;
   return (
     <nav
-      className="mx-auto max-w-[1280px] flex items-center justify-between px-8 h-[72px]"
+      className="grid grid-cols-[auto_1fr_auto] items-center px-[var(--page-gutter)] h-[72px] w-full"
       aria-label="Primary desktop"
     >
+      <button type="button" className="inline-flex items-center gap-2 text-charcoal hover:text-mountain-slate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30 rounded-full pr-2" aria-label="Open navigation">
+        <span className="inline-flex items-center justify-center w-9 h-9 rounded-full">
+          <Menu className="w-5 h-5" aria-hidden />
+        </span>
+        <span className="text-body-sm font-avenir-lt-pro-roman tracking-[1.5px] uppercase leading-none">Menu</span>
+      </button>
+
       <Link
         href="/"
-        className="font-itc-giovanni-std-bold text-mountain-slate text-[22px] leading-none tracking-[-0.02em]"
+        className="justify-self-center font-itc-giovanni-std-bold text-mountain-slate text-[22px] leading-none tracking-[-0.02em] no-underline"
       >
         BATIK NUSANTARA
       </Link>
 
-      <ul className="flex items-center gap-8">
-        {links.map((item) => (
-          <li key={item.label}>
-            <Link
-              href={item.href}
-              className="text-body-sm font-avenir-lt-pro-roman text-charcoal hover:text-mountain-slate uppercase tracking-[1.5px] leading-none"
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex items-center gap-6">
-        <Link
-          href="/search"
-          className="text-body-sm font-avenir-lt-pro-roman text-charcoal hover:text-mountain-slate uppercase tracking-[1.5px]"
-        >
-          Search
-        </Link>
-        <Link
-          href="/cart"
-          className="text-body-sm font-avenir-lt-pro-roman text-charcoal hover:text-mountain-slate uppercase tracking-[1.5px]"
-        >
-          Cart (0)
-        </Link>
+      <div className="flex items-center gap-4 justify-self-end">
+        <button type="button" className="inline-flex items-center justify-center w-9 h-9 text-charcoal hover:text-mountain-slate rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30" aria-label="Bahasa">
+          <Globe className="w-[18px] h-[18px]" aria-hidden />
+        </button>
+        <button type="button" className="inline-flex items-center justify-center w-9 h-9 text-charcoal hover:text-mountain-slate rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30" aria-label="Favorit">
+          <Heart className="w-[18px] h-[18px]" aria-hidden />
+        </button>
+        <button type="button" className="inline-flex items-center justify-center w-9 h-9 text-charcoal hover:text-mountain-slate rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30" aria-label="Keranjang">
+          <ShoppingBag className="w-[18px] h-[18px]" aria-hidden />
+        </button>
+        <button type="button" className="inline-flex items-center justify-center w-9 h-9 text-charcoal hover:text-mountain-slate rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30" aria-label="Profile">
+          <User className="w-[18px] h-[18px]" aria-hidden />
+        </button>
       </div>
     </nav>
   );
