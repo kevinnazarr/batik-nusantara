@@ -1,6 +1,12 @@
 export type FooterLink = { label: string; href: string };
 export type FooterColumn = { title: string; links: readonly FooterLink[] };
 
+export const FOOTER_HERO = {
+  logo: "/brand/logo-batik-nusantara-footer.webp",
+  logoAlt: "Batik Nusantara",
+  tagline: "Batik Nusantara — warisan budaya Indonesia dalam setiap helai kain.",
+} as const;
+
 export const FOOTER_CONTACT = {
   title: "CONTACT",
   name: "Batik Nusantara",
@@ -8,6 +14,10 @@ export const FOOTER_CONTACT = {
   phone: "+62 274 123 456",
   email: "info@batik-nusantara.co.id",
   tagline: "Warisan budaya Indonesia dalam setiap helai kain.",
+} as const;
+
+export const FOOTER_NAV = {
+  title: "NAVIGATION",
 } as const;
 
 export const FOOTER_NAV_COLUMNS: readonly FooterColumn[] = [
@@ -45,7 +55,7 @@ export const FOOTER_NEWSLETTER = {
 } as const;
 
 export const FOOTER_BOTTOM = {
-  copyright: "© 2026 Batik Nusantara",
+  copyright: "Batik Nusantara",
   links: [
     { label: "Privacy", href: "#" },
     { label: "Terms", href: "#" },

@@ -2,7 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "./newsletter-form";
 import {
+  FOOTER_HERO,
   FOOTER_CONTACT,
+  FOOTER_NAV,
   FOOTER_NAV_COLUMNS,
   FOOTER_NEWSLETTER,
   FOOTER_BOTTOM,
@@ -44,7 +46,6 @@ function SocialIcon({ label }: { label: string }) {
 export default function Footer() {
   return (
     <footer className="bg-mountain-slate text-snow-white">
-      {/* ── Hero: Logo & Tagline ── */}
       <div className="border-b border-white/10 px-6 py-12 md:py-14">
         <Link
           href="/"
@@ -52,23 +53,19 @@ export default function Footer() {
           className="mx-auto flex max-w-3xl flex-col items-center text-center"
         >
           <Image
-            src="/brand/logo-batik-nusantara-footer.webp"
-            alt="Batik Nusantara"
+            src={FOOTER_HERO.logo}
+            alt={FOOTER_HERO.logoAlt}
             width={360}
             height={120}
-            className="h-14 w-auto object-contain md:h-[62px]"
+            className="h-14 w-auto object-contain md:h-15.5"
           />
           <p className="mt-5 font-serif text-[21px] leading-[1.35] text-white/90 md:text-[23px]">
-            Batik Nusantara — warisan budaya Indonesia
-            <br />
-            dalam setiap helai kain.
+            {FOOTER_HERO.tagline.split(" — ")[0]} — {FOOTER_HERO.tagline.split(" — ")[1]}
           </p>
         </Link>
       </div>
 
-      {/* ── Main: Contact / Navigation / Newsletter ── */}
       <div className="grid border-b border-white/10 lg:grid-cols-3">
-        {/* Contact */}
         <div className="px-8 py-12 md:px-12 md:py-14 lg:border-r lg:border-white/10">
           <h4 className="mb-10 text-[11px] font-medium uppercase tracking-[0.2em] text-honey-gold">
             {FOOTER_CONTACT.title}
@@ -92,18 +89,17 @@ export default function Footer() {
             </div>
           </div>
 
-          <p className="mt-20 max-w-[260px] text-[15px] leading-6 text-white/80">
+          <p className="mt-20 max-w-65 text-[15px] leading-6 text-white/80">
             {FOOTER_CONTACT.tagline}
           </p>
         </div>
 
-        {/* Navigation */}
         <div className="px-8 py-12 md:px-12 md:py-14 lg:border-r lg:border-white/10">
           <h4 className="mb-10 text-[11px] font-medium uppercase tracking-[0.2em] text-honey-gold">
-            NAVIGATION
+            {FOOTER_NAV.title}
           </h4>
 
-          <div className="grid grid-cols-2 gap-x-12 gap-y-3 max-w-[420px]">
+          <div className="grid grid-cols-2 gap-x-12 gap-y-3 max-w-105">
             {FOOTER_NAV_COLUMNS.map((col) =>
               col.links.map((link) => (
                 <Link
@@ -118,25 +114,22 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter */}
         <div className="px-8 py-12 md:px-12 md:py-14">
           <h4 className="mb-10 text-[11px] font-medium uppercase tracking-[0.2em] text-honey-gold">
             {FOOTER_NEWSLETTER.title}
           </h4>
 
-          <p className="max-w-[390px] text-[20px] leading-[1.5] text-white/95 md:text-[22px]">
+          <p className="max-w-95.5 text-subheading leading-[1.5] text-white/95 md:text-[22px]">
             {FOOTER_NEWSLETTER.heading}
           </p>
 
-          <div className="mt-10 max-w-[500px]">
+          <div className="mt-10 max-w-125">
             <NewsletterForm />
           </div>
         </div>
       </div>
 
-      {/* ── Bottom Bar ── */}
       <div className="grid items-center gap-6 px-8 py-6 md:grid-cols-3 md:px-12">
-        {/* Social */}
         <div className="flex items-center gap-3 justify-self-start">
           {FOOTER_SOCIAL.map((social) => (
             <Link
@@ -150,7 +143,6 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Legal links */}
         <div className="flex flex-wrap items-center gap-x-7 gap-y-2 justify-self-start text-[13px] text-white/55 md:justify-self-center">
           {FOOTER_BOTTOM.links.map((link) => (
             <Link
@@ -163,8 +155,7 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Copyright */}
-        <p className="text-[13px] text-white/45 md:justify-self-end">{FOOTER_BOTTOM.copyright}</p>
+        <p className="text-[13px] text-white/45 md:justify-self-end">© {new Date().getFullYear()} {FOOTER_BOTTOM.copyright}</p>
       </div>
     </footer>
   );
