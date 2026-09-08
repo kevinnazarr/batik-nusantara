@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Mulish } from "next/font/google";
 import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/layout/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col">
         <Navigation />
         <div className="flex-1 flex flex-col">{children}</div>
+        <Footer />
         <div id="toastRegion" className="toast-region" aria-live="polite" />
       </body>
     </html>
