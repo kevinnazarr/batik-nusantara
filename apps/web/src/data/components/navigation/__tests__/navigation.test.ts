@@ -2,7 +2,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, statSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { NAV_LINKS } from "./index.ts";
+import { NAV_LINKS } from "../index.ts";
 
 describe("navigation data", () => {
   it("NAV_LINKS is array with expected shape", () => {

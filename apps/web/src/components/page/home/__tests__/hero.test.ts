@@ -18,14 +18,13 @@ describe("Home/Hero 100vh", () => {
   });
 
   it("is full viewport height", () => {
-    assert.match(src, /min-h-\[100dvh\]/);
-    assert.match(src, /min-h-screen/);
+    assert.match(src, /min-h-dvh/);
   });
 
   it("follows prototype layout & visual", () => {
     assert.match(src, /absolute inset-0/);
     assert.match(src, /rgba\(15,47,58,0\.38\)/);
-    assert.match(src, /max-w-\[760px\]/);
+    assert.match(src, /max-w-190/);
     assert.match(dataSrc, /Batik,/);
     assert.match(dataSrc, /Reimagined/);
     assert.match(dataSrc, /Explore the Collection/);
@@ -40,16 +39,18 @@ describe("Home/Hero 100vh", () => {
     assert.match(dataSrc, /https:\/\/images\.unsplash\.com/);
   });
 
-  it("animasi terpisah di subfolder hooks (static dulu)", () => {
+  it("animasi terpisah di subfolder hooks (auto-rotate)", () => {
     assert.match(src, /from ".\/hooks\/useHeroSlideshow"/);
     assert.match(hookSrc, /useHeroSlideshow/);
     assert.match(hookSrc, /useState/);
+    assert.match(hookSrc, /setInterval/);
+    assert.match(hookSrc, /prefers-reduced-motion/);
   });
 
   it("typography & colors follow prototype tokens", () => {
-    assert.match(src, /var\(--color-mountain-slate\)/);
-    assert.match(src, /var\(--color-honey-gold\)/);
-    assert.match(src, /var\(--color-snow-white\)/);
+    assert.match(src, /mountain-slate/);
+    assert.match(src, /honey-gold/);
+    assert.match(src, /snow-white/);
     assert.match(src, /clamp\(44px,7vw,68px\)/);
     assert.match(src, /max-w-\[46ch\]/);
   });
@@ -61,6 +62,6 @@ describe("Home/Hero 100vh", () => {
 
   it("has motif strip & accessibility", () => {
     assert.match(src, /aria-labelledby="heroTitle"/);
-    assert.match(src, /h-\[10px\]/);
+    assert.match(src, /h-2\.5/);
   });
 });

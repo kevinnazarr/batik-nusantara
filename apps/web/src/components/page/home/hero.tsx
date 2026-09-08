@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="relative z-2 mx-auto max-w-190 px-6 text-center">
         <h1
           id="heroTitle"
-          className="mb-6 text-[clamp(44px,7vw,68px)] leading-[1.1] font-bold text-snow-white"
+          className="mb-6 text-[clamp(44px,7vw,68px)] leading-display-lg font-bold text-snow-white"
           style={{ fontFamily: "var(--font-playfair), var(--font-serif)" }}
         >
           {HERO_DATA.title.main}{" "}
