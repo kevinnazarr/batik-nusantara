@@ -1,13 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+import type { HeroData } from "@/data/home";
 
-const SLIDES = [
-  "https://images.unsplash.com/photo-1609407683391-7d127a00b3e1?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1761517099330-13b34b141d74?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1762111067760-1f0fc2aa2866?q=80&w=1920&auto=format&fit=crop",
-];
-
-export function Hero() {
+export function Hero({ data }: { data: HeroData }) {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
@@ -15,7 +10,7 @@ export function Hero() {
     let id: ReturnType<typeof setInterval> | null = null;
     const start = () => {
       if (id) return;
-      id = setInterval(() => setIdx((i) => (i + 1) % SLIDES.length), 4000);
+      id = setInterval(() => setIdx((i) => (i + 1) % data.slides.length), 4000);
     };
     const stop = () => {
       if (id) {
@@ -30,29 +25,26 @@ export function Hero() {
       stop();
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, []);
+  }, [data.slides.length]);
 
   return (
     <section className="hero" aria-labelledby="heroTitle">
       <div className="hero__bg" aria-hidden="true">
-        {SLIDES.map((src, i) => (
+        {data.slides.map((src, i) => (
           <div key={src} className={`hero__slide ${i === idx ? "is-active" : ""}`} style={{ backgroundImage: `url('${src}')` }} />
         ))}
       </div>
       <div className="hero__inner">
         <h1 className="hero__title serif--inverse" id="heroTitle">
-          Batik, <em>Reimagined.</em>
+          {data.title}
         </h1>
-        <p className="hero__lead">
-          Hand-drawn and hand-stamped batik from the workshops of Yogyakarta — heritage woven into modern life, one piece at
-          a time.
-        </p>
+        <p className="hero__lead">{data.lead}</p>
         <div className="hero__ctas">
-          <a className="btn btn--ghost" href="/shop">
-            Explore the Collection
+          <a className="btn btn--ghost" href={data.primaryCta.href}>
+            {data.primaryCta.label}
           </a>
-          <a className="btn btn--text btn--text--inverse" href="#story">
-            Discover Our Story
+          <a className="btn btn--text btn--text--inverse" href={data.secondaryCta.href}>
+            {data.secondaryCta.label}
           </a>
         </div>
       </div>

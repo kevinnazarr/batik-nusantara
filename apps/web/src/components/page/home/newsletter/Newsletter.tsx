@@ -1,18 +1,20 @@
-export function Newsletter() {
+import type { NewsletterData } from "@/data/home";
+
+export function Newsletter({ data }: { data: NewsletterData }) {
   return (
     <section className="section section--warm" aria-labelledby="newsletterTitle">
       <div className="container">
         <div className="newsletter reveal" id="newsletter">
-          <p className="eyebrow">The Atelier Letter</p>
-          <h2 className="heading" id="newsletterTitle">Join the atelier.</h2>
-          <p style={{ marginTop: 12 }}>Seasonal collections, motif stories, and early access to limited runs — once a month, no noise.</p>
+          <p className="eyebrow">{data.eyebrow}</p>
+          <h2 className="heading" id="newsletterTitle">{data.title}</h2>
+          <p style={{ marginTop: 12 }}>{data.copy}</p>
           <form className="newsletter__form" noValidate>
-            <label className="visually-hidden" htmlFor="newsletterEmail">Email address</label>
-            <input className="input input--line" type="email" id="newsletterEmail" name="email" placeholder="Your email address" required autoComplete="email" />
-            <button className="btn btn--outline" type="submit">Subscribe</button>
+            <label className="visually-hidden" htmlFor="newsletterEmail">{data.inputLabel}</label>
+            <input className="input input--line" type="email" id="newsletterEmail" name="email" placeholder={data.inputPlaceholder} required autoComplete="email" />
+            <button className="btn btn--outline" type="submit">{data.submitLabel}</button>
           </form>
-          <p className="newsletter__note">Unsubscribe anytime. We never share your address.</p>
-          <p className="newsletter__success" role="status">Terima kasih — welcome to the atelier. Your first letter is on its way.</p>
+          <p className="newsletter__note">{data.note}</p>
+          <p className="newsletter__success" role="status">{data.successMessage}</p>
         </div>
       </div>
     </section>

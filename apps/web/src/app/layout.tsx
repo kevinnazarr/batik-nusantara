@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { MobileDrawer } from "@/components/layout/MobileDrawer";
+import { RevealObserver } from "@/components/RevealObserver";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col">
         <SiteHeader />
         <MobileDrawer />
+        <RevealObserver />
         <div className="flex-1 flex flex-col">{children}</div>
         <SiteFooter />
         <div id="toastRegion" className="toast-region" aria-live="polite" />
