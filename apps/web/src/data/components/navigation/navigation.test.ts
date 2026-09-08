@@ -33,8 +33,8 @@ describe("navigation data", () => {
     assert.ok(statSync(logoPath).size > 10000, "logo file too small");
   });
 
-  it("favicon asset exists in public/brand", () => {
-    const favPath = join(process.cwd(), "public/brand/favicon.webp");
+  it("favicon asset exists in public", () => {
+    const favPath = join(process.cwd(), "public/favicon.webp");
     assert.ok(existsSync(favPath), `favicon missing at ${favPath}`);
   });
 });
