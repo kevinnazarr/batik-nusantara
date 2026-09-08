@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { HERO_DATA } from "@/data/page/home";
-import { useHeroSlideshow } from "./hooks/useHeroSlideshow";
+import { useHeroSlideshow } from "@/hooks/home/useHeroSlideshow";
 
 export default function Hero() {
   const activeIndex = useHeroSlideshow(HERO_DATA.backgrounds.length);

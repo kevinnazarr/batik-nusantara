@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Mulish } from "next/font/google";
 import Navigation from "@/components/layout/navigation";
 import Footer from "@/components/layout/footer";
-import SmoothScroll from "@/components/providers/smooth-scroll";
+import SmoothScroll from "@/hooks/smooth-scroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
