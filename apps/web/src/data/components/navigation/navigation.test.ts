@@ -1,5 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import { existsSync, statSync } from "node:fs";
+import { join } from "node:path";
 import { NAV_LINKS } from "./index.ts";
 
 describe("navigation data", () => {
@@ -23,5 +25,16 @@ describe("navigation data", () => {
   it("labels are unique", () => {
     const labels = NAV_LINKS.map((l) => l.label);
     assert.equal(new Set(labels).size, labels.length, "labels must be unique");
+  });
+
+  it("logo asset exists in public/brand", () => {
+    const logoPath = join(process.cwd(), "public/brand/logo-batik-nusantara.webp");
+    assert.ok(existsSync(logoPath), `logo missing at ${logoPath}`);
+    assert.ok(statSync(logoPath).size > 10000, "logo file too small");
+  });
+
+  it("favicon asset exists in public/brand", () => {
+    const favPath = join(process.cwd(), "public/brand/favicon.webp");
+    assert.ok(existsSync(favPath), `favicon missing at ${favPath}`);
   });
 });

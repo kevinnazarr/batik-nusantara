@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, Globe, Heart, ShoppingBag, User } from "lucide-react";
 import type { NavLink } from "@/data/components/navigation";
@@ -18,9 +19,17 @@ export default function Desktop({ links: _links }: { links: readonly NavLink[] }
 
       <Link
         href="/"
-        className="justify-self-center font-itc-giovanni-std-bold text-mountain-slate text-[22px] leading-none tracking-[-0.02em] no-underline"
+        aria-label="Batik Nusantara - Beranda"
+        className="justify-self-center no-underline"
       >
-        BATIK NUSANTARA
+        <Image
+          src="/brand/logo-batik-nusantara.webp"
+          alt="Batik Nusantara"
+          width={360}
+          height={120}
+          priority
+          className="h-12 w-auto object-contain"
+        />
       </Link>
 
       <div className="flex items-center gap-4 justify-self-end">
