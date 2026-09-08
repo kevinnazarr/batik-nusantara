@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { Menu, Globe, Heart, ShoppingBag, User } from "lucide-react";
+import type { NavLink } from "@/data/components/navigation";
 
-type NavLink = { label: string; href: string };
-
-export default function Desktop({ links: _links }: { links: NavLink[] }) {
+export default function Desktop({ links: _links }: { links: readonly NavLink[] }) {
   void _links;
   return (
     <nav

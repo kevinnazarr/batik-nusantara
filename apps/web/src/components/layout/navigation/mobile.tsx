@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { Menu, User } from "lucide-react";
+import type { NavLink } from "@/data/components/navigation";
 
-type NavLink = { label: string; href: string };
-
-export default function Mobile({ links: _links }: { links: NavLink[] }) {
+export default function Mobile({ links: _links }: { links: readonly NavLink[] }) {
   void _links;
   return (
     <nav

@@ -1,13 +1,7 @@
 import Desktop from "./desktop";
 import Tablet from "./tablet";
 import Mobile from "./mobile";
-
-const NAV_LINKS = [
-  { label: "Shop", href: "/shop" },
-  { label: "Collections", href: "/shop" },
-  { label: "Story", href: "/stories" },
-  { label: "About", href: "/stories" },
-];
+import { NAV_LINKS } from "@/data/components/navigation";
 
 export default function Navigation() {
   return (
