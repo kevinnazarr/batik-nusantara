@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, statSync } from "node:fs";
+import { existsSync, statSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NAV_LINKS } from "./index.ts";
 
@@ -36,5 +36,13 @@ describe("navigation data", () => {
   it("favicon asset exists in public", () => {
     const favPath = join(process.cwd(), "public/favicon.webp");
     assert.ok(existsSync(favPath), `favicon missing at ${favPath}`);
+  });
+
+  it("scroll hook exists in sub-folder", () => {
+    const hookPath = join(process.cwd(), "src/components/layout/navigation/hooks/useScrolled.ts");
+    assert.ok(existsSync(hookPath), `hook missing at ${hookPath}`);
+    const src = readFileSync(hookPath, "utf8");
+    assert.match(src, /useScrolled/);
+    assert.match(src, /window\.scrollY/);
   });
 });
