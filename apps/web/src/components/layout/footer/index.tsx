@@ -3,15 +3,15 @@ import { FOOTER_BRAND, FOOTER_COLUMNS, FOOTER_BOTTOM, FOOTER_SOCIAL } from "@/da
 
 export default function Footer() {
   return (
-    <footer className="bg-mountain-slate text-snow-white pt-30">
-      <div className="mx-auto w-full max-w-[1200px] px-6">
+    <footer className="bg-mountain-slate text-snow-white pt-120">
+      <div className="mx-auto w-full max-w-300 px-6">
         <div className="grid grid-cols-1 gap-12 pb-16 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
-          <div className="max-w-[280px] md:col-span-2 lg:col-span-1">
+          <div className="max-w-70 md:col-span-2 lg:col-span-1">
             <Link href="/" aria-label="Serat Batik Atelier — home" className="mb-6 inline-flex flex-col items-start gap-2.5">
               <span className="font-serif text-[34px] font-bold italic leading-none text-honey-gold">
                 {FOOTER_BRAND.monogram}
               </span>
-              <span className="text-[18px] font-semibold tracking-[0.05em] text-snow-white leading-none">
+              <span className="text-[18px] font-semibold tracking-wider text-snow-white leading-none">
                 {FOOTER_BRAND.word}
               </span>
               <span className="text-[9px] tracking-[0.3em] uppercase text-white/70 leading-none">

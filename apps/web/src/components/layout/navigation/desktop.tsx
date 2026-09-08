@@ -35,7 +35,7 @@ export default function Desktop({
 
       <Link href="/" aria-label="Batik Nusantara - Beranda" className="justify-self-center no-underline">
         <Image
-          src="/brand/logo-batik-nusantara.webp"
+          src="/brand/logo_batik_nusantara.webp"
           alt="Batik Nusantara"
           width={360}
           height={120}
