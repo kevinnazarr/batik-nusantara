@@ -1,15 +1,16 @@
 export type FooterLink = { label: string; href: string };
 export type FooterColumn = { title: string; links: readonly FooterLink[] };
 
-export const FOOTER_BRAND = {
-  monogram: "S",
-  word: "Serat",
-  sub: "Batik Atelier · Yogyakarta",
-  description:
-    "Serat is a batik atelier working with artisan studios across Java — preserving the craft of hand-drawn and hand-stamped cloth, and shaping it for contemporary life.",
+export const FOOTER_CONTACT = {
+  title: "CONTACT",
+  name: "Batik Nusantara",
+  address: ["Jl. Malioboro No. 52", "Yogyakarta 55211", "Indonesia"],
+  phone: "+62 274 123 456",
+  email: "info@batik-nusantara.co.id",
+  tagline: "Warisan budaya Indonesia dalam setiap helai kain.",
 } as const;
 
-export const FOOTER_COLUMNS: readonly FooterColumn[] = [
+export const FOOTER_NAV_COLUMNS: readonly FooterColumn[] = [
   {
     title: "Shop",
     links: [
@@ -22,29 +23,29 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     ],
   },
   {
-    title: "Atelier",
+    title: "Explore",
     links: [
+      { label: "Collections", href: "/shop" },
       { label: "Our Story", href: "/stories" },
       { label: "The Artisans", href: "/stories" },
       { label: "Motifs & Meaning", href: "/stories" },
-      { label: "Sustainability", href: "#" },
-      { label: "The Journal", href: "/stories" },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Shipping & Delivery", href: "#" },
-      { label: "Returns & Exchanges", href: "#" },
-      { label: "Size Guide", href: "#" },
-      { label: "Care Guide", href: "#" },
+      { label: "Sustainability", href: "/stories" },
       { label: "Contact", href: "#" },
     ],
   },
 ] as const;
 
+export const FOOTER_NEWSLETTER = {
+  title: "NEWSLETTER",
+  heading: "Dapatkan info terbaru langsung ke inbox Anda.",
+  firstNamePlaceholder: "Nama Depan",
+  lastNamePlaceholder: "Nama Belakang",
+  emailPlaceholder: "Email",
+  buttonText: "Subscribe",
+} as const;
+
 export const FOOTER_BOTTOM = {
-  copyright: "© 2026 Serat Batik Atelier · Yogyakarta, Indonesia",
+  copyright: "© 2026 Batik Nusantara",
   links: [
     { label: "Privacy", href: "#" },
     { label: "Terms", href: "#" },
@@ -55,5 +56,5 @@ export const FOOTER_BOTTOM = {
 export const FOOTER_SOCIAL: readonly FooterLink[] = [
   { label: "Instagram", href: "#" },
   { label: "Facebook", href: "#" },
-  { label: "Pinterest", href: "#" },
+  { label: "LinkedIn", href: "#" },
 ] as const;

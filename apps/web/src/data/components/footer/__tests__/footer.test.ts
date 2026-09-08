@@ -2,28 +2,39 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { FOOTER_BRAND, FOOTER_COLUMNS, FOOTER_BOTTOM, FOOTER_SOCIAL } from "../index.ts";
+import {
+  FOOTER_CONTACT,
+  FOOTER_NAV_COLUMNS,
+  FOOTER_NEWSLETTER,
+  FOOTER_BOTTOM,
+  FOOTER_SOCIAL,
+} from "../index.ts";
 
 describe("footer data", () => {
-  it("brand has required fields", () => {
-    assert.ok(FOOTER_BRAND.monogram.length > 0);
-    assert.ok(FOOTER_BRAND.word.length > 0);
-    assert.ok(FOOTER_BRAND.description.length > 20);
+  it("contact has required fields", () => {
+    assert.ok(FOOTER_CONTACT.name.length > 0);
+    assert.ok(FOOTER_CONTACT.address.length > 0);
+    assert.ok(FOOTER_CONTACT.phone.length > 0);
+    assert.ok(FOOTER_CONTACT.email.length > 0);
   });
 
-  it("columns follow prototype", () => {
-    assert.equal(FOOTER_COLUMNS.length, 3);
-    const titles = FOOTER_COLUMNS.map((c) => c.title);
+  it("nav columns follow layout", () => {
+    assert.equal(FOOTER_NAV_COLUMNS.length, 2);
+    const titles = FOOTER_NAV_COLUMNS.map((c) => c.title);
     assert.ok(titles.includes("Shop"));
-    assert.ok(titles.includes("Atelier"));
-    assert.ok(titles.includes("Support"));
-    for (const col of FOOTER_COLUMNS) {
+    assert.ok(titles.includes("Explore"));
+    for (const col of FOOTER_NAV_COLUMNS) {
       assert.ok(col.links.length > 0);
       for (const link of col.links) {
         assert.ok(link.label.length > 0);
         assert.ok(link.href.length > 0);
       }
     }
+  });
+
+  it("newsletter has required fields", () => {
+    assert.ok(FOOTER_NEWSLETTER.heading.length > 10);
+    assert.ok(FOOTER_NEWSLETTER.buttonText.length > 0);
   });
 
   it("bottom has copyright and links", () => {
@@ -38,7 +49,8 @@ describe("footer data", () => {
   it("file exists at data/components/footer", () => {
     const p = join(process.cwd(), "src/data/components/footer/index.ts");
     const src = readFileSync(p, "utf8");
-    assert.match(src, /FOOTER_BRAND/);
-    assert.match(src, /FOOTER_COLUMNS/);
+    assert.match(src, /FOOTER_CONTACT/);
+    assert.match(src, /FOOTER_NAV_COLUMNS/);
+    assert.match(src, /FOOTER_NEWSLETTER/);
   });
 });
