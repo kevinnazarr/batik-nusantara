@@ -11,10 +11,10 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
         isScrolled
-          ? "bg-snow-white border-warm-parchment shadow-sm"
-          : "bg-transparent border-transparent"
+          ? "bg-snow-white/95 backdrop-blur-md border-warm-parchment shadow-sm"
+          : "bg-transparent border-transparent backdrop-blur-none"
       }`}
     >
       <div className="hidden lg:block">

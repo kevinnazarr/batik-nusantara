@@ -12,8 +12,8 @@ export default function Desktop({
 }) {
   void _links;
   const text = isScrolled
-    ? "text-charcoal hover:text-mountain-slate"
-    : "text-snow-white hover:text-snow-white/80";
+    ? "text-charcoal"
+    : "text-snow-white";
   const logoFilter = isScrolled ? "" : "brightness-0 invert";
   return (
     <nav

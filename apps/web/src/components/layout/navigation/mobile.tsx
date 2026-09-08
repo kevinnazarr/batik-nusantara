@@ -12,8 +12,8 @@ export default function Mobile({
 }) {
   void _links;
   const text = isScrolled
-    ? "text-charcoal hover:text-mountain-slate"
-    : "text-snow-white hover:text-snow-white/80";
+    ? "text-charcoal"
+    : "text-snow-white";
   const logoFilter = isScrolled ? "" : "brightness-0 invert";
   return (
     <nav
@@ -28,7 +28,7 @@ export default function Mobile({
         <span className="inline-flex items-center justify-center w-9 h-9 rounded-full">
           <Menu className="w-5 h-5" aria-hidden />
         </span>
-        <span className="text-body-sm font-avenir-lt-pro-roman tracking-caption uppercase leading-none">Menu</span>
+        <span className="hidden">Menu</span>
       </button>
 
       <Link href="/" aria-label="Batik Nusantara - Beranda" className="justify-self-center no-underline">
