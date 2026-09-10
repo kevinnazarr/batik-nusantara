@@ -1,12 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "./newsletter-form";
+import { useI18n } from "@/lib/i18n/context";
 import {
   FOOTER_HERO,
   FOOTER_CONTACT,
-  FOOTER_NAV,
-  FOOTER_NAV_COLUMNS,
-  FOOTER_NEWSLETTER,
   FOOTER_BOTTOM,
   FOOTER_SOCIAL,
 } from "@/data/components/footer";
@@ -44,6 +44,7 @@ function SocialIcon({ label }: { label: string }) {
 }
 
 export default function Footer() {
+  const { dict } = useI18n();
   return (
     <footer className="bg-mountain-slate text-snow-white">
       <div className="border-b border-white/10 px-6 py-12 md:py-14">
@@ -60,7 +61,7 @@ export default function Footer() {
             className="h-14 w-auto object-contain md:h-15.5"
           />
           <p className="mt-5 font-serif text-[21px] leading-[1.35] text-white/90 md:text-[23px]">
-            {FOOTER_HERO.tagline.split(" — ")[0]} — {FOOTER_HERO.tagline.split(" — ")[1]}
+            {dict.footer.tagline}
           </p>
         </Link>
       </div>
@@ -68,7 +69,7 @@ export default function Footer() {
       <div className="grid border-b border-white/10 lg:grid-cols-3">
         <div className="px-8 py-12 md:px-12 md:py-14 lg:border-r lg:border-white/10">
           <h4 className="mb-10 text-[11px] font-medium uppercase tracking-[0.2em] text-honey-gold">
-            {FOOTER_CONTACT.title}
+            {dict.footer.contactTitle}
           </h4>
 
           <div className="space-y-6">
@@ -90,17 +91,17 @@ export default function Footer() {
           </div>
 
           <p className="mt-20 max-w-65 text-[15px] leading-6 text-white/80">
-            {FOOTER_CONTACT.tagline}
+            {dict.footer.tagline}
           </p>
         </div>
 
         <div className="px-8 py-12 md:px-12 md:py-14 lg:border-r lg:border-white/10">
           <h4 className="mb-10 text-[11px] font-medium uppercase tracking-[0.2em] text-honey-gold">
-            {FOOTER_NAV.title}
+            {dict.footer.navTitle}
           </h4>
 
           <div className="grid grid-cols-2 gap-x-12 gap-y-3 max-w-105">
-            {FOOTER_NAV_COLUMNS.map((col) =>
+            {dict.footer.columns.map((col) =>
               col.links.map((link) => (
                 <Link
                   key={link.label}
@@ -116,11 +117,11 @@ export default function Footer() {
 
         <div className="px-8 py-12 md:px-12 md:py-14">
           <h4 className="mb-10 text-[11px] font-medium uppercase tracking-[0.2em] text-honey-gold">
-            {FOOTER_NEWSLETTER.title}
+            {dict.footer.newsletterTitle}
           </h4>
 
           <p className="max-w-95.5 text-subheading leading-[1.5] text-white/95 md:text-[22px]">
-            {FOOTER_NEWSLETTER.heading}
+            {dict.footer.newsletterHeading}
           </p>
 
           <div className="mt-10 max-w-125">
@@ -144,7 +145,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-7 gap-y-2 justify-self-start text-[13px] text-white/55 md:justify-self-center">
-          {FOOTER_BOTTOM.links.map((link) => (
+          {dict.footer.bottomLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}

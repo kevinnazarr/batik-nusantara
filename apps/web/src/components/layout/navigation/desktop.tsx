@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, Globe, Heart, ShoppingBag, User } from "lucide-react";
+import { Menu, Heart, ShoppingBag, User } from "lucide-react";
+import LanguageSwitcher from "./language-switcher";
 import type { NavLink } from "@/data/components/navigation";
 
 export default function Desktop({
   links: _links,
+  menu = "Menu",
   isScrolled = true,
 }: {
   links: readonly NavLink[];
+  menu?: string;
   isScrolled?: boolean;
 }) {
   void _links;
@@ -22,14 +25,14 @@ export default function Desktop({
     >
       <button
         type="button"
-        className={`inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30 rounded-full pr-2 ${text}`}
+        className={`inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30 rounded-full pr-2 justify-self-start ${text}`}
         aria-label="Open navigation"
       >
         <span className="inline-flex items-center justify-center w-9 h-9 rounded-full">
           <Menu className="w-5 h-5" aria-hidden />
         </span>
         <span className="text-body-sm font-avenir-lt-pro-roman tracking-caption uppercase leading-none">
-          Menu
+          {menu}
         </span>
       </button>
 
@@ -45,13 +48,7 @@ export default function Desktop({
       </Link>
 
       <div className="flex items-center gap-4 justify-self-end">
-        <button
-          type="button"
-          className={`inline-flex items-center justify-center w-9 h-9 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30 ${text}`}
-          aria-label="Bahasa"
-        >
-          <Globe className="w-4.5 h-4.5" aria-hidden />
-        </button>
+        <LanguageSwitcher className={text} />
         <button
           type="button"
           className={`inline-flex items-center justify-center w-9 h-9 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mountain-slate/30 ${text}`}

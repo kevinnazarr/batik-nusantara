@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { HERO_DATA } from "@/data/page/home";
 import { useHeroSlideshow } from "@/hooks/home/useHeroSlideshow";
+import { useI18n } from "@/lib/i18n/context";
 
 export default function Hero() {
   const activeIndex = useHeroSlideshow(HERO_DATA.backgrounds.length);
+  const { dict } = useI18n();
 
   return (
     <section
@@ -29,27 +31,27 @@ export default function Hero() {
           className="mb-6 text-[clamp(44px,7vw,68px)] leading-display-lg font-bold text-snow-white"
           style={{ fontFamily: "var(--font-playfair), var(--font-serif)" }}
         >
-          {HERO_DATA.title.main}{" "}
-          <em className="font-normal italic text-honey-gold">{HERO_DATA.title.accent}</em>
+          {dict.hero.title.main}{" "}
+          <em className="font-normal italic text-honey-gold">{dict.hero.title.accent}</em>
         </h1>
         <p
           className="mx-auto mb-10 max-w-[46ch] text-base leading-body"
           style={{ color: "rgba(255,255,255,0.72)" }}
         >
-          {HERO_DATA.lead}
+          {dict.hero.lead}
         </p>
         <div className="flex flex-wrap justify-center gap-4 max-[639px]:[&>a]:w-full">
           <Link
             href={HERO_DATA.ctas.primary.href}
             className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full border-[1.5px] border-snow-white bg-transparent px-8 py-3.5 text-xs font-semibold tracking-[0.167em] uppercase leading-none text-snow-white transition-colors duration-200 ease-out hover:bg-snow-white hover:text-mountain-slate active:scale-[0.98] max-[639px]:w-full"
           >
-            {HERO_DATA.ctas.primary.label}
+            {dict.hero.primary}
           </Link>
           <Link
             href={HERO_DATA.ctas.secondary.href}
             className="relative inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-(--radius-links) px-1 py-2 text-xs font-semibold tracking-[0.125em] uppercase leading-none text-snow-white after:absolute after:bottom-0.5 after:left-1 after:right-1 after:h-px after:origin-left after:scale-x-[0.35] after:bg-current after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 max-[639px]:w-full max-[639px]:justify-center"
           >
-            {HERO_DATA.ctas.secondary.label}
+            {dict.hero.secondary}
           </Link>
         </div>
       </div>

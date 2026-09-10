@@ -3,11 +3,12 @@
 import Desktop from "./desktop";
 import Tablet from "./tablet";
 import Mobile from "./mobile";
-import { NAV_LINKS } from "@/data/components/navigation";
 import { useScrolled } from "./hooks/useScrolled";
+import { useI18n } from "@/lib/i18n/context";
 
 export default function Navigation() {
   const isScrolled = useScrolled(20);
+  const { dict } = useI18n();
 
   return (
     <header
@@ -18,13 +19,13 @@ export default function Navigation() {
       }`}
     >
       <div className="hidden lg:block">
-        <Desktop links={NAV_LINKS} isScrolled={isScrolled} />
+        <Desktop links={dict.nav.links} menu={dict.nav.menu} isScrolled={isScrolled} />
       </div>
       <div className="hidden md:block lg:hidden">
-        <Tablet links={NAV_LINKS} isScrolled={isScrolled} />
+        <Tablet links={dict.nav.links} menu={dict.nav.menu} isScrolled={isScrolled} />
       </div>
       <div className="block md:hidden">
-        <Mobile links={NAV_LINKS} isScrolled={isScrolled} />
+        <Mobile links={dict.nav.links} menu={dict.nav.menu} isScrolled={isScrolled} />
       </div>
     </header>
   );

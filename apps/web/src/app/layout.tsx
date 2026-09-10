@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Mulish } from "next/font/google";
 import Navigation from "@/components/layout/navigation";
 import Footer from "@/components/layout/footer";
+import Providers from "@/components/providers";
 import SmoothScroll from "@/hooks/smooth-scroll";
 import "./globals.css";
 
@@ -25,13 +26,15 @@ const mulish = Mulish({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${mulish.variable} h-full antialiased`}>
+    <html lang="id" className={`${playfair.variable} ${mulish.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <SmoothScroll>
-          <Navigation />
-          <div className="flex-1 flex flex-col">{children}</div>
-          <Footer />
-        </SmoothScroll>
+        <Providers>
+          <SmoothScroll>
+            <Navigation />
+            <div className="flex-1 flex flex-col">{children}</div>
+            <Footer />
+          </SmoothScroll>
+        </Providers>
         <div id="toastRegion" className="toast-region" aria-live="polite" />
       </body>
     </html>
